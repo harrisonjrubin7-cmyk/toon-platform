@@ -1,7 +1,7 @@
 // /api/unsubscribe?token=… — GET shows a confirm button (so link scanners that
 // prefetch URLs cannot unsubscribe anyone); POST unsubscribes. POST also serves
 // one-click unsubscribe from mail apps (RFC 8058, body "List-Unsubscribe=One-Click").
-import { neon } from '@neondatabase/serverless';
+import { resolveStore } from '../lib/store.js';
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -72,9 +72,8 @@ export default async function handler(req, res, deps = {}) {
   if (!token) return oneClick ? res.status(400).send('Invalid token') : html(res, 400, invalid());
 
   try {
-    const sql = deps.sql || neon(process.env.DATABASE_URL);
-    const rows = await sql`SELECT vr_unsubscribe(${token}::uuid) AS ok`;
-    const found = Boolean(rows && rows[0] && rows[0].ok);
+    const store = await resolveStore(deps);
+    const found = await store.unsubscribe(token);
     if (oneClick) return res.status(found ? 200 : 404).send(found ? 'Unsubscribed' : 'Unknown token');
     if (!found) return html(res, 404, invalid());
     return html(res, 200, page("You're unsubscribed",
