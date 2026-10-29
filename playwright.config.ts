@@ -22,6 +22,6 @@ export default defineConfig({
         url: `http://localhost:${PORT}/api/health`,
         timeout: 240_000,
         reuseExistingServer: true,
-        env: { DATABASE_URL: DB, ADMIN_EMAILS: "boss@toon.test", PAYMENTS_PROVIDER: "test", APP_URL: `http://localhost:${PORT}`, ALLOW_LOCAL_MEDIA: "1", LOCAL_MEDIA_DIR: ".data/e2e-media", NEXT_DIST_DIR: ".next-e2e" },
+        env: { DATABASE_URL: DB, ADMIN_EMAILS: "boss@toon.test", PAYMENTS_PROVIDER: "test", ALLOW_LOCAL_MEDIA: "1", LOCAL_MEDIA_DIR: ".data/e2e-media", NEXT_DIST_DIR: ".next-e2e", EMAIL_DEV_TRANSPORT: "1", APP_URL: `http://localhost:${PORT}` },
       },
 });
