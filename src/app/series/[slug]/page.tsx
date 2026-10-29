@@ -6,6 +6,7 @@ import { load } from "@/lib/page-helpers";
 import { EpisodeRow, IssueCard } from "@/components/cards";
 import { Endorsement, IpMark, ipClass, RatingTag } from "@/components/brand";
 import { followAction } from "@/app/actions/reader";
+import Link from "next/link";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -43,6 +44,12 @@ export default async function SeriesPage({ params }: Props) {
           </button>
         </form>
       </section>
+
+      <p className="row tn-supporting">
+        <Link href={`/community?series=${s.slug}`}>Fan spinoffs of {s.title}</Link>
+        <Link href={`/create?spinoff=${s.slug}`}>Make your own</Link>
+        <Link href={`/ideas/new?spinoff=${s.slug}`}>Pitch a spinoff idea</Link>
+      </p>
 
       {s.volumes.length === 0 && <div className="empty">Nothing from this series is out yet. Follow it to see new issues and episodes in your library.</div>}
 

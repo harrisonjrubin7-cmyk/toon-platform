@@ -5,6 +5,8 @@ import { permissions } from "@/lib/roles";
 import { logoutAction } from "./actions/auth";
 import { SiteLogoLink } from "@/components/brand";
 import { NavLinks } from "@/components/nav";
+import { db } from "@/lib/db";
+import { unreadCount } from "@/lib/domain/community/social";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,6 +19,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const actor = await currentActor();
+  const unread = actor ? await unreadCount(db, actor).catch(() => 0) : 0;
   return (
     <html lang="en">
       <head>
@@ -37,8 +40,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 { href: "/comics", label: "Comics" },
                 { href: "/shows", label: "Shows" },
                 { href: "/series", label: "Series" },
+                { href: "/community", label: "Community" },
                 { href: "/search", label: "Search" },
-                ...(actor ? [{ href: "/library", label: "My library" }] : []),
+                ...(actor ? [{ href: "/library", label: "My library" }, { href: "/create", label: "Create" }] : []),
+                ...(unread > 0 ? [{ href: "/community/notifications", label: `Notifications (${unread})` }] : []),
                 ...(permissions.viewStudio(actor) ? [{ href: "/studio", label: "Studio" }] : []),
               ]}
             />
