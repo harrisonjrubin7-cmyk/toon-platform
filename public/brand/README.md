@@ -1,30 +1,28 @@
-# Toon Comics & Studio brand kit (concepts, v1, 2026-10-29)
+# Tune Comics & Studios brand kit (v2)
 
-Status: proposal. The studio name and trademark search are still open, so every logo here is a concept.
+The studio identity in charcoal, ivory and champagne, from the founder's Tune concepts (2026-10-29). The design system with the full brand book and live component previews is at https://claude.ai/artifact/CX9RQhp8BfARL7FB839CnT.
 
-Full brand book, tokens and live components: https://claude.ai/artifact/CX9RQhp8BfARL7FB839CnT
+Status: the name is set; a trademark search is still pending. The SVGs are the editable vector masters.
 
-## How to use it in a site or app
+## What's here
 
-```html
-<link rel="stylesheet" href="brand/tokens/tokens.css">     <!-- colours, type, spacing, fonts -->
-<link rel="stylesheet" href="brand/tokens/components.css"> <!-- tn- components -->
-```
+- `logos/`: `tune-wordmark`, `tune-icon` (sculptural T), `tune-lockup`, `tune-icon-tile` (app icon, favicon), `tune-icon-mono` (foil, single ink). Each colour mark has an `-on-dark` file. `volcano-racers-*` are IP #1's marks, unchanged. `tune-logo-sheet.png` shows them all.
+- `concepts/`: the founder's four PNG renders (banner, sculptural T, wordmark, brand board). Hero and reference art, not logo files.
+- `fonts/`: Playfair Display (display), Montserrat (UI and body), Courier Prime (script). All OFL.
+- `tokens/tokens.json`: source of truth. `tokens/tokens.css` is generated from it (fonts load from `../fonts/`). `tokens/components.css` holds the `tn-` component classes. `components-preview.png` shows them in both themes.
+- `archive-toon-v1/`: the earlier Toon kit, kept for reference only. Don't build on it.
 
-- `tokens.css` defines CSS custom properties for two themes: `paper` (default) and `late-show` (dark; follows the OS, or force it with `data-theme="late-show"` on `<html>`). Fonts load from `brand/fonts/` (relative path `../fonts/`).
-- Type classes: `.display-xl .display-l .display-m .display-s .sfx .body-l .body .body-strong .caption .label .script`.
-- Components: `tn-btn` (+`--primary --danger --ghost`), `tn-field`, `tn-badge` (+`--new --live --info --warn`), `tn-rating`, `tn-bubble` (+`--shout`), `tn-caption` (+`--scar`), `tn-issue`, `tn-episode`, `tn-lockup`. Markup examples are in the artifact's component cards.
-- IP theming: wrap a section in `.tn-ip--volcano-racers` to switch `--ip-accent` to magma and `--ip-ground` to basalt. `.tn-ip--starfall` is reserved for IP #2.
+## Using it
 
-## Key rules
+1. Link `tokens/tokens.css`, then `tokens/components.css`.
+2. Themes: `data-theme="ivory"` (light, default) or `data-theme="noir"`. Without the attribute, the page follows the system colour scheme.
+3. Primary buttons are solid charcoal on ivory (`--action`). Champagne (`--champagne`) is decorative only: it fails contrast as text. Gold text and links use `--accent`.
+4. Wrap IP content in `.tn-ip--volcano-racers` to switch `--ip-accent` to magma and `--ip-ground` to basalt. `.tn-ip--starfall` is reserved.
+5. Endorse IP marks with "A Tune Comics & Studios original" beside the T icon.
 
-- `toon-red` is for logos and display type 24px+. Links and primary buttons use `action` (passes AA).
-- `scar` only for ratings, content warnings, destructive actions.
-- Every object gets an ink outline (`--line`) and a hard offset shadow (`--shadow-toon`). No blurred shadows, no gradients.
-- Show a rating tag (TV-MA / 18+) near every title and before any buy or play button.
+## Changes from v1 (Toon)
 
-## Files
-
-- `logos/`: 5 studio and 3 Volcano Racers SVGs (text outlined, no fonts needed) + `logo-concepts-sheet.png`.
-- `fonts/`: Bowlby One, Bangers, Work Sans (variable), Courier Prime. All SIL Open Font Licence.
-- `tokens/`: `tokens.json` (source), `tokens.css`, `components.css`, `components-preview.png`.
+- Themes renamed: `paper` → `ivory`, `late-show` → `noir`.
+- Removed tokens: `--toon-red`, `--sun`, `--sky`, `--on-bright`, `--shadow-toon`, `--shadow-toon-l`, `--shadow-press`, `--shadow-ink`, `--stroke-thin`, `--stroke-heavy`, `--font-sfx`. Use `--champagne`/`--accent`, `--shadow-1`/`--shadow-2`, `--stroke-hair` and hairlines instead. New: `--champagne`, `--accent`, `--line-input`, `--stroke-hair`, `--radius-s`.
+- Fonts: Bowlby One, Bangers and Work Sans are out; Playfair Display and Montserrat are in.
+- Class prefix stays `tn-`.

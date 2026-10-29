@@ -4,7 +4,7 @@ import { currentActor, requireAgeGate } from "@/lib/auth/session";
 import { getSeries } from "@/lib/domain/catalog";
 import { load } from "@/lib/page-helpers";
 import { EpisodeRow, IssueCard } from "@/components/cards";
-import { IpMark, ipClass, RatingTag } from "@/components/brand";
+import { Endorsement, IpMark, ipClass, RatingTag } from "@/components/brand";
 import { followAction } from "@/app/actions/reader";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -31,7 +31,7 @@ export default async function SeriesPage({ params }: Props) {
         {s.tagline && <p className="body-l" style={{ marginTop: 12 }}>{s.tagline}</p>}
         <div className="row" style={{ marginBottom: 12 }}>
           <RatingTag rating={s.rating} />
-          <span className="label">A Toon Comics &amp; Studio original</span>
+          <Endorsement />
         </div>
         {s.synopsis && s.synopsis.split(/\n{2,}/).map((p, i) => <p key={i}>{p}</p>)}
         <form action={followAction}>

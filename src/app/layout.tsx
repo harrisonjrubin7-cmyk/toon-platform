@@ -8,9 +8,9 @@ import { NavLinks } from "@/components/nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Toon Comics & Studio", template: "%s · Toon Comics & Studio" },
-  description: "Read the comics and watch the shows from Toon Comics & Studio. Grown-up cartoons, made by hand.",
-  icons: { icon: "/brand/logos/toon-studio-monogram.svg" },
+  title: { default: "Tune Comics & Studios", template: "%s · Tune Comics & Studios" },
+  description: "Read the comics and watch the shows from Tune Comics & Studios. Grown-up stories, made by hand.",
+  icons: { icon: "/brand/logos/tune-icon-tile.svg" },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </main>
         <footer className="site-footer">
           <div className="container spread">
-            <span>© {new Date().getUTCFullYear()} Toon Comics & Studio. For mature readers.</span>
+            <span>© {new Date().getUTCFullYear()} Tune Comics & Studios. For mature readers.</span>
             <span className="row"><Link href="/series">All series</Link><Link href="/search">Search</Link></span>
           </div>
         </footer>

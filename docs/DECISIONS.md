@@ -21,7 +21,7 @@
 |---|----------|------------------------|
 | O1 | Release format: single issues, digital-first webcomic, trades, or a mix | The reader already handles page-by-page and scroll. Trades would add a "collection" type. |
 | O2 | Free, paid per issue, or subscription | Decides whether to add payments (Stripe is connected but its sign-in has expired). |
-| O3 | Studio name ("Toon Comics & Studio") and trademark search | Logo and site name are concepts until this is settled. |
+| O3 | Trademark search for "Tune Comics & Studios" | The name and logo are set (2026-10-29, brand kit v2); a trademark search is still pending before public launch. |
 | O4 | TV season plan (bible: S1 = issues 1–15, S2 = 16–29, S3 = Apex Saga) | No show seasons are seeded until it's approved. |
 | O5 | Video hosting at scale (Blob files vs. a streaming service like Mux) | Blob is fine for a few episodes; adaptive streaming would need a paid service. |
 | O6 | Merge the Volcano Racers newsletter list (Neon project `volcano-racers-newsletter`) into platform accounts | Would add an audience/subscribers table and email sending. |

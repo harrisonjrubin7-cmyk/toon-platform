@@ -1,9 +1,4 @@
 /*
-  Toon design tokens (provisional).
-  Final logo, colors and type come from the studio brand system; swap the values
-  under :root and the rest of the UI follows.
-*/
-/*
   App layout styles. Colours, type and components come from the studio brand kit
   (public/brand/tokens/tokens.css + components.css, loaded in the root layout).
   Only layout tokens live here.
@@ -47,25 +42,25 @@ main { padding: 28px 0 64px; min-height: 70vh; }
 /* Header */
 .site-header { background: var(--surface); }
 .site-header .container { display: flex; align-items: center; gap: 16px; min-height: 64px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
-.site-header { border-bottom: var(--stroke-bold) solid var(--line); }
+.site-header { border-bottom: var(--stroke-hair) solid var(--line); }
 .site-nav { display: flex; gap: 4px; flex: 1; overflow-x: auto; font-weight: 650; }
 .site-nav a { text-decoration: none; padding: 6px 10px; border-radius: var(--radius-s); color: var(--ink-muted); white-space: nowrap; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); background: var(--surface-sunk); }
 .wordmark { text-decoration: none; font-family: var(--font-display); font-size: 1.25rem; letter-spacing: .02em; display: inline-flex; align-items: baseline; gap: 6px; white-space: nowrap; }
-.wordmark b { background: var(--action); color: var(--on-action); padding: 0 6px; border-radius: 4px; transform: rotate(-3deg); display: inline-block; box-shadow: 2px 2px 0 var(--shadow-ink); }
+.wordmark b { background: var(--action); color: var(--on-action); padding: 0 6px; border-radius: 4px; display: inline-block; }
 .wordmark span { font-size: .7rem; color: var(--ink-muted); font-family: var(--font-sans); letter-spacing: .12em; text-transform: uppercase; }
 .site-footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--ink-muted); font-size: .875rem; }
 
 /* Buttons */
-.btn { appearance: none; border: 2px solid var(--shadow-ink); background: var(--ink); color: var(--surface); font-weight: 700; padding: 9px 16px; border-radius: var(--radius-s); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow-toon); font: inherit; font-weight: 700; line-height: 1.2; }
-.btn:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--shadow-ink); }
-.btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--shadow-ink); }
+.btn { appearance: none; border: var(--stroke-hair) solid var(--action); background: var(--action); color: var(--on-action); font-weight: 700; padding: 9px 16px; border-radius: var(--radius-s); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: none; font: inherit; font-weight: 600; line-height: 1.2; }
+.btn:hover { box-shadow: var(--shadow-1); }
+.btn:active { box-shadow: none; }
 .btn[disabled], .btn[aria-disabled="true"] { opacity: .5; cursor: not-allowed; transform: none; }
 .btn-primary { background: var(--action); color: var(--on-action); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); box-shadow: none; }
 .btn-ghost:hover { background: var(--surface-sunk); box-shadow: none; transform: none; }
 .btn-danger { background: var(--scar); color: var(--on-scar); }
-.btn-sm { padding: 5px 10px; font-size: .85rem; box-shadow: 2px 2px 0 var(--shadow-ink); }
+.btn-sm { padding: 5px 10px; font-size: .85rem; }
 .linklike { background: none; border: 0; color: var(--ink-muted); cursor: pointer; padding: 6px 10px; font: inherit; text-decoration: underline; }
 
 /* Forms */
@@ -93,16 +88,16 @@ textarea { min-height: 110px; resize: vertical; }
 .card { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 18px; }
 .badge { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-muted); }
 .badge-live { border-color: var(--success); color: var(--success); }
-.badge-draft { border-color: var(--sun); color: var(--sun); }
-.badge-scheduled { border-color: var(--focus); color: var(--focus); }
+.badge-draft { border-color: var(--line-input); color: var(--ink-muted); }
+.badge-scheduled { border-color: var(--accent); color: var(--accent); }
 .badge-rating { border-color: var(--action); color: var(--action); }
 
 /* Grids of covers */
 .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
 .grid-wide { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .tile { text-decoration: none; display: grid; gap: 8px; }
-.tile:hover .cover { transform: rotate(-1deg) translateY(-2px); box-shadow: 6px 6px 0 var(--shadow-ink); }
-.cover { aspect-ratio: 2 / 3; border-radius: var(--radius-s); overflow: hidden; border: 2px solid var(--shadow-ink); box-shadow: var(--shadow-toon); background: var(--surface-sunk); transition: transform .12s ease, box-shadow .12s ease; position: relative; }
+.tile:hover .cover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+.cover { aspect-ratio: 2 / 3; border-radius: var(--radius-s); overflow: hidden; border: var(--stroke-hair) solid var(--line); box-shadow: var(--shadow-1); background: var(--surface-sunk); transition: transform .12s ease, box-shadow .12s ease; position: relative; }
 .cover.wide { aspect-ratio: 16 / 9; }
 .cover img { width: 100%; height: 100%; object-fit: cover; }
 .cover-fallback { width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 12px; font-family: var(--font-display); font-size: 1.1rem; background: var(--ip-ground, var(--surface-sunk)); color: var(--ip-accent); }
@@ -110,7 +105,7 @@ textarea { min-height: 110px; resize: vertical; }
 .tile-title { font-weight: 700; line-height: 1.25; }
 .tile-meta { color: var(--ink-muted); font-size: .82rem; }
 
-.hero { border: var(--stroke-bold) solid var(--line); border-radius: var(--radius-l); padding: clamp(20px, 5vw, 48px); background: var(--ip-ground, var(--surface-raised)); box-shadow: var(--shadow-toon-l); margin-bottom: 36px; }
+.hero { border: var(--stroke-hair) solid var(--line); border-radius: var(--radius-l); padding: clamp(20px, 5vw, 48px); background: var(--ip-ground, var(--surface-raised)); box-shadow: var(--shadow-1); margin-bottom: 36px; }
 .hero.on-ground { color: var(--on-basalt); }
 .hero.on-ground p { color: var(--on-basalt); }
 .hero p { max-width: 60ch; color: var(--ink-muted); font-size: 1.05rem; }
@@ -139,7 +134,7 @@ th { color: var(--ink-muted); font-weight: 600; }
 .page-tap { position: relative; }
 .page-tap button.zone { position: absolute; top: 0; bottom: 0; width: 35%; background: transparent; border: 0; cursor: pointer; }
 .page-tap button.zone.prev { left: 0; } .page-tap button.zone.next { right: 0; }
-.player { aspect-ratio: 16/9; width: 100%; background: var(--shadow-ink); border-radius: var(--radius-m); overflow: hidden; border: 2px solid var(--shadow-ink); box-shadow: 8px 8px 0 var(--shadow-ink); }
+.player { aspect-ratio: 16/9; width: 100%; background: #0B0A09; border-radius: var(--radius-m); overflow: hidden; border: var(--stroke-hair) solid var(--line); box-shadow: var(--shadow-2); }
 .player video, .player iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* Studio */
@@ -163,8 +158,8 @@ details summary { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
 /* Brand component sizing helpers */
-.tn-btn.sm { padding: 6px 12px; font-size: 14px; box-shadow: var(--shadow-press); }
-.tn-btn.sm:hover { box-shadow: var(--shadow-toon); }
+.tn-btn.sm { padding: 6px 12px; font-size: 14px; }
+.tn-btn.sm:hover { box-shadow: var(--shadow-1); }
 .tn-field { max-width: none; }
 .tn-issue { width: auto; }
 .tn-issue__cover img { width: 100%; height: 100%; object-fit: cover; }
@@ -172,10 +167,16 @@ details summary { cursor: pointer; }
 .tn-episode { max-width: none; text-decoration: none; }
 .tn-episode__thumb { overflow: hidden; }
 .tn-episode__thumb img { width: 100%; height: 100%; object-fit: cover; }
-a.tn-episode:hover { box-shadow: var(--shadow-toon-l); transform: translate(-2px,-2px); }
+a.tn-episode:hover { box-shadow: var(--shadow-2); transform: translateY(-1px); }
 a.tn-episode:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .logo-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-link img { height: 40px; width: auto; }
+.logo-link img { height: 32px; width: auto; }
+.studio-logo { display: inline-flex; align-items: center; }
+.eyebrow { font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); margin: 0; }
+/* IP heroes sit on basalt in every theme, so always show the on-dark artwork there. */
+.hero.on-ground .tn-on-light { display: none !important; }
+.hero.on-ground .tn-on-dark { display: inline-block !important; }
+.hero.on-ground .tn-lockup__endorse { color: var(--on-basalt); }
 .ip-mark { max-width: min(520px, 100%); height: auto; }
 .issue-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 .episode-list { display: grid; gap: 16px; }

@@ -19,10 +19,10 @@ export default async function Home() {
     <>
       <section className="hero">
         <div className="row" style={{ gap: 20, alignItems: "center" }}>
-          <StudioLogo variant="bubble" height={96} />
+          <StudioLogo variant="icon" height={96} />
           <div style={{ flex: 1, minWidth: 240 }}>
             <h1 className="display-l" style={{ margin: 0 }}>Cartoons that bleed.</h1>
-            <p className="body-l" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Toon Comics &amp; Studio. Toon physics. Real scars.</p>
+            <p className="body-l" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Tune Comics &amp; Studios. Toon physics. Real scars.</p>
             <div className="row">
               <Link className="tn-btn tn-btn--primary" href="/comics">Read comics</Link>
               <Link className="tn-btn" href="/shows">Watch shows</Link>

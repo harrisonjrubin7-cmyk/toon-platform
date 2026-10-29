@@ -1,6 +1,6 @@
-# Toon platform
+# Tune Comics & Studios platform
 
-The web app where Toon Comics & Studio publishes its comics and its animated shows.
+The web app where Tune Comics & Studios publishes its comics and its animated shows. (The repo keeps its working name, toon-platform.)
 
 - **Readers** browse every series (IP), read comic issues page by page or as a scroll, watch episodes, follow series, and pick up where they left off.
 - **Studio editors** create series, comic sagas and show seasons, upload pages and episode video, reorder pages, and publish now or on a schedule.

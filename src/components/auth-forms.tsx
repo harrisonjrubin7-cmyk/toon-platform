@@ -30,7 +30,7 @@ export function SignupForm({ next }: { next: string }) {
       <div className={`tn-field ${state?.fields?.ageConfirmed ? "tn-field--error" : ""}`}>
         <label className="checkbox">
           <input type="checkbox" name="ageConfirmed" required aria-invalid={!!state?.fields?.ageConfirmed} />
-          <span>I am 18 or older. Toon titles are for mature readers.</span>
+          <span>I am 18 or older. Tune titles are for mature readers.</span>
         </label>
         {state?.fields?.ageConfirmed && <span className="tn-field__hint">{state.fields.ageConfirmed}</span>}
       </div>

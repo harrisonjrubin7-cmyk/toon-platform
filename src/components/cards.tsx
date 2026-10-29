@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import type { ReleaseCard, SeriesCard } from "@/lib/domain/catalog";
-import { ipClass, RatingTag } from "./brand";
+import { CoverMark, ipClass, RatingTag } from "./brand";
 import { formatDuration, formatDate, isNew } from "@/lib/format";
 
 export function IssueCard({ r, progress }: { r: ReleaseCard; progress?: { position: number; completed: boolean } }) {
   return (
     <Link href={`/read/${r.id}`} className={`tn-issue ${ipClass(r.theme)}`}>
       <div className="tn-issue__cover">
-        {r.coverUrl ? <img src={r.coverUrl} alt="" loading="lazy" /> : r.seriesLogoUrl ? <img src={r.seriesLogoUrl} alt="" className="tn-issue__mark" style={{ objectFit: "contain" }} /> : null}
+        {r.coverUrl ? <img src={r.coverUrl} alt="" loading="lazy" /> : r.seriesLogoUrl ? <CoverMark src={r.seriesLogoUrl} theme={r.theme} /> : null}
         <span className="tn-issue__num">#{r.number}</span>
       </div>
       <div className="tn-issue__body">
@@ -49,7 +49,7 @@ export function SeriesTile({ s }: { s: SeriesCard }) {
   return (
     <Link href={`/series/${s.slug}`} className={`tn-issue ${ipClass(s.theme)}`}>
       <div className="tn-issue__cover">
-        {s.coverUrl ? <img src={s.coverUrl} alt="" loading="lazy" /> : s.logoUrl ? <img src={s.logoUrl} alt="" className="tn-issue__mark" style={{ objectFit: "contain" }} /> : null}
+        {s.coverUrl ? <img src={s.coverUrl} alt="" loading="lazy" /> : s.logoUrl ? <CoverMark src={s.logoUrl} theme={s.theme} /> : null}
       </div>
       <div className="tn-issue__body">
         <h3 className="tn-issue__title">{s.title}</h3>

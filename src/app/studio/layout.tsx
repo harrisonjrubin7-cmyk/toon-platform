@@ -2,7 +2,7 @@ import { requirePageRole } from "@/lib/auth/session";
 import { permissions } from "@/lib/roles";
 import { NavLinks } from "@/components/nav";
 
-export const metadata = { title: { default: "Studio", template: "%s · Studio · Toon" }, robots: { index: false } };
+export const metadata = { title: { default: "Studio", template: "%s · Studio · Tune" }, robots: { index: false } };
 
 export default async function StudioLayout({ children }: { children: React.ReactNode }) {
   const actor = await requirePageRole("editor", "/studio");
