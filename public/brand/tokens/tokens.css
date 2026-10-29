@@ -1,0 +1,123 @@
+/* Toon Comics & Studio — generated from tokens.json */
+@font-face { font-family:'Bowlby One'; src:url('../fonts/BowlbyOne-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Bangers'; src:url('../fonts/Bangers-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Work Sans'; src:url('../fonts/WorkSans-Variable.woff2') format('woff2'); font-weight:100 900; font-style:normal; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('../fonts/CourierPrime-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('../fonts/CourierPrime-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+:root, [data-theme="paper"] {
+  --surface: #FFF3D6;
+  --surface-raised: #FFFFFF;
+  --surface-sunk: #F6E4BC;
+  --ink: #16121A;
+  --ink-muted: #5A4E57;
+  --line: #16121A;
+  --shadow-ink: #16121A;
+  --toon-red: #E8262B;
+  --action: #C8161D;
+  --on-action: #FFFFFF;
+  --sun: #FFC21A;
+  --sky: #1FA8E0;
+  --on-bright: #16121A;
+  --scar: #8C1C3A;
+  --on-scar: #FFFFFF;
+  --success: #0E7C66;
+  --on-success: #FFFFFF;
+  --focus: #0B63A8;
+  --magma: #FF5A1F;
+  --basalt: #2B2422;
+  --ip-accent: var(--toon-red);
+  --on-basalt: #FFF3D6;
+  --shadow-toon: 4px 4px 0 0 #16121A;
+  --shadow-toon-l: 8px 8px 0 0 #16121A;
+  --shadow-press: 1px 1px 0 0 #16121A;
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="paper"]) {
+  --surface: #16121A;
+  --surface-raised: #241D2A;
+  --surface-sunk: #0E0B11;
+  --ink: #FFF3D6;
+  --ink-muted: #C9BBA8;
+  --line: #FFF3D6;
+  --shadow-ink: #8C1C3A;
+  --toon-red: #FF4B4F;
+  --action: #FF4B4F;
+  --on-action: #16121A;
+  --sun: #FFC21A;
+  --sky: #4CC3F2;
+  --on-bright: #16121A;
+  --scar: #E0607D;
+  --on-scar: #16121A;
+  --success: #3CC7A5;
+  --on-success: #16121A;
+  --focus: #4CC3F2;
+  --magma: #FF6E3A;
+  --basalt: #3A302D;
+  --ip-accent: var(--toon-red);
+  --on-basalt: #FFF3D6;
+  --shadow-toon: 4px 4px 0 0 #8C1C3A;
+  --shadow-toon-l: 8px 8px 0 0 #8C1C3A;
+  --shadow-press: 1px 1px 0 0 #8C1C3A;
+  color-scheme: dark;
+}
+}
+[data-theme="late-show"] {
+  --surface: #16121A;
+  --surface-raised: #241D2A;
+  --surface-sunk: #0E0B11;
+  --ink: #FFF3D6;
+  --ink-muted: #C9BBA8;
+  --line: #FFF3D6;
+  --shadow-ink: #8C1C3A;
+  --toon-red: #FF4B4F;
+  --action: #FF4B4F;
+  --on-action: #16121A;
+  --sun: #FFC21A;
+  --sky: #4CC3F2;
+  --on-bright: #16121A;
+  --scar: #E0607D;
+  --on-scar: #16121A;
+  --success: #3CC7A5;
+  --on-success: #16121A;
+  --focus: #4CC3F2;
+  --magma: #FF6E3A;
+  --basalt: #3A302D;
+  --ip-accent: var(--toon-red);
+  --on-basalt: #FFF3D6;
+  --shadow-toon: 4px 4px 0 0 #8C1C3A;
+  --shadow-toon-l: 8px 8px 0 0 #8C1C3A;
+  --shadow-press: 1px 1px 0 0 #8C1C3A;
+  color-scheme: dark;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 24px;
+  --radius-pill: 999px;
+  --stroke-thin: 2px;
+  --stroke-bold: 3px;
+  --stroke-heavy: 5px;
+  --font-display: "Bowlby One", "Arial Black", Impact, sans-serif;
+  --font-sfx: Bangers, Impact, "Arial Black", sans-serif;
+  --font-sans: "Work Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-script: "Courier Prime", "Courier New", Courier, monospace;
+}
+.display-xl { font-family:var(--font-display); font-size:72px; line-height:72px; font-weight:400; letter-spacing:-0.01em; }
+.display-l { font-family:var(--font-display); font-size:48px; line-height:52px; font-weight:400; }
+.display-m { font-family:var(--font-display); font-size:32px; line-height:36px; font-weight:400; }
+.display-s { font-family:var(--font-display); font-size:22px; line-height:26px; font-weight:400; }
+.sfx { font-family:var(--font-sfx); font-size:44px; line-height:44px; font-weight:400; letter-spacing:0.02em; }
+.body-l { font-family:var(--font-sans); font-size:19px; line-height:30px; font-weight:400; }
+.body { font-family:var(--font-sans); font-size:16px; line-height:25px; font-weight:400; }
+.body-strong { font-family:var(--font-sans); font-size:16px; line-height:25px; font-weight:650; }
+.caption { font-family:var(--font-sans); font-size:14px; line-height:20px; font-weight:400; }
+.label { font-family:var(--font-sans); font-size:12px; line-height:16px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
+.script { font-family:var(--font-script); font-size:15px; line-height:22px; font-weight:400; }
