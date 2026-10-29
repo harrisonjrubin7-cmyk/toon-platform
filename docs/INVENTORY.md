@@ -82,3 +82,9 @@ All checks run on the server (domain layer), not only in the UI.
 - `npx eslint src`: no problems.
 - `npx vitest run`: 4 files, 31 tests passed (2026-10-29, email added).
 - `npx playwright test` (Chromium, built app on :3100): 10 passed (2026-10-29).
+
+## Community and fan comics
+
+Rows C1–C16 (profiles, comic creator, spinoffs, ideas, feed, likes, comments, follows, notifications, reports, moderation, rules) are tracked in [COMMUNITY.md](COMMUNITY.md).
+
+- 2026-10-29, community branch: `npx tsc --noEmit` clean, `npx eslint` clean, `npx vitest run` 5 files / 47 tests passed, `npx playwright test` 13 of 14 passed. The one failure is the existing password-reset journey: Playwright's web server doesn't set `APP_URL`, so the emailed link isn't `http://localhost:3100/...` (unrelated to community).

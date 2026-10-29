@@ -14,6 +14,7 @@ export default async function StudioLayout({ children }: { children: React.React
           className="studio-nav"
           links={[
             { href: "/studio", label: "Series" },
+            { href: "/studio/community", label: "Community" },
             ...(permissions.manageUsers(actor) ? [{ href: "/studio/users", label: "People and roles" }] : []),
             ...(permissions.manageUsers(actor) ? [{ href: "/studio/email", label: "Email" }] : []),
             ...(permissions.viewActivity(actor) ? [{ href: "/studio/activity", label: "Activity log" }] : []),
