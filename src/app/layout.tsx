@@ -42,6 +42,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 { href: "/series", label: "Series" },
                 { href: "/community", label: "Community" },
                 { href: "/search", label: "Search" },
+                { href: "/play", label: "Card game" },
                 ...(actor ? [{ href: "/library", label: "My library" }, { href: "/create", label: "Create" }] : []),
                 ...(unread > 0 ? [{ href: "/community/notifications", label: `Notifications (${unread})` }] : []),
                 ...(permissions.viewStudio(actor) ? [{ href: "/studio", label: "Studio" }] : []),

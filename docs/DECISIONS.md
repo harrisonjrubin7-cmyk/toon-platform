@@ -14,7 +14,10 @@
 | D8 | Episodes play an uploaded MP4/WebM, or a YouTube/Vimeo link | Lets the studio start with hosted video without a paid video service. |
 | D9 | Brand kit CSS/fonts/logos served verbatim from `public/brand` | A new brand version drops in unchanged. |
 | D10 | The founder's Brand & Design System 1.0 is the source of truth (kit v3) | Logos are the approved raster files: wordmark PNG on light only (≥240px), social icon on dark. The tune-*.svg drafts are not used; `tune-icon-tile.svg` is an interim favicon until a 16px emblem exists. Form states follow the guide: busy buttons keep width, errors are inline with focus on the first invalid field, success sits in a polite live region. |
-| D10 | Payments, store, subscriptions: **not built** | Not confirmed by the owner. |
+| D10 | Payments for comics and shows, subscriptions: **not built** | Not confirmed by the owner. |
+| D11 | Card packs can be bought (owner asked 2026-10-29), test mode only | Live sales wait for the owner's go-ahead and a legal check on paid random packs. Odds are published, sales are 18+, capped per day and blocked in Belgium by default. |
+| D12 | Card definitions live in code; ownership in Postgres | The print set JSON is the single source for names, rarities and stats, so physical and digital cards match. |
+| D13 | Pack contents decided on the server when opened, with the odds saved at purchase | Fair and auditable; the rip animation only reveals. |
 
 ## Open (owner's call)
 

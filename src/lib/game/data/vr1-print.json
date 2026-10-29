@@ -1,0 +1,1151 @@
+{
+ "set": {
+  "code": "VR-S1",
+  "name": "Volcano Racers Series 1: The Ember Heart Saga",
+  "total": 20,
+  "status": "Concept v2 (collectible TCG layout). Moves, Grit, types and back copy are proposals for Harrison to approve. Final art is Harrison's."
+ },
+ "rarities": {
+  "common": {
+   "label": "Common",
+   "glyph": "●",
+   "frame": "Plain ink frame",
+   "note": "Cars, hatchlings, checklist"
+  },
+  "rare": {
+   "label": "Rare",
+   "glyph": "◆",
+   "frame": "Champagne inner rule",
+   "note": "Main racers and Wren"
+  },
+  "epic": {
+   "label": "Epic",
+   "glyph": "▲",
+   "frame": "Magma double rule, halftone border",
+   "note": "The Phantom, the airship, the garage team card"
+  },
+  "legendary": {
+   "label": "Legendary",
+   "glyph": "★",
+   "frame": "Gold foil frame (spot foil on print)",
+   "note": "Blaze, Ember, Gearlock"
+  },
+  "secret": {
+   "label": "Secret",
+   "glyph": "✦",
+   "frame": "Full Art: art covers the whole card, holo",
+   "note": "Full Art Blaze, Ember and Gearlock, numbered 21-23 (above the 20-card set)"
+  }
+ },
+ "cards": [
+  {
+   "no": 1,
+   "id": "blaze",
+   "name": "Blaze",
+   "kind": "racer",
+   "rarity": "legendary",
+   "role": "Racer · runs on foot",
+   "colors": [
+    "#E8B33A",
+    "#FF5A1F",
+    "#FFC21A",
+    "#E8262B",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 10,
+    "Power": 4,
+    "Grit": 6,
+    "Toon": 7
+   },
+   "flavor": "The fastest thing alive. At top speed she leaves her own shadow panting at the start line.",
+   "lock": "Golden cheetah, glowing spots, red bandana, lightning pendant, knee brace under the tights.",
+   "type": "magma",
+   "grit": 60,
+   "ability": {
+    "name": "Shadow Left Behind",
+    "text": "Once per race, Blaze may move twice in one turn. If she does, she takes 1 Scar."
+   },
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Rooster Tail",
+     "damage": 20,
+     "text": "Black sand in the face. The opponent's next move costs 1 more Fuel."
+    },
+    {
+     "fuel": 3,
+     "name": "Top Speed",
+     "damage": 90,
+     "text": "Flip a coin. Tails: Blaze's knee takes 30 damage that never heals."
+    }
+   ],
+   "weak": "gear",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "Golden cheetah",
+    "Age": "34",
+    "Team": "Cinder Isle",
+    "Ride": "Her own feet",
+    "Signature": "Lightning-bolt pendant, knee brace"
+   },
+   "gag": "Pure speed. Her shadow is left panting at the start line.",
+   "quiet": "Alone, the brace pulled down, the knee swollen."
+  },
+  {
+   "no": 2,
+   "id": "quackers",
+   "name": "Captain Quackers",
+   "kind": "racer",
+   "rarity": "rare",
+   "role": "Racer · car #02",
+   "colors": [
+    "#1F7A4D",
+    "#F4C430",
+    "#F07C1B",
+    "#E8A33D",
+    "#1E1E1E"
+   ],
+   "stats": {
+    "Speed": 6,
+    "Power": 5,
+    "Grit": 9,
+    "Toon": 10
+   },
+   "flavor": "Thirty trophies, one dented helmet, and the worst luck on Cinder Isle. Usually seen as a soot silhouette with blinking eyes.",
+   "lock": "Short mallard, green head, yellow jumpsuit, dented orange helmet.",
+   "type": "toon",
+   "grit": 90,
+   "ability": {
+    "name": "Soot and Blinking",
+    "text": "When an explosion knocks Quackers out, put him back in play next turn with 10 Grit."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Backfire Launch",
+     "damage": 50,
+     "text": "Quackers also takes 20."
+    },
+    {
+     "fuel": 3,
+     "name": "Thirty-Trophy Tantrum",
+     "damage": 80,
+     "text": "If Quackers is soot-black, this does 40 more."
+    }
+   ],
+   "weak": "magma",
+   "resist": "gear",
+   "pit": 2,
+   "bio": {
+    "Species": "Mallard",
+    "Age": "50",
+    "Team": "Cinder Isle",
+    "Ride": "#02 roadster",
+    "Signature": "Dented orange helmet, 30 trophies"
+   },
+   "gag": "Blown up, plucked bare, re-dressed in a pink feather duster.",
+   "quiet": "Asleep in #02 among thirty dusty trophies, alone."
+  },
+  {
+   "no": 3,
+   "id": "joe",
+   "name": "Jackrabbit Joe",
+   "kind": "racer",
+   "rarity": "rare",
+   "role": "Racer · car #07",
+   "colors": [
+    "#C9A277",
+    "#1E1E1E",
+    "#7B4A2A",
+    "#F28C28",
+    "#A97142"
+   ],
+   "stats": {
+    "Speed": 5,
+    "Power": 4,
+    "Grit": 8,
+    "Toon": 7
+   },
+   "flavor": "Two years sober. Flips the chip like a coin and leans on whatever's nearby at forty-five degrees.",
+   "lock": "Lanky tan jackrabbit, black-tipped ears, patched aviator jacket, carrot in hand.",
+   "type": "toon",
+   "grit": 80,
+   "ability": {
+    "name": "Two-Year Chip",
+    "text": "At the start of your turn, flip the chip. Heads: heal 20."
+   },
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Lean On It",
+     "damage": 20,
+     "text": "Joe can't be bumped during your opponent's next turn."
+    },
+    {
+     "fuel": 2,
+     "name": "Asleep at the Wheel",
+     "damage": 40,
+     "text": "Joe falls asleep. He still counts as pushing."
+    }
+   ],
+   "weak": "shadow",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "Jackrabbit",
+    "Age": "45",
+    "Team": "Cinder Isle",
+    "Ride": "#07 cruiser",
+    "Signature": "Carrot, sobriety chip"
+   },
+   "gag": "Sunbathing on his own hood.",
+   "quiet": "Putting the cloth back over the bottles like making a hospital bed."
+  },
+  {
+   "no": 4,
+   "id": "pip",
+   "name": "Pip",
+   "kind": "racer",
+   "rarity": "rare",
+   "role": "Racer · car #11",
+   "colors": [
+    "#F7F5F0",
+    "#B5853A",
+    "#E8262B",
+    "#7A5230",
+    "#2A6FDB"
+   ],
+   "stats": {
+    "Speed": 7,
+    "Power": 2,
+    "Grit": 5,
+    "Toon": 6
+   },
+   "flavor": "Thumb-sized, overlooked, and the smartest one in the garage. Memories flash in his goggles.",
+   "lock": "Tiny white mouse, huge brass goggles, red scarf, tool belt.",
+   "type": "gear",
+   "grit": 50,
+   "ability": {
+    "name": "Pop-Out Wings",
+    "text": "Once per race, Pip's car glides over one hazard."
+   },
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Wrench Toss",
+     "damage": 10,
+     "text": "Look at the top 3 cards of your deck and put them back in any order."
+    },
+    {
+     "fuel": 2,
+     "name": "Pocket Gizmo",
+     "damage": 60,
+     "text": "Attach a Gadget card from your discard pile to Pip."
+    }
+   ],
+   "weak": "magma",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "White mouse",
+    "Age": "28",
+    "Team": "Cinder Isle",
+    "Ride": "#11 micro",
+    "Signature": "Brass goggles, tool belt"
+   },
+   "gag": "Upside down under a car, wrenches in his mouth, paws and tail.",
+   "quiet": "His paw on the folded NDA in his tool belt, not taking it out."
+  },
+  {
+   "no": 5,
+   "id": "duke",
+   "name": "Duke Whiskers",
+   "kind": "racer",
+   "rarity": "rare",
+   "role": "Racer · car #44",
+   "colors": [
+    "#F08A2C",
+    "#F6E3C1",
+    "#6B2FA3",
+    "#D4AF37",
+    "#C9CED6"
+   ],
+   "stats": {
+    "Speed": 7,
+    "Power": 6,
+    "Grit": 3,
+    "Toon": 8
+   },
+   "flavor": "“I meant to do that.” A smile built for cameras, and sunglasses he never takes off on air.",
+   "lock": "Chubby orange-and-cream tabby, gold aviators, purple racing jacket.",
+   "type": "toon",
+   "grit": 30,
+   "ability": {
+    "name": "SNEAKY Lever",
+    "text": "Once per turn, play a Trick card for free. If it backfires, Duke takes the damage."
+   },
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Smile for the Camera",
+     "damage": 20,
+     "text": "Your opponent can't use abilities during their next turn."
+    },
+    {
+     "fuel": 3,
+     "name": "I Meant to Do That",
+     "damage": 70,
+     "text": "Duke flattens into a pancake. Flip a coin. Tails: Duke takes 30."
+    }
+   ],
+   "weak": "shadow",
+   "resist": "magma",
+   "pit": 3,
+   "bio": {
+    "Species": "Tabby cat",
+    "Age": "41",
+    "Team": "Cinder Isle",
+    "Ride": "#44 supercar",
+    "Signature": "Gold aviators, purple jacket"
+   },
+   "gag": "Flattened into a cat-shaped pancake, sunglasses still on.",
+   "quiet": "In a bathroom stall, sunglasses set aside, phone in both paws."
+  },
+  {
+   "no": 6,
+   "id": "ember",
+   "name": "Ember",
+   "kind": "racer",
+   "rarity": "legendary",
+   "role": "Racer · flies",
+   "colors": [
+    "#FF5A1F",
+    "#F7E1B5",
+    "#FFB000",
+    "#1E1E1E",
+    "#9A6A5E"
+   ],
+   "stats": {
+    "Speed": 8,
+    "Power": 10,
+    "Grit": 7,
+    "Toon": 5
+   },
+   "flavor": "All teeth and fire for one panel. Then a lonely, gentle dad who just wants friends.",
+   "lock": "Huge round red-orange dragon, cream belly, small wings, checkered cap. Colour fades with his fire.",
+   "type": "magma",
+   "grit": 70,
+   "ability": {
+    "name": "Fading Fire",
+    "text": "Each time Ember attacks, put a Fade counter on him. With 4 Fade counters, his moves do 40 less."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Big Hug",
+     "damage": 30,
+     "text": "Spines pop like bubble wrap. Heal Ember 30."
+    },
+    {
+     "fuel": 4,
+     "name": "Heart of the Volcano",
+     "damage": 150,
+     "text": "Put 2 Fade counters on Ember."
+    }
+   ],
+   "weak": "gear",
+   "resist": "magma",
+   "pit": 3,
+   "bio": {
+    "Species": "Dragon",
+    "Age": "Ancient",
+    "Team": "Cinder Isle",
+    "Ride": "Flies",
+    "Signature": "Checkered cap, three hatchlings"
+   },
+   "gag": "Drops two car engines on his own feet.",
+   "quiet": "Coughing grey ash into his fist and hiding the rag."
+  },
+  {
+   "no": 7,
+   "id": "flicker",
+   "name": "Flicker",
+   "kind": "hatchling",
+   "rarity": "common",
+   "role": "Hatchling",
+   "colors": [
+    "#E8262B",
+    "#F7E1B5",
+    "#FFB000",
+    "#FF5A1F",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 4,
+    "Power": 3,
+    "Grit": 3,
+    "Toon": 6
+   },
+   "flavor": "Sneezes sparks. Bless you. Duck.",
+   "lock": "Dog-sized red dragon hatchling.",
+   "type": "magma",
+   "grit": 30,
+   "ability": null,
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Spark Sneeze",
+     "damage": 20,
+     "text": "Flip a coin. Heads: the opponent's racer is Scorched."
+    }
+   ],
+   "weak": "gear",
+   "resist": "magma",
+   "pit": 1,
+   "bio": {
+    "Species": "Dragon hatchling",
+    "Age": "Hatchling",
+    "Team": "Cinder Isle",
+    "Ride": "Ember's shoulder",
+    "Signature": "Sneezes sparks"
+   }
+  },
+  {
+   "no": 8,
+   "id": "cinder",
+   "name": "Cinder",
+   "kind": "hatchling",
+   "rarity": "common",
+   "role": "Hatchling",
+   "colors": [
+    "#7C8FA6",
+    "#F7E1B5",
+    "#FFB000",
+    "#4A4F57",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 3,
+    "Power": 2,
+    "Grit": 4,
+    "Toon": 6
+   },
+   "flavor": "Hides behind things. Behind you, mostly.",
+   "lock": "Dog-sized grey-blue dragon hatchling.",
+   "type": "magma",
+   "grit": 40,
+   "ability": null,
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Hide Behind Dad",
+     "damage": 10,
+     "text": "If Ember is on your bench, Cinder takes no damage during your opponent's next turn."
+    }
+   ],
+   "weak": "gear",
+   "resist": "magma",
+   "pit": 1,
+   "bio": {
+    "Species": "Dragon hatchling",
+    "Age": "Hatchling",
+    "Team": "Cinder Isle",
+    "Ride": "Ember's shoulder",
+    "Signature": "Hides behind things"
+   }
+  },
+  {
+   "no": 9,
+   "id": "spark",
+   "name": "Spark",
+   "kind": "hatchling",
+   "rarity": "common",
+   "role": "Hatchling",
+   "colors": [
+    "#FFC21A",
+    "#F7E1B5",
+    "#FFB000",
+    "#FF5A1F",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 5,
+    "Power": 3,
+    "Grit": 3,
+    "Toon": 6
+   },
+   "flavor": "Mouth always open. Questions always coming.",
+   "lock": "Dog-sized yellow dragon hatchling.",
+   "type": "magma",
+   "grit": 30,
+   "ability": null,
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Why Why Why",
+     "damage": 10,
+     "text": "Your opponent shows you their hand."
+    }
+   ],
+   "weak": "gear",
+   "resist": "magma",
+   "pit": 1,
+   "bio": {
+    "Species": "Dragon hatchling",
+    "Age": "Hatchling",
+    "Team": "Cinder Isle",
+    "Ride": "Ember's shoulder",
+    "Signature": "Mouth always open"
+   }
+  },
+  {
+   "no": 10,
+   "id": "wren",
+   "name": "Wren",
+   "kind": "racer",
+   "rarity": "rare",
+   "role": "GCN junior · car #19",
+   "colors": [
+    "#8B6B4A",
+    "#2E5EAA",
+    "#1F7A4D",
+    "#F5F5F0",
+    "#1E1E1E"
+   ],
+   "stats": {
+    "Speed": 8,
+    "Power": 5,
+    "Grit": 7,
+    "Toon": 6
+   },
+   "flavor": "Her father's daughter, and determined not to look like him. Tall where he is squat, calm where he explodes.",
+   "lock": "Lean young mallard, green-and-white racing suit, number #19.",
+   "type": "track",
+   "grit": 70,
+   "ability": null,
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Clean Line",
+     "damage": 30,
+     "text": ""
+    },
+    {
+     "fuel": 3,
+     "name": "Junior Champion",
+     "damage": 70,
+     "text": "If Captain Quackers is in play, this does 30 more."
+    }
+   ],
+   "weak": "gear",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "Mallard",
+    "Age": "19",
+    "Team": "GCN Junior League",
+    "Ride": "#19 junior",
+    "Signature": "Green-and-white race suit"
+   }
+  },
+  {
+   "no": 11,
+   "id": "gearlock",
+   "name": "Baron Gearlock",
+   "kind": "villain",
+   "rarity": "legendary",
+   "role": "Villain · CEO of GearCorp",
+   "colors": [
+    "#1F1A24",
+    "#C9A227",
+    "#B08D57",
+    "#4A4F57",
+    "#2FBF71"
+   ],
+   "stats": {
+    "Speed": 3,
+    "Power": 7,
+    "Grit": 6,
+    "Toon": 9
+   },
+   "flavor": "Polished on camera, a scared kid from the Undergear underneath. The brass wing clanks a beat behind the real one.",
+   "lock": "Tall bony black crow, top hat, monocle, brass mechanical left wing.",
+   "type": "gear",
+   "grit": 60,
+   "ability": {
+    "name": "Smile Flicker",
+    "text": "When one of your Trick cards fails, Gearlock heals 30. The smile comes back brighter."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Brass Wing Clank",
+     "damage": 40,
+     "text": "The wing clanks a beat late: this does 20 more next turn."
+    },
+    {
+     "fuel": 4,
+     "name": "The Last Great Ring Rally",
+     "damage": 120,
+     "text": "Each of your opponent's cars in play takes 30."
+    }
+   ],
+   "weak": "toon",
+   "resist": "magma",
+   "pit": 3,
+   "bio": {
+    "Species": "Crow",
+    "Age": "Unknown",
+    "Team": "GearCorp (CEO)",
+    "Ride": "His airship",
+    "Signature": "Top hat, monocle, brass wing"
+   },
+   "gag": "His smile flickers for one frame, then comes back brighter.",
+   "quiet": "Sweeping the pit lane, top hat gone."
+  },
+  {
+   "no": 12,
+   "id": "phantom",
+   "name": "The Phantom",
+   "kind": "villain",
+   "rarity": "epic",
+   "role": "Rival · masked racer",
+   "colors": [
+    "#16121A",
+    "#F5F5F0",
+    "#C9CED6",
+    "#8E8E94",
+    "#4A4F57"
+   ],
+   "stats": {
+    "Speed": 10,
+    "Power": 7,
+    "Grit": 8,
+    "Toon": 10
+   },
+   "flavor": "Black armor, white mask, no mouth. The one racer every gag bounces off.",
+   "lock": "Masked racer in black armor with a smooth white mask. Runs with Blaze's stride.",
+   "type": "shadow",
+   "grit": 80,
+   "ability": {
+    "name": "No Mouth, No Squash",
+    "text": "Prevent all effects of Toon moves on the Phantom."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Mirror Stride",
+     "damage": 50,
+     "text": "Use the last move Blaze used this race."
+    },
+    {
+     "fuel": 3,
+     "name": "Shard Rush",
+     "damage": 100,
+     "text": "The Phantom takes 1 Scar."
+    }
+   ],
+   "weak": "magma",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "Classified",
+    "Age": "Classified",
+    "Team": "Unaffiliated",
+    "Ride": "On foot",
+    "Signature": "White mask, black armor"
+   },
+   "gag": "Rare, on purpose. Gags bounce off him.",
+   "quiet": "Out of breath, keeping up the only way he can."
+  },
+  {
+   "no": 13,
+   "id": "airship",
+   "name": "GearCorp Airship",
+   "kind": "vehicle-villain",
+   "rarity": "epic",
+   "role": "Gearlock's flagship",
+   "colors": [
+    "#4A4F57",
+    "#3A3536",
+    "#C9A227",
+    "#2FBF71",
+    "#F5F5F0"
+   ],
+   "stats": {
+    "Size": 10,
+    "Smog": 10,
+    "Logos": 10,
+    "Menace": 8
+   },
+   "flavor": "Six smokestacks, a giant claw, and a face on the belly screen. Every inch is a billboard.",
+   "lock": "Gunmetal hull, six smog stacks, glowing GearCorp logos, LED belly screen, hanging claw.",
+   "type": "gear",
+   "grit": 160,
+   "ability": {
+    "name": "Every Inch a Billboard",
+    "text": "Your Gear cards cost 1 less Fuel."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Sticker Drone",
+     "damage": 20,
+     "text": "Stamp a GEARCORP sticker. The target can't take a pit stop."
+    },
+    {
+     "fuel": 3,
+     "name": "Claw Drop",
+     "damage": 90,
+     "text": "Put one of your opponent's cars into their pit."
+    }
+   ],
+   "weak": "magma",
+   "resist": "toon",
+   "pit": 4,
+   "bio": {
+    "Species": "Airship",
+    "Age": "—",
+    "Team": "GearCorp",
+    "Ride": "Six smokestacks",
+    "Signature": "Belly screen, giant claw"
+   }
+  },
+  {
+   "no": 14,
+   "id": "car02",
+   "name": "#02 Roadster",
+   "kind": "car",
+   "rarity": "common",
+   "role": "Captain Quackers' car",
+   "number": "02",
+   "colors": [
+    "#FFC72C",
+    "#1E1E1E",
+    "#F5F5F0",
+    "#F07C1B",
+    "#2B2422"
+   ],
+   "stats": {
+    "Top speed": 7,
+    "Handling": 4,
+    "Gadgets": 1,
+    "Toughness": 10
+   },
+   "flavor": "Backfires hard enough to launch like a rocket. Explodes, then shows up in the next panel anyway.",
+   "lock": "Yellow, stubby 1950s open roadster, black #02 in a white roundel, one dent.",
+   "type": "toon",
+   "vehicle_rule": "Attach to Captain Quackers or Wren. The driver gets +30 Grit. Backfire: once per race, move 2 spaces and the driver takes 10.",
+   "bio": {
+    "Body": "1950s open roadster",
+    "Driver": "Captain Quackers",
+    "Colour": "Yellow",
+    "Quirk": "Exhaust backfires like a rocket"
+   }
+  },
+  {
+   "no": 15,
+   "id": "car07",
+   "name": "#07 Cruiser",
+   "kind": "car",
+   "rarity": "common",
+   "role": "Jackrabbit Joe's car",
+   "number": "07",
+   "colors": [
+    "#3C8D40",
+    "#F6E3C1",
+    "#F28C28",
+    "#7B4A2A",
+    "#2B2422"
+   ],
+   "stats": {
+    "Top speed": 5,
+    "Handling": 3,
+    "Gadgets": 1,
+    "Toughness": 7
+   },
+   "flavor": "A tire fell off at inspection. “It's a style.” There's a bird nest on the roof.",
+   "lock": "Old dusty green 1960s cruiser, bird nest on the roof, seat reclined flat.",
+   "type": "track",
+   "vehicle_rule": "Attach to Jackrabbit Joe. The driver gets +20 Grit. It's a style: when a tire falls off, nothing happens.",
+   "bio": {
+    "Body": "1960s cruiser",
+    "Driver": "Jackrabbit Joe",
+    "Colour": "Faded green",
+    "Quirk": "Bird nest on the roof"
+   }
+  },
+  {
+   "no": 16,
+   "id": "car11",
+   "name": "#11 Micro",
+   "kind": "car",
+   "rarity": "common",
+   "role": "Pip's car",
+   "number": "11",
+   "colors": [
+    "#2A6FDB",
+    "#B5853A",
+    "#F5F5F0",
+    "#7A5230",
+    "#2B2422"
+   ],
+   "stats": {
+    "Top speed": 6,
+    "Handling": 9,
+    "Gadgets": 10,
+    "Toughness": 3
+   },
+   "flavor": "Toaster-sized. Pop-out wings, thimble wheels, a grappling cable. Drives on tunnel ceilings.",
+   "lock": "Tiny blue bubble-cockpit car full of gizmos, brass fittings.",
+   "type": "gear",
+   "vehicle_rule": "Attach to Pip. Pip's Gadget cards cost 1 less Fuel. Can race on tunnel ceilings.",
+   "bio": {
+    "Body": "Bubble micro-car",
+    "Driver": "Pip",
+    "Colour": "Blue and brass",
+    "Quirk": "Pop-out wings and thimble wheels"
+   }
+  },
+  {
+   "no": 17,
+   "id": "car44",
+   "name": "#44 Supercar",
+   "kind": "car",
+   "rarity": "common",
+   "role": "Duke Whiskers' car",
+   "number": "44",
+   "colors": [
+    "#7B2CBF",
+    "#C9CED6",
+    "#D4AF37",
+    "#E8262B",
+    "#2B2422"
+   ],
+   "stats": {
+    "Top speed": 9,
+    "Handling": 3,
+    "Gadgets": 9,
+    "Toughness": 5
+   },
+   "flavor": "Oil slick, net cannon, boxing glove: all on the red SNEAKY lever. Steering pulls left four degrees.",
+   "lock": "Purple and silver wedge supercar, gold wheels, oversized red SNEAKY lever.",
+   "type": "gear",
+   "vehicle_rule": "Attach to Duke Whiskers. Duke may hold 2 extra Trick cards. Steering pulls left: flip a coin each corner.",
+   "bio": {
+    "Body": "1980s wedge supercar",
+    "Driver": "Duke Whiskers",
+    "Colour": "Purple and silver",
+    "Quirk": "Oil slick, net cannon, boxing glove"
+   }
+  },
+  {
+   "no": 18,
+   "id": "car19",
+   "name": "#19 Junior",
+   "kind": "car",
+   "rarity": "common",
+   "role": "Wren's car",
+   "number": "19",
+   "colors": [
+    "#1F7A4D",
+    "#F5F5F0",
+    "#2E5EAA",
+    "#1E1E1E",
+    "#2B2422"
+   ],
+   "stats": {
+    "Top speed": 8,
+    "Handling": 8,
+    "Gadgets": 2,
+    "Toughness": 7
+   },
+   "flavor": "Clean where her father's car is battered. For now.",
+   "lock": "Lean modern junior-league car, green and white.",
+   "type": "track",
+   "vehicle_rule": "Attach to Wren. The driver's first move each race costs 1 less Fuel.",
+   "bio": {
+    "Body": "Junior-league racer",
+    "Driver": "Wren",
+    "Colour": "Green and white",
+    "Quirk": "Spotless, for now"
+   }
+  },
+  {
+   "no": 19,
+   "id": "garage",
+   "name": "Four Cars Gleam",
+   "kind": "scene",
+   "rarity": "epic",
+   "role": "Team card · the garage",
+   "colors": [
+    "#FFC72C",
+    "#3C8D40",
+    "#2A6FDB",
+    "#7B2CBF",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 7,
+    "Power": 6,
+    "Grit": 9,
+    "Toon": 8
+   },
+   "flavor": "Four team cars, one empty bay with a hand-painted sign: “BLAZE??”",
+   "lock": "Garage scene: #02, #07, #11 and #44, plus the empty bay. No sponsor logos on Cinder Isle.",
+   "type": "track",
+   "location_rule": "No Logo Law: while this card is in play, GearCorp cards cost 1 more Fuel.",
+   "bio": {
+    "Place": "The team garage, Cinder Isle",
+    "Cars": "#02, #07, #11, #44",
+    "Empty bay": "“BLAZE??”",
+    "Sponsors": "None. It's the law."
+   }
+  },
+  {
+   "no": 20,
+   "id": "checklist",
+   "name": "Checklist",
+   "kind": "checklist",
+   "rarity": "common",
+   "role": "Series 1 checklist",
+   "colors": [
+    "#FF5A1F",
+    "#2B2422",
+    "#FFC21A",
+    "#E8262B",
+    "#F4F0E8"
+   ],
+   "stats": {},
+   "flavor": "",
+   "lock": "",
+   "type": "magma"
+  },
+  {
+   "no": 21,
+   "id": "blaze-fullart",
+   "name": "Blaze · Full Art",
+   "kind": "racer",
+   "rarity": "secret",
+   "role": "Racer · runs on foot",
+   "colors": [
+    "#E8B33A",
+    "#FF5A1F",
+    "#FFC21A",
+    "#E8262B",
+    "#2B2422"
+   ],
+   "stats": {
+    "Speed": 10,
+    "Power": 4,
+    "Grit": 6,
+    "Toon": 7
+   },
+   "flavor": "The fastest thing alive. At top speed she leaves her own shadow panting at the start line.",
+   "lock": "Golden cheetah, glowing spots, red bandana, lightning pendant, knee brace under the tights.",
+   "type": "magma",
+   "grit": 60,
+   "ability": {
+    "name": "Shadow Left Behind",
+    "text": "Once per race, Blaze may move twice in one turn. If she does, she takes 1 Scar."
+   },
+   "moves": [
+    {
+     "fuel": 1,
+     "name": "Rooster Tail",
+     "damage": 20,
+     "text": "Black sand in the face. The opponent's next move costs 1 more Fuel."
+    },
+    {
+     "fuel": 3,
+     "name": "Top Speed",
+     "damage": 90,
+     "text": "Flip a coin. Tails: Blaze's knee takes 30 damage that never heals."
+    }
+   ],
+   "weak": "gear",
+   "resist": "toon",
+   "pit": 1,
+   "bio": {
+    "Species": "Golden cheetah",
+    "Age": "34",
+    "Team": "Cinder Isle",
+    "Ride": "Her own feet",
+    "Signature": "Lightning-bolt pendant, knee brace"
+   },
+   "gag": "Pure speed. Her shadow is left panting at the start line.",
+   "quiet": "Alone, the brace pulled down, the knee swollen.",
+   "secret": true,
+   "variant_of": "blaze",
+   "full_art": true
+  },
+  {
+   "no": 22,
+   "id": "ember-fullart",
+   "name": "Ember · Full Art",
+   "kind": "racer",
+   "rarity": "secret",
+   "role": "Racer · flies",
+   "colors": [
+    "#FF5A1F",
+    "#F7E1B5",
+    "#FFB000",
+    "#1E1E1E",
+    "#9A6A5E"
+   ],
+   "stats": {
+    "Speed": 8,
+    "Power": 10,
+    "Grit": 7,
+    "Toon": 5
+   },
+   "flavor": "All teeth and fire for one panel. Then a lonely, gentle dad who just wants friends.",
+   "lock": "Huge round red-orange dragon, cream belly, small wings, checkered cap. Colour fades with his fire.",
+   "type": "magma",
+   "grit": 70,
+   "ability": {
+    "name": "Fading Fire",
+    "text": "Each time Ember attacks, put a Fade counter on him. With 4 Fade counters, his moves do 40 less."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Big Hug",
+     "damage": 30,
+     "text": "Spines pop like bubble wrap. Heal Ember 30."
+    },
+    {
+     "fuel": 4,
+     "name": "Heart of the Volcano",
+     "damage": 150,
+     "text": "Put 2 Fade counters on Ember."
+    }
+   ],
+   "weak": "gear",
+   "resist": "magma",
+   "pit": 3,
+   "bio": {
+    "Species": "Dragon",
+    "Age": "Ancient",
+    "Team": "Cinder Isle",
+    "Ride": "Flies",
+    "Signature": "Checkered cap, three hatchlings"
+   },
+   "gag": "Drops two car engines on his own feet.",
+   "quiet": "Coughing grey ash into his fist and hiding the rag.",
+   "secret": true,
+   "variant_of": "ember",
+   "full_art": true
+  },
+  {
+   "no": 23,
+   "id": "gearlock-fullart",
+   "name": "Baron Gearlock · Full Art",
+   "kind": "villain",
+   "rarity": "secret",
+   "role": "Villain · CEO of GearCorp",
+   "colors": [
+    "#1F1A24",
+    "#C9A227",
+    "#B08D57",
+    "#4A4F57",
+    "#2FBF71"
+   ],
+   "stats": {
+    "Speed": 3,
+    "Power": 7,
+    "Grit": 6,
+    "Toon": 9
+   },
+   "flavor": "Polished on camera, a scared kid from the Undergear underneath. The brass wing clanks a beat behind the real one.",
+   "lock": "Tall bony black crow, top hat, monocle, brass mechanical left wing.",
+   "type": "gear",
+   "grit": 60,
+   "ability": {
+    "name": "Smile Flicker",
+    "text": "When one of your Trick cards fails, Gearlock heals 30. The smile comes back brighter."
+   },
+   "moves": [
+    {
+     "fuel": 2,
+     "name": "Brass Wing Clank",
+     "damage": 40,
+     "text": "The wing clanks a beat late: this does 20 more next turn."
+    },
+    {
+     "fuel": 4,
+     "name": "The Last Great Ring Rally",
+     "damage": 120,
+     "text": "Each of your opponent's cars in play takes 30."
+    }
+   ],
+   "weak": "toon",
+   "resist": "magma",
+   "pit": 3,
+   "bio": {
+    "Species": "Crow",
+    "Age": "Unknown",
+    "Team": "GearCorp (CEO)",
+    "Ride": "His airship",
+    "Signature": "Top hat, monocle, brass wing"
+   },
+   "gag": "His smile flickers for one frame, then comes back brighter.",
+   "quiet": "Sweeping the pit lane, top hat gone.",
+   "secret": true,
+   "variant_of": "gearlock",
+   "full_art": true
+  }
+ ],
+ "variants": {
+  "holo": {
+   "label": "Holo",
+   "note": "Rare, Epic and Legendary cards print on holo foil frames."
+  },
+  "reverse_holo": {
+   "label": "Reverse holo parallel",
+   "note": "Any card. Foil everywhere except the art window."
+  },
+  "scar_foil": {
+   "label": "Scar foil parallel, numbered /50",
+   "note": "Any card. Scar-red foil frame, hand-numbered on the back."
+  },
+  "full_art": {
+   "label": "Full Art secret rare (21/20 to 23/20)",
+   "note": "Blaze, Ember and Gearlock with art covering the whole card."
+  },
+  "artist_proof": {
+   "label": "Artist proof 1/1",
+   "note": "Hand-signed by Harrison."
+  }
+ },
+ "stat_notes": "Character stats use the card battle game's names (Speed = distance, Power = bump damage, Grit = health, Toon = gag damage that bounces off). Values are proposals.",
+ "types": {
+  "magma": {
+   "label": "Magma",
+   "color": "#FF5A1F",
+   "mark": "M"
+  },
+  "toon": {
+   "label": "Toon",
+   "color": "#FFC21A",
+   "mark": "T"
+  },
+  "gear": {
+   "label": "Gear",
+   "color": "#8A929C",
+   "mark": "G"
+  },
+  "track": {
+   "label": "Track",
+   "color": "#2E9A5A",
+   "mark": "R"
+  },
+  "shadow": {
+   "label": "Shadow",
+   "color": "#3A3240",
+   "mark": "S"
+  }
+ }
+}

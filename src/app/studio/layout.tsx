@@ -17,6 +17,7 @@ export default async function StudioLayout({ children }: { children: React.React
             { href: "/studio/community", label: "Community" },
             ...(permissions.manageUsers(actor) ? [{ href: "/studio/users", label: "People and roles" }] : []),
             ...(permissions.manageUsers(actor) ? [{ href: "/studio/email", label: "Email" }] : []),
+            ...(permissions.manageStore(actor) ? [{ href: "/studio/cards", label: "Card store" }] : []),
             ...(permissions.viewActivity(actor) ? [{ href: "/studio/activity", label: "Activity log" }] : []),
           ]}
         />
