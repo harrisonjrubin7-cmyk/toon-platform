@@ -1,0 +1,126 @@
+/* Volcano Racers landing page, on Tune Brand & Design System 1.0 (kit v3):
+   brand/tokens/tokens.css (colours, type, spacing) and components.css (tn- parts).
+   Rules kept: noir theme, hairline borders, no shadows on page surfaces
+   (--shadow-1 is none; --shadow-2 is for dialogs only), Georgia display + system
+   sans, Courier Prime only for script text, 48px controls, plain basalt ground
+   (no decorative glow), magma as the Volcano Racers accent, scar for the rating. */
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 16px/26px var(--font-sans);
+}
+
+.wrap { width: min(1080px, 100% - 2 * var(--gutter-compact)); margin-inline: auto; }
+.wrap--narrow { width: min(640px, 100% - 2 * var(--gutter-compact)); }
+
+.skip { position: absolute; left: 16px; top: -80px; z-index: 10; }
+.skip:focus { top: 16px; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Hero: plain basalt ground */
+.hero {
+  padding: var(--space-24) 0 var(--space-16);
+  background: var(--ip-ground);
+  color: var(--on-basalt);
+  border-bottom: var(--stroke-hair) solid var(--line);
+  text-align: center;
+}
+.hero .tn-rating { margin-bottom: var(--space-8); }
+.hero .tn-rating__note { color: var(--on-basalt); }
+.logo { margin: 0 auto; max-width: 680px; }
+.logo img { display: block; width: 100%; height: auto; }
+.endorse { margin: 0; color: var(--ink-muted); }
+.hero .endorse { margin-top: var(--space-6); color: var(--on-basalt); }
+.tagline {
+  margin: var(--space-8) 0 var(--space-3);
+  font-family: var(--font-display); font-weight: 400; font-style: italic;
+  font-size: clamp(26px, 4vw, 34px); line-height: 1.2; letter-spacing: -0.01em;
+}
+.lede { max-width: 42ch; margin: 0 auto var(--space-8); font-size: 18px; line-height: 30px; }
+
+/* Sections */
+section { padding: var(--space-16) 0; border-bottom: var(--stroke-hair) solid var(--line); }
+.section-title {
+  margin: var(--space-2) 0 var(--space-3);
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(30px, 5vw, 40px); line-height: 1.15; letter-spacing: -0.02em;
+}
+.section-sub { margin: 0 0 var(--space-8); color: var(--ink-muted); }
+
+.story p { margin: 0 0 var(--space-4); }
+.story .tn-caption { margin-bottom: var(--space-6); max-width: none; }
+
+/* Panels: raised surface, hairline, no shadow */
+.panel {
+  padding: var(--space-6);
+  background: var(--surface-raised); color: var(--ink);
+  border: var(--stroke-hair) solid var(--line); border-radius: var(--radius-m);
+}
+
+.cast { background: var(--surface-sunk); }
+.cast-list {
+  list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.racer h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 30px;
+  display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap;
+}
+.racer p { margin: 0; color: var(--ink-muted); }
+.carno {
+  font-family: var(--font-sans); font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: .16em;
+  background: var(--ip-accent); color: var(--surface);
+  border-radius: var(--radius-s); padding: 2px 8px;
+}
+
+/* The one rule: toon vs scar */
+.split { display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.split .panel p { margin: 0; }
+.card__kicker {
+  font-family: var(--font-display); font-weight: 400; font-style: italic;
+  font-size: 26px; line-height: 32px; margin-bottom: var(--space-3) !important;
+}
+.card--toon { border-top: 3px solid var(--ip-accent); }
+.card--scar { border-top: 3px solid var(--scar); }
+
+/* Sagas */
+.saga-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.saga h3 { margin: var(--space-3) 0 var(--space-2); font-family: var(--font-display); font-weight: 400; font-size: 24px; line-height: 30px; }
+.saga p:last-child { margin: 0; color: var(--ink-muted); }
+
+/* Sign-up */
+.signup { background: var(--ip-ground); color: var(--on-basalt); }
+.signup .section-sub { color: var(--on-basalt); }
+.signup .panel { padding: var(--space-8) var(--space-6); }
+.form .tn-field { max-width: none; }
+.field__row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.field__row .tn-field__input { flex: 1 1 240px; min-height: var(--control-min); }
+.field__row .tn-btn { flex: 0 0 auto; justify-content: center; min-height: var(--control-min); }
+@media (max-width: 480px) { .field__row .tn-btn { flex: 1 1 100%; } }
+
+.check { display: flex; gap: var(--space-3); align-items: flex-start; margin-top: var(--space-4); font-size: 14px; line-height: 22px; }
+.check input { width: 20px; height: 20px; margin-top: 1px; accent-color: var(--accent); flex: none; }
+.check input:focus-visible { outline: var(--stroke-focus) solid var(--focus); outline-offset: 4px; }
+
+.status { min-height: 1.6em; margin: var(--space-4) 0 0; font-weight: 600; }
+.status--ok { color: var(--success); }
+.status--error { color: var(--scar); }
+
+.footer { padding: var(--space-8) 0 var(--space-12); color: var(--ink-muted); font-size: 13px; line-height: 20px; }
+.footer p { margin: var(--space-1) 0; }
+.footer .endorse { margin-bottom: var(--space-3); }
+
+/* Thanks page */
+.hero--short { min-height: 100vh; display: grid; place-items: center; border-bottom: 0; }
+.hero--short .logo { max-width: 400px; margin-bottom: var(--space-6); }
