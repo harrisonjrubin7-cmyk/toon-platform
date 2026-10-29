@@ -11,7 +11,7 @@ One-page site with a newsletter sign-up. Sign-ups are stored in Neon Postgres
 
 ## Brand
 
-`brand/` is a copy of the Tune Comics & Studios brand kit v3 (Tune Brand & Design System 1.0): tokens.css, components.css, tokens.json, the Courier Prime fonts, the Volcano Racers wordmark, and the draft tune-icon-tile.svg used only as an interim favicon. The Tune endorsement is text only, per the guide. Trademark search is still pending. Re-copy from `/mnt/project-files/brand/` when the kit changes. Fonts are self-hosted, so the page makes no third-party requests.
+`brand/` is a copy of the Tune Comics and Studio brand kit v3 (Tune Brand & Design System 1.0): tokens.css, components.css, tokens.json, the Courier Prime fonts, the Volcano Racers wordmark, and the draft tune-icon-tile.svg used only as an interim favicon. The Tune endorsement is text only, per the guide. Trademark search is still pending. Re-copy from `/mnt/project-files/brand/` when the kit changes. Fonts are self-hosted, so the page makes no third-party requests.
 
 ## Config
 `DATABASE_URL` (secret): connection string for the insert-only role `vr_signup_writer`.
