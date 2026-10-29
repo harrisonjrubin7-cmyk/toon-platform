@@ -16,7 +16,6 @@ function renderGames() {
     return h('li', { class: 'hub-game' },
       h('div', { class: 'hub-game__art' }, art),
       h('div', { class: 'hub-game__body' },
-        h('p', { class: 'hub-game__n' }, `Game ${g.n}`),
         h('h3', { class: 'hub-game__title' }, g.title),
         h('p', { class: 'hub-game__stars' }, `Starring ${g.stars}`),
         h('p', { class: 'hub-game__blurb' }, g.blurb)),
@@ -44,11 +43,7 @@ function drawCardArt(c, g) {
       ctx.restore();
     });
   }
-  ctx.font = '900 64px "Arial Black", Impact, sans-serif';
-  ctx.textAlign = 'right'; ctx.textBaseline = 'top';
-  ctx.lineWidth = 10; ctx.strokeStyle = '#161616'; ctx.lineJoin = 'round';
-  ctx.strokeText(String(g.n), c.width - 20, 16);
-  ctx.fillStyle = '#F4F0E8'; ctx.fillText(String(g.n), c.width - 20, 16);
+  // Project rule: no number badges or labels drawn over titles or art.
 }
 
 function renderPlayer() {

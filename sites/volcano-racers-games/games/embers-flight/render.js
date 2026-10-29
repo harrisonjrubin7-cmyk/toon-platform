@@ -17,7 +17,7 @@ function mix(a, b, k) {
 export function scaleFor(view) {
   // Fit 10 sky units in the height, but keep the full 16 wide visible on narrow screens.
   const groundH = Math.max(50, view.height * 0.12);
-  const hudH = 76; // keep Ember clear of the score chips
+  const hudH = 12; // the HUD is a strip above the canvas now; small top margin only
   const u = Math.min((view.height - groundH - hudH) / SKY_H, view.width / VIEW_W * 1.25);
   return { u, groundH, top: view.height - groundH - SKY_H * u };
 }
