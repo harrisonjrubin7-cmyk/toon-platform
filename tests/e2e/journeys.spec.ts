@@ -226,6 +226,7 @@ test.describe.serial("publish a comic and a show, then read and watch them", () 
   test("a reader resets a forgotten password from the emailed link", async ({ page }) => {
     await page.goto("/login");
     await page.getByRole("link", { name: "Forgot your password?" }).click();
+    await expect(page.getByRole("heading", { name: "Forgot your password?" })).toBeVisible();
     await page.getByLabel("Email").fill(READER.email);
     await page.getByRole("button", { name: "Send reset link" }).click();
     await expect(page.getByRole("status")).toContainText("If that email has an account");
