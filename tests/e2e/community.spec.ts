@@ -64,7 +64,7 @@ test.describe.serial("community: make, share, react, report and moderate a fan c
     // Terms are required.
     await page.getByLabel("Handle *").fill(CREATOR.handle);
     await page.getByRole("button", { name: "Create profile" }).click();
-    await expect(page.getByText("Accept the community guidelines")).toBeVisible();
+    await expect(page.getByText("Accept the community guidelines and creator terms to continue.")).toBeVisible();
     await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "Create profile" }).click();
     await expect(page.getByRole("heading", { name: "My creations" })).toBeVisible();
