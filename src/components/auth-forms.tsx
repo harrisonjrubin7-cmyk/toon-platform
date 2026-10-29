@@ -13,6 +13,7 @@ export function LoginForm({ next }: { next: string }) {
       <Field name="email" label="Email" type="email" autoComplete="email" required state={state} />
       <Field name="password" label="Password" type="password" autoComplete="current-password" required state={state} />
       <SubmitButton pendingText="Signing in…">Sign in</SubmitButton>
+      <p className="tn-supporting"><Link href="/forgot">Forgot your password?</Link></p>
       <p className="tn-supporting">New here? <Link href={`/signup?next=${encodeURIComponent(next)}`}>Create an account</Link></p>
     </form>
   );

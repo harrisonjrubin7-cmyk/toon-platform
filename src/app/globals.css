@@ -193,3 +193,5 @@ a.tn-episode:focus-visible { outline: var(--stroke-focus) solid var(--focus); ou
 .stable-label > .is-hidden { visibility: hidden; }
 .form-outcome:empty { display: none; }
 .form-outcome .tn-notice { max-width: none; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 24px; margin: 0; }
+.stat-row dd { margin: 0; }

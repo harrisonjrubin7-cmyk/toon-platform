@@ -43,7 +43,7 @@ All checks run on the server (domain layer), not only in the UI.
 | A3 | Accounts | All | Sign out | Session deleted server-side and cookie cleared | Verified | unit "sessions" |
 | A4 | Accounts | — | Session expiry | 30-day sessions; expired sessions rejected | Verified | unit |
 | A5 | Accounts | Admin | Bootstrap admin | `ADMIN_EMAILS` signups become admin | Verified | unit; e2e |
-| A6 | Accounts | — | Password reset by email | Not built (no email service chosen) | Open | Admin can't reset passwords yet; workaround is a new account |
+| A6 | Accounts | Reader+ | Password reset by email: /forgot, /reset | Single-use token stored hashed, 1-hour expiry, 3 per hour per account, same answer for unknown emails, signs out every session | Verified (unit + e2e) | Delivery needs RESEND_API_KEY + EMAIL_FROM in production |
 | R1 | Catalog | Visitor | `/` home | Hero, series, latest issues, latest episodes; empty states | Verified | e2e "visitor … reads" |
 | R2 | Catalog | Reader | `/` home | "Pick up where you left off", "New from series you follow" | Built | unit `continueList`, `newForYou` |
 | R3 | Catalog | Visitor | `/comics`, `/shows`, `/series` | Lists of published content only | Verified | e2e; unit visibility tests |
@@ -72,7 +72,7 @@ All checks run on the server (domain layer), not only in the UI.
 | X2 | Security | All | Headers | nosniff, frame-options, referrer and permissions policies | Built | `next.config.ts` |
 | X3 | Ops | — | `/api/health` | Reports DB up/down | Built | used by e2e web server |
 | P1 | Payments / store | — | — | Not confirmed | Open (O2) | — |
-| N1 | Notifications by email | — | New release emails to followers | Not built; needs an email provider | Open (O6) | — |
+| N1 | Notifications by email | Reader / Admin | New release emails to followers; opt-out in My library and by one-click link; Studio → Email log (admin) | Outbox with dedupe (one email per reader per release), scheduled releases sent at publish time, cancelled on unpublish, retries up to 5 times | Verified (unit + e2e) | Real delivery blocked until an email provider account exists; Vercel Hobby cron runs daily, so scheduled-release emails can be up to a day late |
 | M1 | Merch, games, reader app | — | — | Studio doc lists these as open scope | Open | — |
 | D1 | Deploy | — | Vercel preview | App, env vars, Blob store | Blocked on GitHub repo | RUNBOOK |
 
@@ -80,5 +80,5 @@ All checks run on the server (domain layer), not only in the UI.
 
 - `npx tsc --noEmit`: no errors.
 - `npx eslint src`: no problems.
-- `npx vitest run`: 3 files, 22 tests passed.
-- `npx playwright test` (Chromium, built app on :3100, fresh database): 8 passed.
+- `npx vitest run`: 4 files, 31 tests passed (2026-10-29, email added).
+- `npx playwright test` (Chromium, built app on :3100): 10 passed (2026-10-29).

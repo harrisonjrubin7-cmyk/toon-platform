@@ -5,6 +5,7 @@ import { isImageRef, isStoredMediaUrl, videoSource } from "../media";
 import { permissions, type Actor } from "../roles";
 import { parseOrThrow } from "./accounts";
 import { audit } from "./audit";
+import { cancelReleaseEmails, queueReleaseEmails } from "./email";
 
 function requireEditor(actor: Actor | null): Actor {
   if (!actor) throw new AppError("unauthenticated", "Sign in to use the studio.");
@@ -289,7 +290,8 @@ export async function publishRelease(q: Queryable, actorIn: Actor | null, id: st
     [id, publishAt],
   );
   await audit(q, actor.id, publishAt ? "release.scheduled" : "release.published", "release", id, publishAt ? { publishAt: publishAt.toISOString() } : {});
-  return { seriesPublished: rel.seriesStatus === "published" };
+  const emailsQueued = await queueReleaseEmails(q, id);
+  return { seriesPublished: rel.seriesStatus === "published", emailsQueued };
 }
 
 export async function unpublishRelease(q: Queryable, actorIn: Actor | null, id: string) {
@@ -299,6 +301,7 @@ export async function unpublishRelease(q: Queryable, actorIn: Actor | null, id: 
     [id],
   );
   if (!rowCount) throw new AppError("not_found", "Not found.");
+  await cancelReleaseEmails(q, id);
   await audit(q, actor.id, "release.unpublished", "release", id);
 }
 

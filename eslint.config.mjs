@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone sites (e.g. sites/volcano-racers) have their own tooling.
+    "sites/**",
   ]),
 ]);
 

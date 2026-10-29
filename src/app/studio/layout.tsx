@@ -15,6 +15,7 @@ export default async function StudioLayout({ children }: { children: React.React
           links={[
             { href: "/studio", label: "Series" },
             ...(permissions.manageUsers(actor) ? [{ href: "/studio/users", label: "People and roles" }] : []),
+            ...(permissions.manageUsers(actor) ? [{ href: "/studio/email", label: "Email" }] : []),
             ...(permissions.viewActivity(actor) ? [{ href: "/studio/activity", label: "Activity log" }] : []),
           ]}
         />

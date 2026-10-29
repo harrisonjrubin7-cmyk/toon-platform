@@ -3,12 +3,14 @@ import { requirePageRole } from "@/lib/auth/session";
 import { continueList, followedSeries, newForYou } from "@/lib/domain/catalog";
 import { Empty, ReleaseTile, SeriesTile } from "@/components/cards";
 import Link from "next/link";
+import { getEmailSettings } from "@/lib/domain/email";
+import { ReleaseEmailsForm } from "@/components/email-forms";
 
 export const metadata = { title: "My library" };
 
 export default async function Library() {
   const actor = await requirePageRole("reader", "/library");
-  const [cont, follows, fresh] = await Promise.all([continueList(db, actor), followedSeries(db, actor), newForYou(db, actor)]);
+  const [cont, follows, fresh, mail] = await Promise.all([continueList(db, actor), followedSeries(db, actor), newForYou(db, actor), getEmailSettings(db, actor)]);
   const reading = cont.filter((c) => !c.completed);
   const done = cont.filter((c) => c.completed);
   return (
@@ -25,6 +27,10 @@ export default async function Library() {
       <section className="section">
         <h2>Following</h2>
         {follows.length ? <div className="issue-grid">{follows.map((s) => <SeriesTile key={s.id} s={s} />)}</div> : <Empty>Follow a series from its page to see new releases here.</Empty>}
+      </section>
+      <section className="section">
+        <h2>Emails</h2>
+        <ReleaseEmailsForm on={mail.releases} />
       </section>
       {done.length > 0 && (
         <section className="section">

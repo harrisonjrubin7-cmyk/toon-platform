@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import pg from "pg";
 import { makePng } from "./fixtures";
 
 const stamp = Date.now().toString(36);
@@ -209,5 +210,54 @@ test.describe.serial("publish a comic and a show, then read and watch them", () 
     await expect(p2.getByRole("heading", { name: "Page not found" })).toBeVisible();
     expect(r).not.toBeNull();
     await anon.close();
+  });
+
+  test("a reader resets a forgotten password from the emailed link", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByRole("link", { name: "Forgot your password?" }).click();
+    await page.getByLabel("Email").fill(READER.email);
+    await page.getByRole("button", { name: "Send reset link" }).click();
+    await expect(page.getByRole("status")).toContainText("If that email has an account");
+
+    const db = new pg.Client({ connectionString: "postgres://postgres@localhost:5433/toon_e2e" });
+    await db.connect();
+    const { rows } = await db.query(
+      "select o.body_text from email_outbox o join users u on u.id = o.user_id where lower(u.email) = $1 and o.kind = 'password_reset' order by o.created_at desc limit 1",
+      [READER.email],
+    );
+    await db.end();
+    const link = /http:\/\/localhost:3100(\/reset\?token=[A-Za-z0-9_-]+)/.exec(rows[0].body_text)![1];
+
+    await page.goto(link);
+    await page.getByLabel("New password").fill("short");
+    await page.getByLabel("Type it again").fill("short");
+    await page.getByRole("button", { name: "Set new password" }).click();
+    await expect(page.getByText("Use at least 10 characters.")).toBeVisible();
+    await expect(page.getByLabel("New password")).toBeFocused();
+    await page.getByLabel("New password").fill("a whole new password");
+    await page.getByLabel("Type it again").fill("a whole new password");
+    await page.getByRole("button", { name: "Set new password" }).click();
+    await expect(page.getByRole("status")).toContainText("Password changed");
+
+    await page.goto(link);
+    await expect(page.getByText("This link has expired or was already used.")).toBeVisible();
+    READER.password = "a whole new password";
+    await login(page, READER);
+  });
+
+  test("readers can turn release emails off; admins see the email log", async ({ page }) => {
+    await login(page, READER);
+    await page.goto("/library");
+    await page.getByLabel(/Email me when a series I follow/).uncheck();
+    await page.getByRole("button", { name: "Save email setting" }).click();
+    await expect(page.locator(".alert-ok")).toContainText("Release emails are off");
+    await page.reload();
+    await expect(page.getByLabel(/Email me when a series I follow/)).not.toBeChecked();
+
+    await page.getByRole("button", { name: "Sign out" }).click();
+    await login(page, ADMIN);
+    await page.goto("/studio/email");
+    await expect(page.getByRole("cell", { name: READER.email }).first()).toBeVisible();
+    await expect(page.locator("body")).not.toContainText("reset?token=");
   });
 });

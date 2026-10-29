@@ -15,6 +15,9 @@
 | `DATABASE_URL` | Vercel (Preview, Production) | Neon pooled connection string with `sslmode=verify-full`. Never commit it. |
 | `ADMIN_EMAILS` | Vercel | Comma-separated. Sign up with one of these to become admin. |
 | `BLOB_READ_WRITE_TOKEN` | Vercel | Added automatically when a Blob store is connected to the project. Without it, production uploads are refused. |
+| `RESEND_API_KEY`, `EMAIL_FROM` | Vercel | Email delivery through Resend. `EMAIL_FROM` must use a domain verified in Resend. Without them, emails wait in the outbox (Studio → Email shows a warning) and nothing is lost. |
+| `APP_URL` | Vercel | Base URL for links in emails, e.g. `https://tune.example.com`. Falls back to the Vercel deployment URL. |
+| `CRON_SECRET` | Vercel | Vercel Cron sends it to `/api/cron/email`, which sends due emails (daily on the Hobby plan; hourly needs Pro). Admins can also press "Send due emails now" in Studio → Email. |
 
 ## Deploy
 

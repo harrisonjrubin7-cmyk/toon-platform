@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { db, withTx } from "@/lib/db";
 import { currentActor } from "@/lib/auth/session";
 import * as studio from "@/lib/domain/studio";
+import { sendDueEmailsAfterResponse } from "@/lib/email/deliver";
 import { toActionState, type ActionState } from "@/lib/errors";
 
 const str = (f: FormData, k: string) => String(f.get(k) ?? "");
@@ -128,8 +129,10 @@ export async function publishReleaseAction(_: ActionState, f: FormData): Promise
     const iso = when ? new Date(`${when}${str(f, "tz") || "Z"}`).toISOString() : null;
     const r = await withTx(async (tx) => studio.publishRelease(tx, await currentActor(), str(f, "id"), iso));
     refreshPublic();
+    if (r.emailsQueued) sendDueEmailsAfterResponse();
     const note = r.seriesPublished ? "" : " Readers won't see it until the series itself is published.";
-    return { ok: true, message: (iso ? "Scheduled." : "Published.") + note };
+    const mail = r.emailsQueued ? ` ${r.emailsQueued} follower email${r.emailsQueued === 1 ? "" : "s"} ${iso ? "will go out at that time" : "queued"}.` : "";
+    return { ok: true, message: (iso ? "Scheduled." : "Published.") + note + mail };
   } catch (e) {
     return toActionState(e);
   }
