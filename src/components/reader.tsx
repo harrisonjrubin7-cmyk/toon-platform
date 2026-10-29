@@ -88,11 +88,22 @@ export function ComicReader({ releaseId, title, pages, startAt, signedIn, nextId
 
       {mode === "page" ? (
         <div className="reader-stage">
-          <div className="page-tap">
-            <img key={p.id} src={p.imageUrl} alt={alt(p, i)} className="reader-page" width={p.width ?? undefined} height={p.height ?? undefined} />
-            <button type="button" className="zone prev" aria-label="Previous page" tabIndex={-1} onClick={() => go(-Infinity)} />
-            <button type="button" className="zone next" aria-label="Next page" tabIndex={-1} onClick={() => go(Infinity)} />
-          </div>
+          {/* Nothing is drawn over the art: taps are read from the image itself, and the
+              Back/Next buttons live in the bar above it. */}
+          <img
+            key={p.id}
+            src={p.imageUrl}
+            alt={alt(p, i)}
+            className="reader-page"
+            width={p.width ?? undefined}
+            height={p.height ?? undefined}
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              const x = (e.clientX - r.left) / r.width;
+              if (x < 0.35) go(-Infinity);
+              else if (x > 0.65) go(Infinity);
+            }}
+          />
           {pages[i + 1] && <link rel="preload" as="image" href={pages[i + 1].imageUrl} />}
           <p className="tn-supporting muted" style={{ marginTop: 8 }}>Use the arrow keys, or tap the left or right side of the page.</p>
         </div>

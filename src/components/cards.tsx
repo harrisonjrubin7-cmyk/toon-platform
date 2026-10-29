@@ -9,10 +9,11 @@ export function IssueCard({ r, progress }: { r: ReleaseCard; progress?: { positi
     <Link href={`/read/${r.id}`} className={`tn-issue ${ipClass(r.theme)}`}>
       <div className="tn-issue__cover">
         {r.coverUrl ? <img src={r.coverUrl} alt="" loading="lazy" /> : r.seriesLogoUrl ? <CoverMark src={r.seriesLogoUrl} theme={r.theme} /> : null}
-        <span className="tn-issue__num">#{r.number}</span>
       </div>
       <div className="tn-issue__body">
         <div className="row" style={{ gap: 6 }}>
+          {/* The issue number sits under the cover, never on the art. */}
+          <span className="tn-issue__num-label">Issue #{r.number}</span>
           {progress?.completed ? <span className="tn-badge">Read</span> : progress ? <span className="tn-badge tn-badge--info">Reading</span> : isNew(r.publishedAt) ? <span className="tn-badge tn-badge--new">New</span> : null}
         </div>
         <h3 className="tn-issue__title">{r.title}</h3>

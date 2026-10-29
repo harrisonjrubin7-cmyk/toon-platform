@@ -125,13 +125,24 @@ test.describe.serial("publish a comic and a show, then read and watch them", () 
     await expect(page.getByText("Page 1 of 3")).toBeVisible();
     // After reorder, page-01 (red) should be first: check the image source order in scroll mode.
     const firstSrc = await page.locator("img.reader-page").getAttribute("src");
+    // Nothing may be drawn over the art: the top element at points across the page is the image itself.
+    await expectNothingOver(page, "img.reader-page");
     await page.keyboard.press("ArrowRight");
+    await expect(page.getByText("Page 2 of 3")).toBeVisible();
+    // Tapping the left or right edge of the art itself still turns pages.
+    const art = page.locator("img.reader-page");
+    const box = (await art.boundingBox())!;
+    await art.click({ position: { x: box.width * 0.1, y: box.height / 2 } });
+    await expect(page.getByText("Page 1 of 3")).toBeVisible();
+    await art.click({ position: { x: box.width * 0.9, y: box.height / 2 } });
     await expect(page.getByText("Page 2 of 3")).toBeVisible();
     await page.getByRole("button", { name: "Next →" }).click();
     await expect(page.getByText("End of issue.")).toBeVisible();
     await page.getByRole("button", { name: "Scroll" }).click();
     await expect(page.locator(".reader-scroll img")).toHaveCount(3);
     expect(await page.locator(".reader-scroll img").first().getAttribute("src")).toBe(firstSrc);
+    await page.locator(".reader-scroll img").nth(1).scrollIntoViewIfNeeded();
+    await expectNothingOver(page, ".reader-scroll img >> nth=1");
     await page.getByRole("button", { name: "Page by page" }).click();
 
     await page.goto("/search?q=green");
@@ -261,3 +272,20 @@ test.describe.serial("publish a comic and a show, then read and watch them", () 
     await expect(page.locator("body")).not.toContainText("reset?token=");
   });
 });
+
+/** Asserts that at a grid of points over the element, the topmost element is the element itself. */
+async function expectNothingOver(page: import("@playwright/test").Page, selector: string) {
+  const el = page.locator(selector);
+  await expect(el).toBeVisible();
+  const covered = await el.evaluate((img) => {
+    const r = img.getBoundingClientRect();
+    const hits: string[] = [];
+    for (const fx of [0.05, 0.5, 0.95]) for (const fy of [0.05, 0.5, 0.95]) {
+      const x = r.left + r.width * fx, y = Math.max(0, r.top) + (Math.min(r.bottom, innerHeight) - Math.max(0, r.top)) * fy;
+      const top = document.elementFromPoint(x, y);
+      if (top && top !== img) hits.push(`${top.tagName}.${top.className}`);
+    }
+    return hits;
+  });
+  expect(covered).toEqual([]);
+}
