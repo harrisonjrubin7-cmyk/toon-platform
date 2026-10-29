@@ -14,7 +14,8 @@ Deployment: nothing is deployed yet (see RUNBOOK; blocked on a GitHub repo).
 | Shared core | Accounts, sessions, roles, Postgres schema, media rules, audit log | Built, verified |
 | Brand kit | Tune Comics & Studio kit v3, following the founder's Brand & Design System 1.0 (Georgia + system sans, ink/paper/champagne, 3px focus ring, 48px controls, no UI shadows; approved raster logos, interim SVG favicon) | Applied and verified 2026-10-29 (tsc, eslint, vitest 22/22, build, Playwright 8/8, DOM checks per theme) |
 | Landing page + newsletter | Separate site from the "Launch Volcano Racers landing page" thread | Not part of this app (O6) |
-| Store / payments | Not confirmed | Open (O2) |
+| Store / payments | Comics/shows: not confirmed (O2). Card packs: built in test mode (docs/GAME.md) | Open / Built |
+| Card game (`/play`) | Collect, rip packs, build decks, race the computer | Built, verified (unit `game-engine`, `cards`; e2e `cards.spec.ts`). See docs/GAME.md |
 | Native apps | Not confirmed | Not planned; the site is responsive |
 
 Delivery environments: modern desktop and mobile browsers. Tested in Chromium (desktop 1280px, mobile 390px with no sideways scroll).

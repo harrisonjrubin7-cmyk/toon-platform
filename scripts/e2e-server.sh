@@ -3,6 +3,7 @@
 # One variable per line: the local database URL has no password.
 export DATABASE_URL=postgres://postgres@localhost:5433/toon_e2e
 export ADMIN_EMAILS=boss@toon.test
+export PAYMENTS_PROVIDER=test
 export ALLOW_LOCAL_MEDIA=1
 export EMAIL_DEV_TRANSPORT=1
 export APP_URL=http://localhost:3100

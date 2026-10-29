@@ -12,4 +12,7 @@ export const permissions = {
   manageContent: (a: Actor | null) => hasRole(a, "editor"),
   manageUsers: (a: Actor | null) => hasRole(a, "admin"),
   viewActivity: (a: Actor | null) => hasRole(a, "admin"),
+  // Card game: any signed-in adult account can play, collect and buy (all accounts confirm 18+ at signup).
+  playGame: (a: Actor | null) => !!a && a.ageConfirmed,
+  manageStore: (a: Actor | null) => hasRole(a, "admin"),
 };

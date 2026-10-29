@@ -38,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 { href: "/shows", label: "Shows" },
                 { href: "/series", label: "Series" },
                 { href: "/search", label: "Search" },
+                { href: "/play", label: "Card game" },
                 ...(actor ? [{ href: "/library", label: "My library" }] : []),
                 ...(permissions.viewStudio(actor) ? [{ href: "/studio", label: "Studio" }] : []),
               ]}
