@@ -15,7 +15,7 @@ import { parseOrThrow } from "./accounts";
 
 export const RESET_TTL_MINUTES = 60;
 export const RESET_LIMIT_PER_HOUR = 3;
-const STUDIO = "Tune Comics & Studios";
+const STUDIO = "Tune Comics & Studio";
 
 const sha256 = (t: string) => createHash("sha256").update(t).digest("hex");
 

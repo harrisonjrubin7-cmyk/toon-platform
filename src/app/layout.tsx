@@ -8,8 +8,8 @@ import { NavLinks } from "@/components/nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Tune Comics & Studios", template: "%s · Tune Comics & Studios" },
-  description: "Read the comics and watch the shows from Tune Comics & Studios. Grown-up stories, made by hand.",
+  title: { default: "Tune Comics & Studio", template: "%s · Tune Comics & Studio" },
+  description: "Read the comics and watch the shows from Tune Comics & Studio. Grown-up stories, made by hand.",
   icons: { icon: "/brand/logos/tune-icon-tile.svg" }, // interim favicon until the 16 px emblem exists
 };
 
@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </main>
         <footer className="site-footer">
           <div className="container spread">
-            <span>© {new Date().getUTCFullYear()} Tune Comics & Studios. For mature readers.</span>
+            <span>© {new Date().getUTCFullYear()} Tune Comics & Studio. For mature readers.</span>
             <span className="row"><Link href="/series">All series</Link><Link href="/search">Search</Link></span>
           </div>
         </footer>

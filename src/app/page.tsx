@@ -22,7 +22,7 @@ export default async function Home() {
           <StudioEmblem size={96} />
           <div style={{ flex: 1, minWidth: 240 }}>
             <h1 className="tn-h1" style={{ margin: 0 }}>Cartoons that bleed.</h1>
-            <p className="tn-body" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Tune Comics &amp; Studios. Toon physics. Real scars.</p>
+            <p className="tn-body" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Tune Comics &amp; Studio. Toon physics. Real scars.</p>
             <div className="row">
               <Link className="tn-btn tn-btn--primary" href="/comics">Read comics</Link>
               <Link className="tn-btn" href="/shows">Watch shows</Link>

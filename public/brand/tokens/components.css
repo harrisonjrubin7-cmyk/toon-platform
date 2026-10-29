@@ -1,4 +1,4 @@
-/* Tune Comics & Studios components, v3. Follows Tune Brand & Design System 1.0.
+/* Tune Comics & Studio components, v3. Follows Tune Brand & Design System 1.0.
    Reads only tokens.css custom properties. Prefix: tn- */
 .tn-ip--volcano-racers { --ip-accent: var(--magma); --ip-ground: var(--basalt); }
 /* .tn-ip--starfall { --ip-accent: ...; --ip-ground: ...; } reserved for IP #2 once its look is chosen */

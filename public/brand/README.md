@@ -1,4 +1,4 @@
-# Tune Comics & Studios brand kit (v3)
+# Tune Comics & Studio brand kit (v3)
 
 Follows **Tune Brand & Design System 1.0** (October 2026), the founder's guide in `guide/`. That guide is the source of truth. The design system with the full brand book and live previews in both themes: https://claude.ai/artifact/CX9RQhp8BfARL7FB839CnT
 
@@ -8,7 +8,7 @@ Status: naming, final logo construction and trademark availability are still ope
 
 - `guide/`: the founder's guide as `brand-guide.html` and `Tune-Brand-Design-System.pdf`.
 - `logos/`: the approved artwork (raster concept art).
-  - `transparent-wordmark.png`: primary signature, on ivory or white only. Min 240 CSS px wide.
+  - `transparent-wordmark.png`: primary signature, on ivory or white only. Min 240 CSS px wide. **Its descriptor still reads COMICS & STUDIOS; the name is now Tune Comics & Studio (decided 2026-10-29), so the artwork needs a designer redraw before public launch.**
   - `social-icon.jpg`: the folded T on its charcoal ground. Social, stamps, opening and end frames. Min 32 CSS px. Not for tiny UI icons.
   - `cinematic-banner.jpg`: hero and title visual; the reference for dark layouts.
   - `volcano-racers-*`: IP #1 marks, unchanged.
@@ -24,7 +24,7 @@ Status: naming, final logo construction and trademark availability are still ope
 2. Themes: `data-theme="ivory"` (paper, default) or `data-theme="noir"` (ink). Without it, the page follows the system scheme.
 3. Wrap content in `.tn-container`; lay out with `.tn-grid` (4/8/12 columns).
 4. IP content: `.tn-ip--volcano-racers` sets `--ip-accent` to magma and `--ip-ground` to basalt. `.tn-ip--starfall` is reserved.
-5. Endorse IP marks in words: "A Tune Comics & Studios original" in eyebrow style. No emblem at that size.
+5. Endorse IP marks in words: "A Tune Comics & Studio original" in eyebrow style. No emblem at that size.
 6. On dark backgrounds, don't use or invert the transparent wordmark. Use the social icon or banner.
 
 ## Changes from v2

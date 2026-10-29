@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- static SVG brand marks; next/image adds nothing for vectors. */
 import Link from "next/link";
 
-export const STUDIO_NAME = "Tune Comics & Studios";
+export const STUDIO_NAME = "Tune Comics & Studio";
 
 /**
  * Tune studio signature, per Brand & Design System 1.0: the transparent wordmark on
@@ -31,7 +31,7 @@ export function SiteLogoLink() {
   );
 }
 
-/** "A Tune Comics & Studios original" endorsement, in words only (no emblem at this size). */
+/** "A Tune Comics & Studio original" endorsement, in words only (no emblem at this size). */
 export function Endorsement() {
   return <span className="tn-lockup__endorse">A {STUDIO_NAME} original</span>;
 }
