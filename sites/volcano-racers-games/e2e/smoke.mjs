@@ -121,19 +121,68 @@ await run('circuit-rush-phone', PHONE, async (page) => {
   await shot(page, 'circuit-rush-phone');
 });
 
-for (const g of ['blazes-run', 'embers-flight']) {
-  const exists = await fetch(`${base}/games/${g}/`).then((r) => r.ok);
-  if (!exists) { console.log(`skip ${g} (not built yet)`); continue; }
-  await run(g, DESKTOP, async (page) => {
-    await page.goto(`${base}/games/${g}/`);
-    await shot(page, `${g}-start`);
-    await page.click('#btn-start');
-    await page.waitForTimeout(400);
-    await page.keyboard.press('Space');
-    await page.waitForTimeout(2500);
-    await shot(page, `${g}-play`);
-  });
-}
+await run('blazes-run', DESKTOP, async (page) => {
+  await page.goto(`${base}/games/blazes-run/`);
+  await shot(page, 'blazes-run-start');
+  await page.click('#btn-start');
+  await page.waitForTimeout(400);
+  await page.keyboard.press('Space');
+  await page.waitForTimeout(2500);
+  const d = await page.evaluate(() => window.__blazesRun.run.dist);
+  expect(d > 15, `Blaze barely moved (${d})`);
+  await shot(page, 'blazes-run-play');
+  // Fill the glow to see top speed and the shadow gag, then end the run.
+  await page.evaluate(() => { const r = window.__blazesRun.run; r.glow = 11; r.pickups.push({ x: r.dist + 1.5, y: 0.5, taken: false }); });
+  await page.waitForTimeout(500);
+  await shot(page, 'blazes-run-glow');
+  await page.evaluate(() => { const r = window.__blazesRun.run; r.glowing = 0; r.invuln = 0; r.knee = 2; r.obstacles.push({ kind: 'boulder', x: r.dist + 0.5, w: 0.9, h: 1 }); });
+  await page.waitForSelector('#panel-over:not([hidden])', { timeout: 5000 });
+  await shot(page, 'blazes-run-over');
+  const best = await page.evaluate(() => JSON.parse(localStorage.getItem('vr.player')).records['blazes-run'].best);
+  expect(best > 0, 'best distance not saved');
+});
+
+await run('embers-flight', DESKTOP, async (page) => {
+  await page.goto(`${base}/games/embers-flight/`);
+  await shot(page, 'embers-flight-start');
+  await page.click('#btn-start');
+  await page.evaluate(() => { const f = window.__embersFlight.flight; f.nextAirship = 0; f.hatchlings[0].at = 0; f.hatchlings[1].state = 'follow'; f.hatchlings[1].x = f.x; f.hatchlings[1].y = f.y; });
+  await page.keyboard.down('ArrowUp');
+  await page.keyboard.down('Space');
+  await page.waitForTimeout(1500);
+  await shot(page, 'embers-flight-play');
+  await page.keyboard.up('Space');
+  await page.keyboard.up('ArrowUp');
+  const f = await page.evaluate(() => ({ fire: window.__embersFlight.flight.fire, y: window.__embersFlight.flight.y }));
+  expect(f.fire < 90, `breathing fire should cost fire (${f.fire})`);
+  await page.evaluate(() => { window.__embersFlight.flight.fire = 30; });
+  await page.waitForTimeout(300);
+  await shot(page, 'embers-flight-faded');
+  await page.evaluate(() => { window.__embersFlight.flight.fire = 0.01; });
+  await page.waitForSelector('#panel-over:not([hidden])', { timeout: 5000 });
+  await shot(page, 'embers-flight-over');
+});
+
+await run('embers-flight-phone', PHONE, async (page) => {
+  await page.goto(`${base}/games/embers-flight/`);
+  await page.click('#btn-start');
+  await page.waitForTimeout(800);
+  await shot(page, 'embers-flight-phone');
+});
+
+await run('blazes-run-phone', PHONE, async (page) => {
+  await page.goto(`${base}/games/blazes-run/`);
+  await page.click('#btn-start');
+  await page.waitForTimeout(800);
+  await shot(page, 'blazes-run-phone');
+});
+
+await run('pit-crew-phone', PHONE, async (page) => {
+  await page.goto(`${base}/games/pit-crew/`);
+  await page.click('#btn-start');
+  await page.waitForTimeout(300);
+  await shot(page, 'pit-crew-phone');
+});
 
 await browser.close();
 server.close();

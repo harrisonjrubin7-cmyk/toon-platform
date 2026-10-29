@@ -15,7 +15,11 @@ export function startServer(port = 0) {
       if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
       if ((await stat(file).catch(() => null))?.isDirectory()) file = join(file, 'index.html');
       const body = await readFile(file);
-      res.writeHead(200, { 'content-type': TYPES[extname(file)] || 'application/octet-stream' });
+      res.writeHead(200, {
+        'content-type': TYPES[extname(file)] || 'application/octet-stream',
+        // Same policy as netlify.toml, so the smoke test catches anything it would block.
+        'content-security-policy': "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'",
+      });
       res.end(body);
     } catch {
       res.writeHead(404, { 'content-type': 'text/plain' }).end('Not found');
