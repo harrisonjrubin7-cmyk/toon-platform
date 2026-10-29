@@ -9,7 +9,7 @@ export default async function Login({ searchParams }: { searchParams: Promise<{ 
   if (await currentActor()) redirect(next);
   return (
     <div style={{ maxWidth: 440, margin: "0 auto" }}>
-      <h1 className="display-m">Sign in</h1>
+      <h1 className="tn-h2">Sign in</h1>
       <LoginForm next={next} />
     </div>
   );

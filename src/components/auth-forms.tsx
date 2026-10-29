@@ -13,7 +13,7 @@ export function LoginForm({ next }: { next: string }) {
       <Field name="email" label="Email" type="email" autoComplete="email" required state={state} />
       <Field name="password" label="Password" type="password" autoComplete="current-password" required state={state} />
       <SubmitButton pendingText="Signing in…">Sign in</SubmitButton>
-      <p className="caption">New here? <Link href={`/signup?next=${encodeURIComponent(next)}`}>Create an account</Link></p>
+      <p className="tn-supporting">New here? <Link href={`/signup?next=${encodeURIComponent(next)}`}>Create an account</Link></p>
     </form>
   );
 }
@@ -35,7 +35,7 @@ export function SignupForm({ next }: { next: string }) {
         {state?.fields?.ageConfirmed && <span className="tn-field__hint">{state.fields.ageConfirmed}</span>}
       </div>
       <SubmitButton pendingText="Creating account…">Create account</SubmitButton>
-      <p className="caption">Already have an account? <Link href={`/login?next=${encodeURIComponent(next)}`}>Sign in</Link></p>
+      <p className="tn-supporting">Already have an account? <Link href={`/login?next=${encodeURIComponent(next)}`}>Sign in</Link></p>
     </form>
   );
 }

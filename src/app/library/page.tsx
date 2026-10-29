@@ -13,7 +13,7 @@ export default async function Library() {
   const done = cont.filter((c) => c.completed);
   return (
     <>
-      <h1 className="display-l">My library</h1>
+      <h1 className="tn-h1">My library</h1>
       <section className="section">
         <h2>In progress</h2>
         {reading.length ? <div className="issue-grid">{reading.map((r) => <ReleaseTile key={r.id} r={r} progress={r} />)}</div> : <Empty>Nothing in progress. <Link href="/comics">Find something to read</Link>.</Empty>}

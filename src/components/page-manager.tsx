@@ -71,7 +71,7 @@ export function PageManager({ releaseId, pages: initial, mode }: { releaseId: st
   return (
     <section className="card stack" aria-labelledby="pages-h">
       <div className="spread">
-        <h2 id="pages-h" className="display-s" style={{ margin: 0 }}>Pages ({pages.length})</h2>
+        <h2 id="pages-h" className="tn-h3" style={{ margin: 0 }}>Pages ({pages.length})</h2>
         {dirty && (
           <div className="row">
             <button className="tn-btn sm" onClick={() => { setPages(initial); setDirty(false); }} disabled={pending}>Undo</button>
@@ -91,8 +91,8 @@ export function PageManager({ releaseId, pages: initial, mode }: { releaseId: st
         onDragLeave={() => setOver(false)}
         onDrop={(e) => { e.preventDefault(); setOver(false); handleFiles(e.dataTransfer.files); }}
       >
-        <p className="body-strong" style={{ margin: 0 }}>Drop page images here</p>
-        <p className="caption muted">They&apos;re added in file-name order (page-01, page-02, …) after the existing pages.</p>
+        <p className="tn-body-strong" style={{ margin: 0 }}>Drop page images here</p>
+        <p className="tn-supporting muted">They&apos;re added in file-name order (page-01, page-02, …) after the existing pages.</p>
         <label className="tn-btn sm" style={{ marginTop: 8 }}>
           Choose files
           <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" multiple className="visually-hidden" onChange={(e) => e.target.files && handleFiles(e.target.files)} />
@@ -103,8 +103,8 @@ export function PageManager({ releaseId, pages: initial, mode }: { releaseId: st
         <ul className="list" aria-label="Uploads">
           {queue.map((q, i) => (
             <li key={i} className="list-item">
-              <span className="caption">{q.name}</span>
-              {q.error ? <span className="caption" style={{ color: "var(--scar)" }} role="alert">{q.error}</span> : <progress max={100} value={q.pct} style={{ maxWidth: 200 }} aria-label={`${q.name} upload`} />}
+              <span className="tn-supporting">{q.name}</span>
+              {q.error ? <span className="tn-supporting" style={{ color: "var(--scar)" }} role="alert">{q.error}</span> : <progress max={100} value={q.pct} style={{ maxWidth: 200 }} aria-label={`${q.name} upload`} />}
             </li>
           ))}
         </ul>
@@ -117,7 +117,7 @@ export function PageManager({ releaseId, pages: initial, mode }: { releaseId: st
           {pages.map((p, i) => (
             <li key={p.id} className="page-thumb">
               <img src={p.imageUrl} alt={p.alt || `Page ${i + 1}`} loading="lazy" />
-              <span className="label">Page {i + 1}</span>
+              <span className="tn-eyebrow">Page {i + 1}</span>
               <div className="row">
                 <button className="tn-btn sm" onClick={() => move(i, -1)} disabled={i === 0} aria-label={`Move page ${i + 1} earlier`}>←</button>
                 <button className="tn-btn sm" onClick={() => move(i, 1)} disabled={i === pages.length - 1} aria-label={`Move page ${i + 1} later`}>→</button>
@@ -140,11 +140,11 @@ function AltEditor({ pageId, alt, n }: { pageId: string; alt: string; n: number 
   const [saved, setSaved] = useState<string | null>(null);
   return (
     <details>
-      <summary className="caption">Description{alt ? " ✓" : ""}</summary>
+      <summary className="tn-supporting">Description{alt ? " ✓" : ""}</summary>
       <label className="visually-hidden" htmlFor={`alt-${pageId}`}>Text description of page {n}</label>
       <textarea id={`alt-${pageId}`} className="tn-field__input" style={{ minHeight: 70, fontSize: 13 }} value={v} onChange={(e) => setV(e.target.value)} placeholder="What happens on this page, for screen reader users" />
       <button className="tn-btn sm" style={{ marginTop: 4 }} onClick={async () => { const r = await setPageAltAction(pageId, v); setSaved(r?.error ?? "Saved"); }}>Save</button>
-      {saved && <span className="caption" role="status"> {saved}</span>}
+      {saved && <span className="tn-supporting" role="status"> {saved}</span>}
     </details>
   );
 }

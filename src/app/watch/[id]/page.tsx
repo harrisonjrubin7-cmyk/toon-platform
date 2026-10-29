@@ -34,8 +34,8 @@ export default async function WatchPage({ params, searchParams }: Props) {
       {preview && <div className="alert alert-info" role="status">Studio preview. Viewers can&apos;t see this until it&apos;s published.</div>}
       <p className="crumbs"><Link href={`/series/${r.seriesSlug}`}>{r.seriesTitle}</Link> · {r.volumeTitle}</p>
       <div className="spread">
-        <h1 className="display-m" style={{ margin: 0 }}>Episode {r.number}: {r.title}</h1>
-        <div className="row"><RatingTag rating={r.rating} />{r.durationSeconds ? <span className="caption">{formatDuration(r.durationSeconds)}</span> : null}</div>
+        <h1 className="tn-h2" style={{ margin: 0 }}>Episode {r.number}: {r.title}</h1>
+        <div className="row"><RatingTag rating={r.rating} />{r.durationSeconds ? <span className="tn-supporting">{formatDuration(r.durationSeconds)}</span> : null}</div>
       </div>
       {source ? (
         <EpisodePlayer releaseId={r.id} title={`${r.seriesTitle}, episode ${r.number}: ${r.title}`} source={source} startAt={r.progress && !r.progress.completed ? r.progress.position : 0} signedIn={!!actor} nextId={r.nextId} />

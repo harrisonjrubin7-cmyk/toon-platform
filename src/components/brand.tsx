@@ -4,41 +4,41 @@ import Link from "next/link";
 export const STUDIO_NAME = "Tune Comics & Studios";
 
 /**
- * Tune studio mark. Renders the light and dark artwork side by side and lets the
- * brand kit's tn-on-light / tn-on-dark classes show the right one for the theme.
+ * Tune studio signature, per Brand & Design System 1.0: the transparent wordmark on
+ * light backgrounds only (never under 240 CSS px wide), and the folded-T emblem on its
+ * own charcoal ground for dark themes. The brand kit's tn-on-light / tn-on-dark classes
+ * pick the right one for the active theme.
  */
-export function StudioLogo({ variant = "wordmark", height = 40 }: { variant?: "wordmark" | "lockup" | "icon"; height?: number }) {
-  const base = `/brand/logos/tune-${variant}`;
+export function StudioLogo({ width = 240, emblem = 40 }: { width?: number; emblem?: number }) {
   return (
     <span className="studio-logo">
-      <img className="tn-on-light" src={`${base}.svg`} alt={STUDIO_NAME} style={{ height, width: "auto" }} />
-      <img className="tn-on-dark" src={`${base}-on-dark.svg`} alt={STUDIO_NAME} style={{ height, width: "auto" }} />
+      <img className="tn-on-light" src="/brand/logos/transparent-wordmark.png" alt={STUDIO_NAME} width={Math.max(width, 240)} height={Math.round(Math.max(width, 240) / 3)} />
+      <img className="tn-on-dark" src="/brand/logos/social-icon.jpg" alt={STUDIO_NAME} width={Math.max(emblem, 32)} height={Math.max(emblem, 32)} />
     </span>
   );
+}
+
+/** The folded-T emblem on its charcoal ground; works on any theme. */
+export function StudioEmblem({ size = 96 }: { size?: number }) {
+  return <img className="studio-emblem" src="/brand/logos/social-icon.jpg" alt="" width={Math.max(size, 32)} height={Math.max(size, 32)} />;
 }
 
 export function SiteLogoLink() {
   return (
     <Link href="/" className="logo-link" aria-label={`${STUDIO_NAME} home`}>
-      <StudioLogo variant="wordmark" height={32} />
+      <StudioLogo />
     </Link>
   );
 }
 
-/** "A Tune Comics & Studios original" endorsement line, with the T icon. */
+/** "A Tune Comics & Studios original" endorsement, in words only (no emblem at this size). */
 export function Endorsement() {
-  return (
-    <span className="tn-lockup__endorse">
-      <img className="tn-on-light" src="/brand/logos/tune-icon.svg" alt="" />
-      <img className="tn-on-dark" src="/brand/logos/tune-icon-on-dark.svg" alt="" />
-      A {STUDIO_NAME} original
-    </span>
-  );
+  return <span className="tn-lockup__endorse">A {STUDIO_NAME} original</span>;
 }
 
 /** An IP's mark, with the dark variant when one exists alongside it (name-on-dark.svg). */
 export function IpMark({ src, title, className = "ip-mark" }: { src: string | null; title: string; className?: string }) {
-  if (!src) return <h1 className="display-l">{title}</h1>;
+  if (!src) return <h1 className="tn-h1">{title}</h1>;
   const dark = onDarkVariant(src);
   return (
     <h1 style={{ margin: 0 }}>

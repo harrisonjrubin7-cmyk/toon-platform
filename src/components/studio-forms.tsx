@@ -107,9 +107,9 @@ export function DeleteSeriesForm({ id, title }: { id: string; title: string }) {
   const [state, action] = useForm(A.deleteSeriesAction);
   return (
     <details className="card">
-      <summary className="body-strong">Delete this series</summary>
+      <summary className="tn-body-strong">Delete this series</summary>
       <form action={action} className="form-grid" style={{ marginTop: 12 }}>
-        <p className="caption">This removes the series and every saga, season, issue, episode and page in it. It can&apos;t be undone. Type <strong>{title}</strong> to confirm.</p>
+        <p className="tn-supporting">This removes the series and every saga, season, issue, episode and page in it. It can&apos;t be undone. Type <strong>{title}</strong> to confirm.</p>
         <FormAlert state={state} />
         <input type="hidden" name="id" value={id} />
         <Field name="confirmTitle" label="Series title" state={state} autoComplete="off" />
@@ -188,10 +188,10 @@ export function PublishPanel({ id, status, publishAt, ready, readyHint, previewH
   return (
     <div className="card stack">
       <div className="spread">
-        <h2 className="display-s" style={{ margin: 0 }}>Publishing</h2>
+        <h2 className="tn-h3" style={{ margin: 0 }}>Publishing</h2>
         {status === "draft" ? <span className="tn-badge">Draft</span> : scheduled ? <span className="tn-badge tn-badge--info">Scheduled</span> : <span className="tn-badge tn-badge--live">Live</span>}
       </div>
-      {scheduled && <p className="caption">Goes live {new Date(publishAt!).toLocaleString()}.</p>}
+      {scheduled && <p className="tn-supporting">Goes live {new Date(publishAt!).toLocaleString()}.</p>}
       <FormAlert state={pubState} />
       <FormAlert state={unState} />
       {status === "draft" || scheduled ? (
@@ -206,7 +206,7 @@ export function PublishPanel({ id, status, publishAt, ready, readyHint, previewH
           {mode === "schedule" && (
             <div className="tn-field"><label htmlFor="publishAt" className="tn-field__label">Go live at (your local time)</label><input id="publishAt" type="datetime-local" name="publishAt" className="tn-field__input" required /></div>
           )}
-          {!ready && <p className="caption" style={{ color: "var(--scar)" }}>{readyHint}</p>}
+          {!ready && <p className="tn-supporting" style={{ color: "var(--scar)" }}>{readyHint}</p>}
           <SubmitButton disabled={!ready} pendingText="Publishing…">{mode === "now" ? "Publish now" : "Schedule"}</SubmitButton>
         </form>
       ) : null}
@@ -229,7 +229,7 @@ export function VideoForm({ id, version, videoUrl, durationSeconds, mode }: { id
   const [err, setErr] = useState<string | null>(null);
   return (
     <form action={action} className="card form-grid" noValidate>
-      <h2 className="display-s" style={{ margin: 0 }}>Episode video</h2>
+      <h2 className="tn-h3" style={{ margin: 0 }}>Episode video</h2>
       <FormAlert state={state} />
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="version" value={version} />

@@ -8,7 +8,7 @@ export default function NewSeries() {
   return (
     <>
       <p className="crumbs"><Link href="/studio">Series</Link> / New</p>
-      <h1 className="display-m">New series</h1>
+      <h1 className="tn-h2">New series</h1>
       <SeriesForm mode={storageMode()} />
     </>
   );

@@ -9,7 +9,7 @@ export default async function StudioLayout({ children }: { children: React.React
   return (
     <div className="studio-shell">
       <aside>
-        <p className="label" style={{ marginBottom: 8 }}>Studio</p>
+        <p className="tn-eyebrow" style={{ marginBottom: 8 }}>Studio</p>
         <NavLinks
           className="studio-nav"
           links={[

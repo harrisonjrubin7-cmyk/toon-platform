@@ -9,7 +9,7 @@ export default async function AgeGate({ searchParams }: { searchParams: Promise<
   return (
     <div style={{ maxWidth: 520, margin: "40px auto" }} className="card stack">
       <span className="tn-rating"><span className="tn-rating__code">18+</span><span className="tn-rating__note">Mature readers</span></span>
-      <h1 className="display-m">Are you 18 or older?</h1>
+      <h1 className="tn-h2">Are you 18 or older?</h1>
       <p>Tune titles are made for adults. They include violence, strong language and other mature themes.</p>
       <form action={confirmAgeAction} className="row">
         <input type="hidden" name="next" value={next} />

@@ -13,8 +13,8 @@ export default async function Users({ searchParams }: { searchParams: Promise<{ 
   const users = await load(listUsers(db, actor, q));
   return (
     <>
-      <h1 className="display-m">People and roles</h1>
-      <div className="card caption">
+      <h1 className="tn-h2">People and roles</h1>
+      <div className="card tn-supporting">
         <strong>Reader</strong>: reads, watches, follows and saves progress. <strong>Editor</strong>: also creates, uploads, publishes and deletes studio content. <strong>Admin</strong>: also changes roles, disables accounts and sees the activity log. The studio always keeps at least one admin.
       </div>
       <form role="search" className="row">
@@ -28,8 +28,8 @@ export default async function Users({ searchParams }: { searchParams: Promise<{ 
           <tbody>
             {users.map((u) => (
               <tr key={u.id}>
-                <td><div className="body-strong">{u.displayName}{u.id === actor.id ? " (you)" : ""}</div><div className="caption muted">{u.email}</div></td>
-                <td className="caption">{formatDate(u.createdAt)}</td>
+                <td><div className="tn-body-strong">{u.displayName}{u.id === actor.id ? " (you)" : ""}</div><div className="tn-supporting muted">{u.email}</div></td>
+                <td className="tn-supporting">{formatDate(u.createdAt)}</td>
                 <td>{u.disabled ? <span className="tn-badge tn-badge--warn">Disabled</span> : <span className="tn-badge">Active</span>}</td>
                 <td><UserRowControls userId={u.id} role={u.role} disabled={u.disabled} isSelf={u.id === actor.id} /></td>
               </tr>

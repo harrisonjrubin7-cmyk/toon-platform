@@ -11,7 +11,7 @@ export default async function StudioHome() {
   return (
     <>
       <div className="spread">
-        <h1 className="display-m" style={{ margin: 0 }}>Series</h1>
+        <h1 className="tn-h2" style={{ margin: 0 }}>Series</h1>
         <Link className="tn-btn tn-btn--primary" href="/studio/series/new">New series</Link>
       </div>
       <p className="muted">Each series is one IP. Inside it, add comic sagas and show seasons, then their issues and episodes.</p>
@@ -24,8 +24,8 @@ export default async function StudioHome() {
               <div className="row">
                 {s.logoUrl || s.coverUrl ? <img src={(s.logoUrl || s.coverUrl)!} alt="" style={{ width: 56, height: 40, objectFit: "contain" }} /> : null}
                 <div>
-                  <Link href={`/studio/series/${s.id}`} className="body-strong">{s.title}</Link>
-                  <div className="caption muted">/series/{s.slug} · {s.published} of {s.total} releases live</div>
+                  <Link href={`/studio/series/${s.id}`} className="tn-body-strong">{s.title}</Link>
+                  <div className="tn-supporting muted">/series/{s.slug} · {s.published} of {s.total} releases live</div>
                 </div>
               </div>
               <div className="row">

@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: { default: "Tune Comics & Studios", template: "%s · Tune Comics & Studios" },
   description: "Read the comics and watch the shows from Tune Comics & Studios. Grown-up stories, made by hand.",
-  icons: { icon: "/brand/logos/tune-icon-tile.svg" },
+  icons: { icon: "/brand/logos/tune-icon-tile.svg" }, // interim favicon until the 16 px emblem exists
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };
@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/brand/tokens/components.css" />
       </head>
-      <body className="body">
+      <body className="tn-body">
         <a className="skip-link" href="#main">Skip to content</a>
         <header className="site-header">
           <div className="container">
@@ -44,7 +44,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             />
             {actor ? (
               <form action={logoutAction} className="row" style={{ gap: 6 }}>
-                <span className="caption muted" title={actor.email}>{actor.displayName}</span>
+                <span className="tn-supporting muted" title={actor.email}>{actor.displayName}</span>
                 <button className="tn-btn tn-btn--ghost sm" type="submit">Sign out</button>
               </form>
             ) : (

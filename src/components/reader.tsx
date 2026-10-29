@@ -76,7 +76,7 @@ export function ComicReader({ releaseId, title, pages, startAt, signedIn, nextId
             <button className={`tn-btn sm ${mode === "page" ? "tn-btn--primary" : ""}`} aria-pressed={mode === "page"} onClick={() => switchMode("page")}>Page by page</button>
             <button className={`tn-btn sm ${mode === "scroll" ? "tn-btn--primary" : ""}`} aria-pressed={mode === "scroll"} onClick={() => switchMode("scroll")}>Scroll</button>
           </div>
-          <span className="caption" aria-live="polite">Page {i + 1} of {pages.length}</span>
+          <span className="tn-supporting" aria-live="polite">Page {i + 1} of {pages.length}</span>
           {mode === "page" && (
             <div className="row">
               <button className="tn-btn sm" onClick={() => go(-Infinity)} disabled={i === 0}>← Back</button>
@@ -94,7 +94,7 @@ export function ComicReader({ releaseId, title, pages, startAt, signedIn, nextId
             <button type="button" className="zone next" aria-label="Next page" tabIndex={-1} onClick={() => go(Infinity)} />
           </div>
           {pages[i + 1] && <link rel="preload" as="image" href={pages[i + 1].imageUrl} />}
-          <p className="caption muted" style={{ marginTop: 8 }}>Use the arrow keys, or tap the left or right side of the page.</p>
+          <p className="tn-supporting muted" style={{ marginTop: 8 }}>Use the arrow keys, or tap the left or right side of the page.</p>
         </div>
       ) : (
         <div className="reader-scroll" ref={stageRef}>
@@ -106,7 +106,7 @@ export function ComicReader({ releaseId, title, pages, startAt, signedIn, nextId
 
       {(i === last || mode === "scroll") && (
         <div className="card spread" style={{ marginTop: 24 }}>
-          <span className="body-strong">{i === last ? "End of issue." : "Keep going."}</span>
+          <span className="tn-body-strong">{i === last ? "End of issue." : "Keep going."}</span>
           <div className="row">
             {prevId && <Link className="tn-btn" href={`/read/${prevId}`}>Previous issue</Link>}
             {nextId ? <Link className="tn-btn tn-btn--primary" href={`/read/${nextId}`}>Next issue →</Link> : <span className="muted">You&apos;re caught up.</span>}

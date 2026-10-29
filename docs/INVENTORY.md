@@ -12,7 +12,7 @@ Deployment: nothing is deployed yet (see RUNBOOK; blocked on a GitHub repo).
 | Reader web app | Public catalog, comic reader, episode player, account, library | Built, verified (below) |
 | Studio admin (`/studio`) | Create, upload, publish, schedule; people and roles; activity | Built, verified (below) |
 | Shared core | Accounts, sessions, roles, Postgres schema, media rules, audit log | Built, verified |
-| Brand kit | Tune Comics & Studios kit v2 (logos, tokens, components, fonts) from the brand thread | Applied 2026-10-29 |
+| Brand kit | Tune Comics & Studios kit v3, following the founder's Brand & Design System 1.0 (Georgia + system sans, ink/paper/champagne, 3px focus ring, 48px controls, no UI shadows; approved raster logos, interim SVG favicon) | Applied and verified 2026-10-29 (tsc, eslint, vitest 22/22, build, Playwright 8/8, DOM checks per theme) |
 | Landing page + newsletter | Separate site from the "Launch Volcano Racers landing page" thread | Not part of this app (O6) |
 | Store / payments | Not confirmed | Open (O2) |
 | Native apps | Not confirmed | Not planned; the site is responsive |

@@ -18,7 +18,7 @@ export default async function Activity() {
   const rows = await load(activity(db, actor, 200));
   return (
     <>
-      <h1 className="display-m">Activity log</h1>
+      <h1 className="tn-h2">Activity log</h1>
       <p className="muted">The last 200 changes made in the studio and to accounts.</p>
       <div className="table-wrap">
         <table>
@@ -26,10 +26,10 @@ export default async function Activity() {
           <tbody>
             {rows.map((r) => (
               <tr key={r.id}>
-                <td className="caption">{formatDateTime(r.at)}</td>
-                <td className="caption">{r.actor}</td>
+                <td className="tn-supporting">{formatDateTime(r.at)}</td>
+                <td className="tn-supporting">{r.actor}</td>
                 <td><code>{r.action}</code>{r.entityId && LINKS[r.entityType] && !r.action.endsWith(".deleted") ? <> · <Link href={LINKS[r.entityType](r.entityId)}>open</Link></> : null}</td>
-                <td className="caption"><code>{Object.keys(r.detail ?? {}).length ? JSON.stringify(r.detail) : ""}</code></td>
+                <td className="tn-supporting"><code>{Object.keys(r.detail ?? {}).length ? JSON.stringify(r.detail) : ""}</code></td>
               </tr>
             ))}
           </tbody>

@@ -28,7 +28,7 @@ export default async function SeriesPage({ params }: Props) {
     <div className={ipClass(s.theme)}>
       <section className={`hero ${s.theme !== "studio" ? "on-ground" : ""}`}>
         <IpMark src={s.logoUrl} title={s.title} />
-        {s.tagline && <p className="body-l" style={{ marginTop: 12 }}>{s.tagline}</p>}
+        {s.tagline && <p className="tn-body" style={{ marginTop: 12 }}>{s.tagline}</p>}
         <div className="row" style={{ marginBottom: 12 }}>
           <RatingTag rating={s.rating} />
           <Endorsement />

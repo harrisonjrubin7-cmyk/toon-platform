@@ -8,7 +8,7 @@ export default async function AllSeries() {
   const series = await listPublishedSeries(db);
   return (
     <>
-      <h1 className="display-l">Series</h1>
+      <h1 className="tn-h1">Series</h1>
       <p className="muted">Every Tune world, in comics and on screen.</p>
       {series.length ? <div className="issue-grid">{series.map((s) => <SeriesTile key={s.id} s={s} />)}</div> : <Empty>No series are live yet.</Empty>}
     </>

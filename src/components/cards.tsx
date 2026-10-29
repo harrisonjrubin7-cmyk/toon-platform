@@ -63,6 +63,10 @@ export function SeriesTile({ s }: { s: SeriesCard }) {
   );
 }
 
+/**
+ * "Nothing here" state for a list that loaded successfully. A list that failed to load
+ * throws instead and lands on the error boundary, so the two are never confused.
+ */
 export function Empty({ children }: { children: React.ReactNode }) {
-  return <div className="empty">{children}</div>;
+  return <div className="empty" role="status">{children}</div>;
 }

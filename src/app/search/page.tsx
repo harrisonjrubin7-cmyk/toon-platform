@@ -9,7 +9,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   const res = q.trim().length >= 2 ? await search(db, q) : null;
   return (
     <>
-      <h1 className="display-l">Search</h1>
+      <h1 className="tn-h1">Search</h1>
       <form role="search" action="/search" className="row" style={{ marginBottom: 24 }}>
         <label htmlFor="q" className="visually-hidden">Search series, issues and episodes</label>
         <input id="q" name="q" type="search" className="tn-field__input" defaultValue={q} placeholder="Search series, issues, episodes" style={{ flex: 1, minWidth: 220 }} />

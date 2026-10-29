@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { currentActor } from "@/lib/auth/session";
 import { continueList, latestReleases, listPublishedSeries, newForYou } from "@/lib/domain/catalog";
 import { EpisodeRow, Empty, IssueCard, ReleaseTile, SeriesTile } from "@/components/cards";
-import { StudioLogo } from "@/components/brand";
+import { StudioEmblem } from "@/components/brand";
 
 export default async function Home() {
   const actor = await currentActor();
@@ -19,10 +19,10 @@ export default async function Home() {
     <>
       <section className="hero">
         <div className="row" style={{ gap: 20, alignItems: "center" }}>
-          <StudioLogo variant="icon" height={96} />
+          <StudioEmblem size={96} />
           <div style={{ flex: 1, minWidth: 240 }}>
-            <h1 className="display-l" style={{ margin: 0 }}>Cartoons that bleed.</h1>
-            <p className="body-l" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Tune Comics &amp; Studios. Toon physics. Real scars.</p>
+            <h1 className="tn-h1" style={{ margin: 0 }}>Cartoons that bleed.</h1>
+            <p className="tn-body" style={{ margin: "8px 0 16px" }}>Read the comics and watch the shows from Tune Comics &amp; Studios. Toon physics. Real scars.</p>
             <div className="row">
               <Link className="tn-btn tn-btn--primary" href="/comics">Read comics</Link>
               <Link className="tn-btn" href="/shows">Watch shows</Link>
