@@ -17,6 +17,7 @@
 | `BLOB_READ_WRITE_TOKEN` | Vercel | Added automatically when a Blob store is connected to the project. Without it, production uploads are refused. |
 | `RESEND_API_KEY`, `EMAIL_FROM` | Vercel | Email delivery through Resend. `EMAIL_FROM` must use a domain verified in Resend. Without them, emails wait in the outbox (Studio → Email shows a warning) and nothing is lost. |
 | `APP_URL` | Vercel | Base URL for links in emails, e.g. `https://tune.example.com`. Falls back to the Vercel deployment URL. |
+| `PAYMENTS_PROVIDER`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `PAYMENTS_LIVE`, `PACKS_DAILY_CAP_CENTS`, `PACKS_BLOCKED_COUNTRIES` | Vercel | Card pack store. See docs/GAME.md. Default is off. |
 | `CRON_SECRET` | Vercel | Vercel Cron sends it to `/api/cron/email`, which sends due emails (daily on the Hobby plan; hourly needs Pro). Admins can also press "Send due emails now" in Studio → Email. |
 
 ## Deploy
@@ -45,6 +46,12 @@
 
 - `/api/health` for uptime checks (DB reachability).
 - Vercel runtime logs for errors. Server errors are logged with a digest code that the error page shows to users.
+
+## Card store
+
+- Turn on Stripe test mode: set `PAYMENTS_PROVIDER=stripe` and a `sk_test_` key, then in Stripe add a webhook to `https://<site>/api/payments/stripe` for `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed` and `checkout.session.expired`, and set `STRIPE_WEBHOOK_SECRET`.
+- A buyer paid but has no packs: check Studio → Card store. A `pending` row means the webhook didn't arrive; resend the event from the Stripe dashboard (fulfilment is safe to repeat). As a fallback, give the packs with "Give free packs" (logged).
+- Refunds are made in Stripe. The app doesn't take cards back automatically.
 
 ## Common tasks
 
