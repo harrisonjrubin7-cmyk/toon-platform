@@ -1,0 +1,135 @@
+/* Tune Comics & Studio — generated from tokens.json */
+@font-face { font-family:'Courier Prime'; src:url('../fonts/CourierPrime-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Courier Prime'; src:url('../fonts/CourierPrime-Bold.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+:root, [data-theme="ivory"] {
+  --surface: #F4F0E8;
+  --surface-raised: #FFFFFF;
+  --surface-sunk: #E8E1D5;
+  --ink: #161616;
+  --ink-muted: #65615B;
+  --line: #C8C2B8;
+  --line-input: #65615B;
+  --champagne: #D4C1A0;
+  --bronze: #80603A;
+  --accent: var(--bronze);
+  --action: #161616;
+  --action-hover: #38352F;
+  --action-pressed: #000000;
+  --on-action: #F4F0E8;
+  --secondary-hover: #E5DFD4;
+  --scar: #A52A37;
+  --error: var(--scar);
+  --on-scar: #FFFFFF;
+  --success: #326448;
+  --on-success: #FFFFFF;
+  --focus: #005FCC;
+  --magma: #FF5A1F;
+  --basalt: #2B2422;
+  --on-basalt: #F4F0E8;
+  --ip-accent: var(--champagne);
+  --shadow-1: none;
+  --shadow-2: 0 12px 32px rgba(22,22,22,.10);
+}
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="ivory"]) {
+  --surface: #161616;
+  --surface-raised: #1F1E1C;
+  --surface-sunk: #0E0E0E;
+  --ink: #F4F0E8;
+  --ink-muted: #A8A196;
+  --line: #3A3733;
+  --line-input: #8A847A;
+  --champagne: #D4C1A0;
+  --bronze: #80603A;
+  --accent: var(--champagne);
+  --action: #F4F0E8;
+  --action-hover: #E5DFD4;
+  --action-pressed: #FFFFFF;
+  --on-action: #161616;
+  --secondary-hover: #2A2825;
+  --scar: #E07A85;
+  --error: var(--scar);
+  --on-scar: #161616;
+  --success: #7CC4A2;
+  --on-success: #161616;
+  --focus: #4C9AFF;
+  --magma: #FF6E3A;
+  --basalt: #2B2422;
+  --on-basalt: #F4F0E8;
+  --ip-accent: var(--champagne);
+  --shadow-1: none;
+  --shadow-2: 0 16px 40px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+}
+[data-theme="noir"] {
+  --surface: #161616;
+  --surface-raised: #1F1E1C;
+  --surface-sunk: #0E0E0E;
+  --ink: #F4F0E8;
+  --ink-muted: #A8A196;
+  --line: #3A3733;
+  --line-input: #8A847A;
+  --champagne: #D4C1A0;
+  --bronze: #80603A;
+  --accent: var(--champagne);
+  --action: #F4F0E8;
+  --action-hover: #E5DFD4;
+  --action-pressed: #FFFFFF;
+  --on-action: #161616;
+  --secondary-hover: #2A2825;
+  --scar: #E07A85;
+  --error: var(--scar);
+  --on-scar: #161616;
+  --success: #7CC4A2;
+  --on-success: #161616;
+  --focus: #4C9AFF;
+  --magma: #FF6E3A;
+  --basalt: #2B2422;
+  --on-basalt: #F4F0E8;
+  --ip-accent: var(--champagne);
+  --shadow-1: none;
+  --shadow-2: 0 16px 40px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 16px;
+  --radius-pill: 999px;
+  --radius-frame: 0;
+  --stroke-hair: 1px;
+  --stroke-bold: 2px;
+  --stroke-focus: 3px;
+  --stroke-notice: 4px;
+  --duration-micro: 120ms;
+  --duration: 200ms;
+  --duration-page: 320ms;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --content-max: 1280px;
+  --control-min: 48px;
+  --gutter-compact: 16px;
+  --gutter-medium: 24px;
+  --gutter-wide: 32px;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-script: "Courier Prime", "Courier New", Courier, monospace;
+}
+.tn-display { font-family:var(--font-display); font-size:clamp(48px, 8vw, 96px); line-height:1.02; font-weight:400; letter-spacing:-0.03em; }
+.tn-h1 { font-family:var(--font-display); font-size:clamp(40px, 6vw, 72px); line-height:1.08; font-weight:400; letter-spacing:-0.02em; }
+.tn-h2 { font-family:var(--font-display); font-size:40px; line-height:1.15; font-weight:400; letter-spacing:-0.02em; }
+.tn-h3 { font-family:var(--font-display); font-size:24px; line-height:1.25; font-weight:400; }
+.tn-body { font-family:var(--font-sans); font-size:16px; line-height:1.6; font-weight:400; }
+.tn-body-strong { font-family:var(--font-sans); font-size:16px; line-height:1.6; font-weight:600; }
+.tn-supporting { font-family:var(--font-sans); font-size:14px; line-height:1.5; font-weight:400; }
+.tn-eyebrow { font-family:var(--font-sans); font-size:12px; line-height:1.4; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; }
+.tn-script { font-family:var(--font-script); font-size:15px; line-height:1.5; font-weight:400; }
