@@ -59,7 +59,7 @@ function startShift() {
   shift = { car, practice, jobs, timeLeft: SHIFT_SECONDS, misses: 0, startDamage: g.damage, over: false };
   showPanel(null);
   $('#hud').hidden = false;
-  pip(practice ? 'Practice run. Pick a job on the car.' : `${jobs.length} jobs. Pick one on the car.`);
+  pip(practice ? 'Practice run. Pick a job under the car.' : `${jobs.length} jobs. Pick one under the car.`);
   renderJobs();
   lastTs = 0;
   cancelAnimationFrame(rafId);
@@ -82,24 +82,32 @@ function spotToScreen(box, job) {
   return { x: box.cx + (job.x - 0.5) * box.L * box.scale, y: box.cy + (job.y - 0.5) * box.W * box.scale };
 }
 
+// Where a job is on the car, in words (the car faces right on the lift).
+function spotName(j) {
+  const along = j.x > 0.62 ? 'front' : j.x < 0.38 ? 'back' : 'middle';
+  const side = j.y < 0.45 ? 'left side' : j.y > 0.55 ? 'right side' : 'centre';
+  return `${along}, ${side}`;
+}
+
+// Job buttons live in a tray under the car, never on top of it (project rule:
+// no labels over art). Hovering or focusing one lights up its spot on the car.
+let litJob = null;
 function renderJobs() {
-  const view = fitCanvas(canvas);
-  const box = carBox(view);
   const open = shift.jobs.filter((j) => !j.done);
-  $('#jobs').replaceChildren(...open.map((j, i) => {
-    const p = spotToScreen(box, j);
+  $('#jobs').replaceChildren(...open.map((j) => {
     const T = JOB_TYPES[j.type];
+    const light = () => { litJob = j; };
+    const unlight = () => { if (litJob === j) litJob = null; };
     return h('button', {
       type: 'button', class: 'pc-job', 'data-type': j.type,
-      style: { left: `${p.x}px`, top: `${p.y}px` },
-      'aria-label': `Job ${i + 1}: ${T.name}, use the ${T.tool.toLowerCase()}`,
+      'aria-label': `${T.name} at the ${spotName(j)}, use the ${T.tool.toLowerCase()}`,
       onclick: () => openTool(j),
-    }, T.name);
+      onfocus: light, onblur: unlight, onpointerenter: light, onpointerleave: unlight,
+    }, T.name, h('small', {}, spotName(j)));
   }));
   $('#hud-jobs').textContent = `${shift.jobs.filter((j) => j.done).length}/${shift.jobs.length}`;
 }
 
-window.addEventListener('resize', () => { if (shift && !shift.over) renderJobs(); });
 
 // ---------- tools ----------
 
@@ -140,8 +148,10 @@ function miss(msg) {
 
 function jobDone(job) {
   job.done = true;
-  const p = spotToScreen(carBox(fitCanvas(canvas)), job);
-  fx.word(['CLANK!', 'GOOD AS NEW!', 'SHINY!', 'TA-DA!'][Math.floor(Math.random() * 4)], p.x, p.y - 20, { size: 30, fill: '#7CC4A2' });
+  const box = carBox(fitCanvas(canvas));
+  const p = spotToScreen(box, job);
+  // The sound effect goes in the empty floor above the lift, not on the car.
+  fx.word(['CLANK!', 'GOOD AS NEW!', 'SHINY!', 'TA-DA!'][Math.floor(Math.random() * 4)], p.x, box.cy - box.W * box.scale * 0.8 - 28, { size: 30, fill: '#7CC4A2' });
   fx.sparks(p.x, p.y, 14);
   const left = shift.jobs.filter((j) => !j.done).length;
   pip(left ? `Fixed! ${left} to go.` : 'All fixed. Pip approves.');
@@ -308,6 +318,12 @@ function draw() {
       ctx.fillStyle = '#C9CED6'; ctx.strokeStyle = '#161616'; ctx.lineWidth = 2;
       for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.arc(p.x - r + k * r, p.y + (k % 2 ? r * 0.5 : -r * 0.3), r * 0.35, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
     }
+  }
+  if (litJob && !litJob.done) {
+    const p = spotToScreen(box, litJob);
+    const r = box.scale * 4 * (reduceMotion ? 1.9 : 1.7 + 0.25 * Math.sin(t * 6));
+    ctx.strokeStyle = '#FFC21A'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.stroke();
   }
   if (!reduceMotion && remaining > 50 && Math.random() < 0.2) fx.puff(box.cx - box.L * box.scale * 0.45, box.cy, { n: 1, speed: 25, size: 10, color: 'rgba(80,74,70,.4)' });
   fx.draw(ctx);

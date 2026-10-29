@@ -45,15 +45,24 @@ The e2e script needs Playwright and Chromium installed globally (they are on the
 
 ## Deploy
 
-Any static host works. On Netlify: import the repo, set the base directory to `sites/volcano-racers-games`, leave the build command empty. `netlify.toml` sets the publish folder and security headers. Nothing is deployed yet.
+Any static host works; there is no build step and no server.
 
-Rollback: redeploy the previous commit (Netlify keeps every deploy; "Publish deploy" on an older one). There is no server state; player files live in each browser.
+- **Vercel (the studio's host):** add a project from this repo with **Root Directory** `sites/volcano-racers-games`, framework "Other", build and install commands empty. `vercel.json` sets the output folder and the same security headers as production (CSP with no inline code). `.vercelignore` keeps the tests out of the deploy. The platform app then links to that URL.
+- **Netlify (alternative):** import the repo, base directory `sites/volcano-racers-games`, build command empty. `netlify.toml` sets the headers.
+
+Nothing is deployed yet.
+
+Rollback: promote the previous deployment (Vercel "Instant Rollback", or Netlify "Publish deploy" on an older one). There is no server state; player files live in each browser.
+
+## Art rule
+
+No badge, number, label or control may sit over a title or over the art. The game HUD is a strip above the play area, the touch buttons a strip below it, Pit Crew's job buttons a tray under the car (hovering one lights its spot on the car), and menus are opaque screens shown only while the game is paused. `npm run e2e` checks that nothing visible overlaps a game canvas or a hub card's art. Comic sound-effect words (BOING, CLANK) are drawn into the scene as part of the art.
 
 ## Controls and accessibility
 
 - Keyboard everywhere: arrows or WASD, Space for the special/jump/fire, Esc to pause. On-screen buttons on touch devices.
 - Menus, results and garage screens are real HTML (buttons, tables, live-region announcements for laps, hits and results), not drawn on the canvas. Focus moves into each panel when it opens.
-- Pit Crew jobs are buttons placed on the car; every tool works with the keyboard (Space/Enter, hold Space, arrow keys).
+- Pit Crew jobs are buttons in a tray under the car; every tool works with the keyboard (Space/Enter, hold Space, arrow keys).
 - Screen shake is off when the system asks for reduced motion.
 - The games pause when the tab is hidden.
 

@@ -1,28 +1,28 @@
 .pc-stage { background: #1d1816; }
-.pc-jobs { position: absolute; inset: 0; pointer-events: none; }
+.pc-jobs {
+  flex: none; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+  padding: 10px 12px; background: #161616; border-top: 1px solid rgba(244, 240, 232, .12);
+}
+.pc-jobs:empty { display: none; }
 .pc-job {
-  position: absolute; transform: translate(-50%, -50%);
-  pointer-events: auto;
-  min-width: 48px; min-height: 48px; padding: 6px 10px;
+  min-height: 48px; padding: 6px 14px;
   border-radius: 24px; border: 3px solid #161616;
   background: #FFC21A; color: #161616;
   font: 700 14px var(--font-sans); cursor: pointer;
-  box-shadow: 0 0 0 3px rgba(255, 194, 26, .35);
-  animation: pc-pulse 1.2s ease-in-out infinite;
 }
 .pc-job[data-type="soot"] { background: #FF5A1F; }
 .pc-job[data-type="bolts"] { background: #C9CED6; }
 .pc-job:hover { filter: brightness(1.08); }
-@keyframes pc-pulse { 50% { box-shadow: 0 0 0 8px rgba(255, 194, 26, .15); } }
-@media (prefers-reduced-motion: reduce) { .pc-job { animation: none; } }
+.pc-job:focus-visible { outline: var(--stroke-focus) solid var(--focus); outline-offset: 4px; }
+.pc-job small { display: block; font-weight: 500; font-size: 12px; }
 
 .pc-pip { display: flex; align-items: center; gap: 10px; max-width: 420px; }
 .pc-pip__face { width: 28px; height: 28px; border-radius: 50%; background: #F7F5F0; border: 2px solid #161616; position: relative; flex: none; }
 .pc-pip__face::after { content: ""; position: absolute; left: 4px; right: 4px; top: 8px; height: 7px; background: #B5853A; border-radius: 3px; }
 
 .pc-sheet {
-  position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
-  width: min(560px, calc(100% - 32px));
+  flex: none; align-self: center;
+  width: min(560px, calc(100% - 24px)); margin: 0 0 12px;
   background: var(--surface-raised); border: 1px solid var(--line);
   padding: 16px 20px 20px; display: grid; gap: 12px;
   box-shadow: var(--shadow-2);

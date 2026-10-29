@@ -45,22 +45,28 @@ body {
 .vr-eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--vr-magma); margin: 0; }
 
 /* ---- game stage ---- */
+/* Project rule: no badge, label or control sits over the art. The HUD is a strip
+   above the play area and the touch buttons a strip below it, so the canvas is
+   never covered while the game runs. */
 .vr-stage {
   position: relative;
   height: calc(100dvh - 57px);
   overflow: hidden;
   background: #120e0d;
   touch-action: none;
+  display: flex; flex-direction: column;
 }
-.vr-stage canvas { display: block; width: 100%; height: 100%; }
+.vr-stage canvas { display: block; width: 100%; flex: 1 1 auto; min-height: 0; }
 
 .vr-hud {
-  position: absolute; inset: 12px 12px auto 12px;
+  flex: none;
   display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start;
-  pointer-events: none;
+  padding: 8px 12px;
+  background: #161616; border-bottom: 1px solid rgba(244, 240, 232, .12);
+  order: -1; /* sits above the canvas whatever the markup order */
 }
 .vr-hud__chip {
-  background: rgba(22, 22, 22, .82); color: #F4F0E8;
+  background: #221d1b; color: #F4F0E8;
   border: 1px solid rgba(244, 240, 232, .18);
   padding: 6px 12px; font-size: 14px; line-height: 1.3; min-width: 72px;
 }
@@ -71,13 +77,13 @@ body {
 .vr-hud__chip.is-ready { border-color: var(--vr-sun); }
 .vr-hud__pause { pointer-events: auto; margin-left: auto; }
 
-/* Panels that sit over the stage (menus, results). They cover the game; the game
-   is paused whenever one is open. */
+/* Menus and results are their own screens: opaque, shown only while the game is
+   paused or not running, never a see-through layer over the art. */
 .vr-panel {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 2;
   display: grid; place-items: center;
   padding: 16px;
-  background: rgba(14, 12, 11, .86);
+  background: #0e0c0b;
   overflow-y: auto;
 }
 .vr-panel[hidden] { display: none; }
@@ -126,11 +132,11 @@ body {
 .vr-damage > span { position: absolute; inset: 0 auto 0 0; background: var(--vr-magma); }
 
 /* Touch controls: shown on touch devices only. */
-.vr-touch { position: absolute; inset: auto 0 0 0; display: none; justify-content: space-between; padding: 12px; gap: 12px; pointer-events: none; }
+.vr-touch { flex: none; display: none; justify-content: space-between; padding: 10px 12px; gap: 12px; background: #161616; border-top: 1px solid rgba(244, 240, 232, .12); }
 .vr-touch__group { display: flex; gap: 12px; pointer-events: auto; }
 .vr-touch button {
-  width: 68px; height: 68px; border-radius: 50%;
-  background: rgba(244, 240, 232, .16); color: #F4F0E8;
+  width: 64px; height: 64px; border-radius: 50%;
+  background: #2b2725; color: #F4F0E8;
   border: 2px solid rgba(244, 240, 232, .45);
   font: 700 15px var(--font-sans);
   user-select: none; -webkit-user-select: none; touch-action: none;
