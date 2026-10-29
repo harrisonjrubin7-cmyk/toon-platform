@@ -1,0 +1,5 @@
+# Netlify builds only the Volcano Racers landing page from this repo.
+# Its own settings (publish dir, functions, headers) live in sites/volcano-racers/netlify.toml.
+# The platform app at the repo root deploys on Vercel and ignores this file.
+[build]
+  base = "sites/volcano-racers"
