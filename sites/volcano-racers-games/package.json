@@ -1,0 +1,11 @@
+{
+  "name": "volcano-racers-games",
+  "private": true,
+  "type": "module",
+  "description": "Volcano Racers browser games (static site, no build step)",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "serve": "node e2e/serve.mjs",
+    "e2e": "node e2e/smoke.mjs"
+  }
+}
