@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="noir">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Volcano Racers games</title>
+  <meta name="description" content="Five browser games starring the Volcano Racers cast. A Tune Comics &amp; Studio original.">
+  <link rel="icon" href="shared/brand/logos/tune-icon-tile.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="shared/brand/tokens/tokens.css">
+  <link rel="stylesheet" href="shared/brand/tokens/components.css">
+  <link rel="stylesheet" href="shared/game.css">
+  <link rel="stylesheet" href="shared/hub.css">
+</head>
+<body class="tn-ip--volcano-racers">
+  <a class="vr-skip tn-btn" href="#games">Skip to games</a>
+  <header class="hub-hero">
+    <div class="hub-wrap">
+      <p class="vr-eyebrow">A Tune Comics &amp; Studio original</p>
+      <img class="hub-logo" src="shared/brand/logos/volcano-racers-wordmark-on-dark.svg" alt="Volcano Racers" width="520" height="160">
+      <h1 class="hub-title">Games</h1>
+      <p class="hub-lede">Five games starring the Volcano Racers cast. Toon physics, real scars: the cars bounce, but the dents stay.</p>
+      <p class="hub-rating"><span class="tn-rating"><span class="tn-rating__code">18+</span></span> Made for adult fans of the comic. No gore on screen; damage shows as dents, soot and scars.</p>
+    </div>
+  </header>
+
+  <main class="hub-wrap">
+    <section id="games" aria-labelledby="games-title">
+      <h2 id="games-title" class="hub-h2">Pick a game</h2>
+      <ul class="hub-games" id="game-list"></ul>
+    </section>
+
+    <section aria-labelledby="player-title" class="hub-player">
+      <h2 id="player-title" class="hub-h2">Your racer file</h2>
+      <p class="vr-muted">Saved in this browser and shared by the four games on this site. Coins are just for fun and can't buy anything.</p>
+      <div class="hub-player__grid">
+        <form class="tn-field" id="name-form">
+          <label class="tn-field__label" for="player-name">Racer name</label>
+          <input class="tn-field__input" id="player-name" name="name" maxlength="24" autocomplete="nickname">
+          <span class="tn-field__hint" id="name-hint">Shown on your results. Up to 24 characters.</span>
+          <div><button class="tn-btn tn-btn--secondary" type="submit">Save name</button></div>
+          <p class="vr-muted" id="name-status" role="status"></p>
+        </form>
+        <div>
+          <p class="hub-coins"><span class="vr-coins__dot" aria-hidden="true"></span> <strong data-coins>0</strong> coins</p>
+          <h3 class="hub-h3">Best scores</h3>
+          <dl class="hub-records" id="records"></dl>
+        </div>
+      </div>
+      <h3 class="hub-h3">Garage</h3>
+      <p class="vr-muted">Damage from Circuit Rush stays on each car. Fix it in Pit Crew.</p>
+      <ul class="hub-garage" id="garage"></ul>
+      <details class="hub-reset">
+        <summary>Start over</summary>
+        <p>This wipes your coins, scores and car damage in this browser. It can't be undone.</p>
+        <button class="tn-btn tn-btn--danger" type="button" id="btn-reset">Wipe my racer file</button>
+      </details>
+    </section>
+  </main>
+
+  <footer class="hub-wrap hub-footer">
+    <p class="vr-placeholder-note">Placeholder art: every character and car is drawn with simple shapes in the approved colours until the final designs are ready.</p>
+    <p class="vr-muted">© Tune Comics &amp; Studio. Volcano Racers and its characters belong to Tune Comics &amp; Studio.</p>
+  </footer>
+  <p id="vr-live" class="vr-sr" aria-live="polite"></p>
+  <script type="module" src="shared/hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-theme="noir">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Blaze's Run · Volcano Racers games</title>
+  <meta name="description" content="Blaze races on foot. Jump lava cracks, slide under rockfalls and outrun your own shadow.">
+  <link rel="icon" href="../../shared/brand/logos/tune-icon-tile.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../shared/brand/tokens/tokens.css">
+  <link rel="stylesheet" href="../../shared/brand/tokens/components.css">
+  <link rel="stylesheet" href="../../shared/game.css">
+</head>
+<body class="tn-ip--volcano-racers">
+  <a class="vr-skip tn-btn" href="#stage">Skip to game</a>
+  <header class="vr-topbar">
+    <a class="vr-topbar__back" href="../../">All games</a>
+    <h1 class="vr-topbar__title">Blaze's Run</h1>
+    <span class="vr-coins" title="Coins (shared by every game)"><span class="vr-coins__dot" aria-hidden="true"></span><span data-coins>0</span><span class="vr-sr"> coins</span></span>
+  </header>
+
+  <main id="stage" class="vr-stage">
+    <canvas id="game" tabindex="-1" role="img" aria-label="Blaze running across the black sand, seen from the side"></canvas>
+
+    <div class="vr-hud" id="hud" hidden>
+      <div class="vr-hud__chip">Distance<strong id="hud-dist">0 m</strong></div>
+      <div class="vr-hud__chip">Knee<strong id="hud-knee" aria-label="Knee: fine">●●●</strong></div>
+      <div class="vr-hud__chip" id="hud-glow-chip">Glow<div class="vr-hud__bar vr-hud__bar--special"><span id="hud-glow"></span></div></div>
+      <button class="tn-btn tn-btn--secondary vr-hud__pause" id="btn-pause" type="button">Pause</button>
+    </div>
+
+    <div class="vr-touch" id="touch" aria-hidden="true">
+      <div class="vr-touch__group"><button type="button" data-action="down" tabindex="-1">Slide</button></div>
+      <div class="vr-touch__group"><button type="button" data-action="up" tabindex="-1">Jump</button></div>
+    </div>
+
+    <section class="vr-panel" id="panel-start" aria-labelledby="start-title">
+      <div class="vr-panel__inner">
+        <p class="vr-eyebrow">Volcano Racers · Game 3</p>
+        <h2 id="start-title">Blaze's Run</h2>
+        <p>Blaze is the fastest thing alive, and she races on foot. Run as far as you can across the black sand.</p>
+        <ul>
+          <li><strong>Jump</strong> lava cracks, boulders and GearCorp drones. Hold jump to go higher.</li>
+          <li><strong>Slide</strong> under smoke and rockfalls.</li>
+          <li>Grab <strong>lightning bolts</strong>. Twelve fill the glow: Blaze hits top speed, smashes through anything, and leaves her own shadow behind.</li>
+          <li>Every hit strains her bad knee. Three hits and she has to stop.</li>
+        </ul>
+        <p class="vr-keys">Jump <kbd>↑</kbd>/<kbd>W</kbd>/<kbd>Space</kbd>, slide <kbd>↓</kbd>/<kbd>S</kbd>, pause <kbd>Esc</kbd>. On a phone, use the buttons on screen.</p>
+        <div class="vr-actions">
+          <button class="tn-btn" type="button" id="btn-start" data-autofocus>Run</button>
+          <a class="tn-btn tn-btn--secondary" href="../../">Back to all games</a>
+        </div>
+        <p class="vr-placeholder-note">Placeholder art: Blaze is drawn with simple shapes in her approved colours until the real design is ready.</p>
+      </div>
+    </section>
+
+    <section class="vr-panel" id="panel-pause" aria-labelledby="pause-title" hidden>
+      <div class="vr-panel__inner">
+        <h2 id="pause-title">Paused</h2>
+        <div class="vr-actions">
+          <button class="tn-btn" type="button" id="btn-resume" data-autofocus>Resume</button>
+          <button class="tn-btn tn-btn--secondary" type="button" id="btn-restart">Start over</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="vr-panel" id="panel-over" aria-labelledby="over-title" hidden>
+      <div class="vr-panel__inner">
+        <p class="vr-eyebrow">Run over</p>
+        <h2 id="over-title">Blaze sits down</h2>
+        <div id="over-body"></div>
+        <div class="vr-actions">
+          <button class="tn-btn" type="button" id="btn-again" data-autofocus>Run again</button>
+          <a class="tn-btn tn-btn--secondary" href="../../">All games</a>
+        </div>
+      </div>
+    </section>
+
+    <p id="vr-live" class="vr-sr" aria-live="polite"></p>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
