@@ -98,8 +98,10 @@ test.describe.serial("publish a comic and a show, then read and watch them", () 
     await page.getByLabel("Format").selectOption("show");
     await page.getByLabel("Title *").first().fill("Season 1");
     await page.getByRole("button", { name: "Add", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Season 1", level: 1 })).toBeVisible();
     await page.getByLabel("Title *").first().fill("Green Flag");
     await page.getByRole("button", { name: "Create episode" }).click();
+    await expect(page.getByRole("heading", { name: /Episode #1: Green Flag/ })).toBeVisible();
     await page.getByLabel("Or paste a YouTube or Vimeo link").fill("https://example.com/not-a-video");
     await page.getByRole("button", { name: "Save video" }).click();
     await expect(page.getByText("Upload a video file, or paste a YouTube or Vimeo link.").first()).toBeVisible();
