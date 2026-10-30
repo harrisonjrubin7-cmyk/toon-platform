@@ -1,0 +1,184 @@
+(() => {
+  'use strict';
+  const dialog = document.querySelector('#story-dialog'),
+    detail = document.querySelector('#story-detail');
+  const storageKey = 'toon.reading-marks.v1';
+  let marks = new Set(),
+    persistent = true;
+  try {
+    const data = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    if (Array.isArray(data))
+      marks = new Set(data.filter(x => typeof x === 'string'));
+  } catch {
+    persistent = false;
+  }
+  const node = (tag, cls, text) => {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  };
+  function open(content) {
+    detail.replaceChildren(content);
+    dialog.showModal();
+  }
+  dialog.querySelector('.dialog-close').onclick = () => dialog.close();
+  dialog.addEventListener('click', e => {
+    if (e.target === dialog) {
+      const r = dialog.getBoundingClientRect();
+      if (
+        e.clientX < r.left ||
+        e.clientX > r.right ||
+        e.clientY < r.top ||
+        e.clientY > r.bottom
+      )
+        dialog.close();
+    }
+  });
+  function bookDetail(s, title) {
+    const box = node('article', 'story-detail');
+    const sequence = sagas
+      .filter(x => x.world === s.world)
+      .flatMap(x => x.arcs);
+    box.append(
+      node('span', 'eyebrow', s.world + ' / ' + s.title),
+      node('h2', '', title)
+    );
+    box.querySelector('h2').id = 'story-title';
+    box.append(
+      node(
+        'p',
+        '',
+        `Main arc ${sequence.indexOf(title) + 1} of ${sequence.length} in the current ${s.world} catalog.`
+      ),
+      node('p', '', s.note),
+      node('span', 'status', s.available)
+    );
+    if (title === 'Ignition' || title === 'Begin') {
+      box.append(
+        node(
+          'p',
+          'source-note',
+          'Chapter draft held privately. Public release pending.'
+        )
+      );
+    } else
+      box.append(
+        node(
+          'p',
+          'source-note',
+          'A finished edition is not available from this site. Browse the source and development notes in the collection.'
+        )
+      );
+    open(box);
+  }
+  // Enhance catalog titles after filtering without replacing existing filter behavior.
+  function enhanceCatalog() {
+    document.querySelectorAll('#catalog .saga').forEach(card => {
+      const s = sagas.find(
+        x => x.title === card.querySelector('h3').textContent
+      );
+      card.querySelectorAll('li').forEach(li => {
+        if (li.querySelector('button')) return;
+        const title = li.textContent;
+        const b = node('button', 'arc-link', title + ' ↗');
+        b.onclick = () => bookDetail(s, title);
+        li.replaceChildren(b);
+      });
+    });
+  }
+  new MutationObserver(enhanceCatalog).observe(
+    document.querySelector('#catalog'),
+    {
+      childList: true,
+    }
+  );
+  enhanceCatalog();
+  function renderPath() {
+    const world = document.querySelector('#path-world').value;
+    const selected = sagas.filter(s => s.world === world);
+    const list = document.querySelector('#path-list');
+    list.replaceChildren();
+    let count = 0,
+      total = 0;
+    selected.forEach((s, i) => {
+      const group = node('article', 'path-group');
+      group.append(
+        node('span', 'eyebrow', `SAGA 0${i + 1}`),
+        node('h3', '', s.title)
+      );
+      const ol = node('ol', 'path-arcs');
+      s.arcs.forEach(title => {
+        const key = world + '::' + title;
+        total++;
+        if (marks.has(key)) count++;
+        const li = node('li', '');
+        const label = node('label', '');
+        const input = node('input', '');
+        input.type = 'checkbox';
+        input.checked = marks.has(key);
+        input.setAttribute('aria-label', 'Mark ' + title + ' as read');
+        input.onchange = () => {
+          input.checked ? marks.add(key) : marks.delete(key);
+          try {
+            localStorage.setItem(storageKey, JSON.stringify([...marks]));
+          } catch {
+            persistent = false;
+          }
+          updateStatus();
+        };
+        label.append(input, node('span', '', title));
+        const button = node('button', 'arc-link', 'Edition notes ↗');
+        button.onclick = () => bookDetail(s, title);
+        li.append(label, button);
+        ol.append(li);
+      });
+      group.append(ol);
+      list.append(group);
+    });
+    updateStatus();
+    function updateStatus() {
+      const done = selected
+        .flatMap(s => s.arcs)
+        .filter(t => marks.has(world + '::' + t)).length;
+      document.querySelector('#path-status').textContent =
+        `${done} of ${total} main arcs marked read${persistent ? '' : ' · Storage unavailable; marks last only this visit'}`;
+    }
+  }
+  document.querySelector('#path-world').onchange = renderPath;
+  document.querySelector('#path-reset').onclick = () => {
+    const world = document.querySelector('#path-world').value;
+    marks = new Set([...marks].filter(x => !x.startsWith(world + '::')));
+    try {
+      localStorage.setItem(storageKey, JSON.stringify([...marks]));
+    } catch {
+      persistent = false;
+    }
+    renderPath();
+  };
+  renderPath();
+  document.querySelectorAll('[data-art]').forEach(
+    button =>
+      (button.onclick = () => {
+        const volcano = button.dataset.art === 'volcano';
+        const box = node('article', 'art-detail');
+        const heading = node(
+          'h2',
+          '',
+          volcano ? 'Volcano Racers: Ignition' : 'STARFALL: Begin'
+        );
+        heading.id = 'story-title';
+        const img = node('img', '');
+        img.src = volcano
+          ? 'https://raw.githubusercontent.com/harrisonjrubin7-cmyk/toon-platform/eaaf9264549f3ea0887b427bc1d43c9965ab1932/dist/assets/volcano.jpg'
+          : 'https://raw.githubusercontent.com/harrisonjrubin7-cmyk/toon-platform/eaaf9264549f3ea0887b427bc1d43c9965ab1932/dist/assets/starfall.jpg';
+        img.alt = heading.textContent + ' development cover artwork';
+        box.append(
+          heading,
+          img,
+          node('p', 'source-note', 'Existing cover artwork / development image')
+        );
+        open(box);
+      })
+  );
+})();

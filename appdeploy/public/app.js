@@ -1,0 +1,115 @@
+const sagas = [
+  {
+    world: 'Volcano Racers',
+    title: 'The Ember Heart Saga',
+    count: '29 source issues',
+    available: '29 source reader issues documented',
+    arcs: [
+      'Ignition',
+      'The Great Ring Rally',
+      'Breakdown',
+      'Heart of the Mountain',
+    ],
+    note: 'Source reader material exists. Ignition is also being reworked as a new graphic-novel edition.',
+  },
+  {
+    world: 'Volcano Racers',
+    title: 'The Apex Saga',
+    count: '29 source issues',
+    available: '29 source reader issues documented',
+    arcs: ['New Recruits', 'The Food Chain', 'Extinction Event', 'Apex'],
+    note: 'Source reader material exists. Graphic-novel development follows the documented arc structure.',
+  },
+  {
+    world: 'Volcano Racers',
+    title: 'The Hive Saga',
+    count: '29 planned issue summaries',
+    available: 'Story guide and proposed scripts · in development',
+    arcs: ['Perfect Lap', 'The Feed', 'Ghost Laps', 'The Long Way Round'],
+    note: 'The located guide maps the saga. A complete Hive reader was not located in the latest inventory.',
+  },
+  {
+    world: 'STARFALL',
+    title: 'STARFALL',
+    count: '29 source issues',
+    available: '29 linked source reader issues documented',
+    arcs: [
+      'Begin',
+      'Fugitives',
+      'Shadow Agencies',
+      'The Meridian Circle',
+      'Harvest',
+    ],
+    note: 'The first book is being developed as Begin. The earlier inventory labels its opening arc Starfall.',
+  },
+  {
+    world: 'STARFALL',
+    title: 'Echoes',
+    count: '29 planned issue slots',
+    available: '14 linked source reader issues documented',
+    arcs: ['Afterglow', 'Registry', 'Mirror', 'Keystone', 'Signal'],
+    note: 'Sequel saga in development. Linked source issues are partial; a complete release is not claimed.',
+  },
+  {
+    world: 'STARFALL',
+    title: 'Harrows',
+    count: '29 planned issue slots',
+    available: '13 linked source reader issues documented',
+    arcs: [
+      'Three Stars',
+      'Surrender',
+      'Remnant',
+      'The First',
+      'Give Everything',
+    ],
+    note: 'Sequel saga in development. Linked source issues are partial; a complete release is not claimed.',
+  },
+];
+let selected = 'All';
+const search = document.querySelector('#search');
+function render() {
+  const q = search.value.trim().toLowerCase();
+  const items = sagas.filter(
+    s =>
+      (selected === 'All' || s.world === selected) &&
+      [s.world, s.title, ...s.arcs].join(' ').toLowerCase().includes(q)
+  );
+  document.querySelector('#catalog').replaceChildren(
+    ...items.map(s => {
+      const el = document.createElement('article');
+      el.className = 'saga';
+      el.innerHTML = `<span class="eyebrow">${s.world.toUpperCase()}</span><h3>${s.title}</h3><p>${s.count}</p><ul>${s.arcs
+        .map(
+          a => `<li>${a}
+</li>`
+        )
+        .join(
+          ''
+        )}</ul><div class="availability">${s.available}</div><details><summary>About this edition</summary><p>${s.note}</p></details>`;
+      return el;
+    })
+  );
+  document.querySelector('#result-count').textContent =
+    `${items.length} ${items.length === 1 ? 'saga' : 'sagas'} / ${items.reduce((n, s) => n + s.arcs.length, 0)} book arcs`;
+  document.querySelector('#empty').hidden = items.length > 0;
+  document.querySelectorAll('[data-filter]').forEach(b => {
+    const active = b.dataset.filter === selected;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', String(active));
+  });
+}
+document.querySelectorAll('[data-filter]').forEach(b =>
+  b.addEventListener('click', () => {
+    selected = b.dataset.filter;
+    render();
+  })
+);
+document.querySelectorAll('[data-select]').forEach(a =>
+  a.addEventListener('click', () => {
+    selected = a.dataset.select;
+    search.value = '';
+    render();
+  })
+);
+search.addEventListener('input', render);
+render();

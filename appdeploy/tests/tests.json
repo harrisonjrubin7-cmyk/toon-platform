@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Find a saga and recover from an empty search",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "catalog search",
+      "world filters",
+      "empty state",
+      "edition notes",
+      "dialog dismissal"
+    ],
+    "description": "Finds existing titles and recovers from a search with no results.",
+    "steps": [
+      "Open The collection and select STARFALL.",
+      "Search for Begin and verify its saga is shown.",
+      "Open its edition notes and close the dialog with Escape.",
+      "Search for zzzz-no-such-toon and verify the empty result message.",
+      "Clear the search and choose All."
+    ],
+    "expected": "Only matching sagas appear while filtered; the empty state is visible for the unknown title, and clearing restores all six sagas."
+  },
+  {
+    "name": "Save and remove a book from the shortlist",
+    "viewport": "desktop",
+    "covers": [
+      "workspace search",
+      "workspace world filtering",
+      "shortlist save",
+      "shortlist persistence",
+      "shortlist removal"
+    ],
+    "description": "Checks a title can be retained across refresh and removed.",
+    "steps": [
+      "Open Workspace, select Book library, choose Volcano Racers and search Ignition.",
+      "Save Ignition to shortlist; switch to My shortlist.",
+      "Reload and open My shortlist again.",
+      "Remove Ignition, then reload and reopen My shortlist."
+    ],
+    "expected": "Ignition is saved after the first reload and absent after removal and the second reload."
+  },
+  {
+    "name": "Track and reset a world reading path on mobile",
+    "viewport": "mobile",
+    "covers": [
+      "mobile navigation",
+      "reading path world selection",
+      "reading mark persistence",
+      "world-scoped reset",
+      "book detail"
+    ],
+    "description": "Verifies reading marks persist and a reset is scoped to one world.",
+    "steps": [
+      "Scroll to the reading path guide and choose Volcano Racers.",
+      "Mark Ignition read and open its Edition notes; dismiss the dialog.",
+      "Choose STARFALL and mark Begin read.",
+      "Reload, return to STARFALL, and verify Begin remains marked.",
+      "Reset STARFALL reading marks and switch back to Volcano Racers."
+    ],
+    "expected": "STARFALL marks clear while Ignition remains marked for Volcano Racers; guide controls and notes are usable on mobile."
+  },
+  {
+    "name": "Explore both worlds and enlarge the cover artwork",
+    "viewport": "desktop",
+    "covers": [
+      "hero spotlight",
+      "world navigation",
+      "world atlas",
+      "art gallery",
+      "cover image loading"
+    ],
+    "description": "Checks both cover images and world dossiers remain accessible on the new host.",
+    "steps": [
+      "Switch the hero spotlight to STARFALL and follow Explore STARFALL.",
+      "Find the world atlas, select STARFALL and inspect its dossier.",
+      "Select Volcano Racers and inspect its different dossier.",
+      "Open each Gallery cover and close the enlarged artwork dialog."
+    ],
+    "expected": "Spotlight and dossier contents change to the selected world, both covers load visibly, and enlarged artwork dialogs dismiss correctly."
+  },
+  {
+    "name": "Read development boundaries and studio information",
+    "viewport": "mobile",
+    "covers": [
+      "production board",
+      "connected app status",
+      "studio information",
+      "FAQ",
+      "blocked purchase and app launch boundaries",
+      "private source boundaries"
+    ],
+    "description": "Checks the hosted studio accurately presents development status and informational links.",
+    "steps": [
+      "Open Workspace and switch to the app connections tab, then Production.",
+      "Verify app launch is described as unavailable and checkout is disabled.",
+      "Navigate to In development and verify drafts are described as private with public release pending.",
+      "Scroll through The studio and expand FAQ entries about finished books and animated episodes."
+    ],
+    "expected": "Development availability is clearly labelled, FAQs expand, and private source links, paid checkout and unavailable app launches are absent."
+  }
+]
