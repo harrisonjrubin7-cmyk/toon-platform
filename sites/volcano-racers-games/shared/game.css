@@ -158,3 +158,12 @@ body {
   .vr-hud__bar { width: 80px; }
 }
 .vr-stage canvas:focus { outline: none; }
+
+/* 18+ age gate (shared/age-gate.js). Native <dialog>: focus is trapped by showModal(). */
+.vr-age-gate { max-width: min(28rem, calc(100vw - 2 * var(--space-4))); padding: var(--space-6);
+  background: var(--surface-raised); color: var(--ink); border: var(--stroke-hair) solid var(--line);
+  border-radius: var(--radius-m); box-shadow: var(--shadow-2); }
+.vr-age-gate h2 { margin: 0 0 var(--space-3); font-family: var(--font-display); }
+.vr-age-gate p { margin: 0 0 var(--space-6); color: var(--ink-muted); }
+.vr-age-gate .tn-btn + .tn-btn { margin-inline-start: var(--space-3); }
+.vr-age-gate::backdrop { background: rgb(0 0 0 / 0.85); }

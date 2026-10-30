@@ -41,7 +41,7 @@ export const GAMES = [
     n: 4,
     title: "Ember's Flight",
     stars: 'Ember, Flicker, Cinder and Spark',
-    blurb: 'Fly Ember over the Circuit, gather the hatchlings and keep your fire lit while Gearlock’s drones close in.',
+    blurb: 'Fly Ember over Cinder Isle, gather the hatchlings and keep your fire lit while Gearlock’s drones close in.',
     href: 'games/embers-flight/',
     color: '#FF8A3D',
     records: [{ key: 'best', label: 'Best score' }],
