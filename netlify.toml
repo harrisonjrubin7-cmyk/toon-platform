@@ -1,7 +1,0 @@
-# Netlify (site "tooncomics") builds a preview of this branch from the games folder.
-# The games' own settings (publish dir, security headers) live in
-# sites/volcano-racers-games/netlify.toml. The games' long-term home is a Vercel
-# project with Root Directory sites/volcano-racers-games, which ignores this file.
-# Note: the landing-page branch has its own root netlify.toml; keep only one when merging.
-[build]
-  base = "sites/volcano-racers-games"
