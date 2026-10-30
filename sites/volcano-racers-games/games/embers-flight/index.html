@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ember's Flight · Volcano Racers games</title>
-  <meta name="description" content="Fly Ember over the Circuit, gather the hatchlings and keep your fire lit.">
+  <meta name="description" content="Fly Ember over Cinder Isle, gather the hatchlings and keep your fire lit.">
   <link rel="icon" href="../../shared/brand/logos/tune-icon-tile.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../shared/brand/tokens/tokens.css">
   <link rel="stylesheet" href="../../shared/brand/tokens/components.css">
@@ -19,7 +19,7 @@
   </header>
 
   <main id="stage" class="vr-stage">
-    <canvas id="game" tabindex="-1" role="img" aria-label="Ember flying over the Circuit, seen from the side"></canvas>
+    <canvas id="game" tabindex="-1" role="img" aria-label="Ember flying over Cinder Isle, seen from the side"></canvas>
 
     <div class="vr-hud" id="hud" hidden>
       <div class="vr-hud__chip">Score<strong id="hud-score">0</strong></div>
@@ -44,7 +44,7 @@
       <div class="vr-panel__inner">
         <p class="vr-eyebrow">Volcano Racers</p>
         <h2 id="start-title">Ember's Flight</h2>
-        <p>Ember is one of the last dragons, and his fire is fading. Fly over the Circuit and bring Flicker, Cinder and Spark home.</p>
+        <p>Ember is one of the last dragons, and his fire is fading. Fly over Cinder Isle and bring Flicker, Cinder and Spark home.</p>
         <ul>
           <li>Fly into a lost hatchling to rescue it. Each one following you multiplies your score.</li>
           <li>Gearlock's drones scare the hatchlings away. With none left to scare, a hit dims Ember's fire.</li>
@@ -84,6 +84,7 @@
 
     <p id="vr-live" class="vr-sr" aria-live="polite"></p>
   </main>
+  <script src="../../shared/age-gate.js" defer></script>
   <script type="module" src="./main.js"></script>
 </body>
 </html>
