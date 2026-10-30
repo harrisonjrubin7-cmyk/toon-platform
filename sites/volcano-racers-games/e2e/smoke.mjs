@@ -15,8 +15,10 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 let failures = 0;
 
-async function run(name, viewport, fn) {
+async function run(name, viewport, fn, { ageOk = true } = {}) {
   const page = await browser.newPage({ viewport, ...(viewport.width < 600 ? { hasTouch: true, isMobile: true } : {}) });
+  // Skip the 18+ gate (shared/age-gate.js) except in the test that checks it.
+  if (ageOk) await page.addInitScript(() => localStorage.setItem('vr.ageOk', '1'));
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
@@ -55,6 +57,21 @@ async function artIsClear(page) {
 }
 const DESKTOP = { width: 1280, height: 800 };
 const PHONE = { width: 390, height: 844 };
+
+await run('age-gate', DESKTOP, async (page) => {
+  await page.goto(`${base}/`);
+  const gate = page.locator('dialog.vr-age-gate');
+  await gate.waitFor({ state: 'visible' });
+  expect(await page.evaluate(() => document.activeElement?.value) === 'yes', 'gate should focus "I\'m 18 or older"');
+  await page.keyboard.press('Escape');
+  expect(await gate.isVisible(), 'Escape must not dismiss the gate');
+  await gate.getByRole('button', { name: "I'm 18 or older" }).click();
+  expect(await gate.count() === 0, 'gate should close');
+  expect(await page.evaluate(() => localStorage.getItem('vr.ageOk')) === '1', 'consent should persist');
+  await page.reload();
+  await page.waitForTimeout(300);
+  expect(await page.locator('dialog.vr-age-gate').count() === 0, 'gate should stay closed after reload');
+}, { ageOk: false });
 
 await run('hub', DESKTOP, async (page) => {
   await page.goto(`${base}/`);
