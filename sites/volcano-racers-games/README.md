@@ -69,5 +69,5 @@ No badge, number, label or control may sit over a title or over the art. The gam
 ## Decisions made here (reversible)
 
 - Games 2 to 5 are a separate static site rather than routes in the platform app, so they can ship before the platform is deployed and add no load to it. They can move into the platform's `public/` folder unchanged later.
-- The hub carries an 18+ label to match the studio's mature rating lane, but the games themselves show no gore or adult themes (no pills, no drinking); damage is dents, soot and scars. There is no age gate.
+- The hub carries an 18+ label to match the studio's mature rating lane, but the games themselves show no gore or adult themes (no pills, no drinking); damage is dents, soot and scars. A one-time, self-declared 18+ check runs on first visit (`shared/age-gate.js`, localStorage key `vr.ageOk`).
 - No sound yet.
