@@ -1,0 +1,169 @@
+/* Shared layout for the Volcano Racers games and hub.
+   Builds on the Tune brand tokens (tokens.css + components.css), noir theme,
+   with the Volcano Racers accent (magma on basalt). */
+
+:root {
+  --vr-sun: #FFC21A;
+  --vr-toon-red: #E8262B;
+  --vr-magma: #FF5A1F;
+  --vr-basalt: #2B2422;
+  --sfx-font: "Arial Black", "Helvetica Neue", Impact, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.vr-skip { position: absolute; left: -9999px; top: 8px; z-index: 100; }
+.vr-skip:focus { left: 8px; }
+
+/* Visible focus everywhere, per the brand guide (3px blue ring, 4px offset). */
+:where(a, button, input, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.vr-topbar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-sunk);
+  min-height: 56px;
+}
+.vr-topbar__back { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+.vr-topbar__title { font-family: var(--font-display); font-size: 20px; margin: 0; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.vr-coins { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; white-space: nowrap; }
+.vr-coins__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--vr-sun); border: 2px solid #8a6200; }
+
+.vr-eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--vr-magma); margin: 0; }
+
+/* ---- game stage ---- */
+/* Project rule: no badge, label or control sits over the art. The HUD is a strip
+   above the play area and the touch buttons a strip below it, so the canvas is
+   never covered while the game runs. */
+.vr-stage {
+  position: relative;
+  height: calc(100dvh - 57px);
+  overflow: hidden;
+  background: #120e0d;
+  touch-action: none;
+  display: flex; flex-direction: column;
+}
+.vr-stage canvas { display: block; width: 100%; flex: 1 1 auto; min-height: 0; }
+
+.vr-hud {
+  flex: none;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start;
+  padding: 8px 12px;
+  background: #161616; border-bottom: 1px solid rgba(244, 240, 232, .12);
+  order: -1; /* sits above the canvas whatever the markup order */
+}
+.vr-hud__chip {
+  background: #221d1b; color: #F4F0E8;
+  border: 1px solid rgba(244, 240, 232, .18);
+  padding: 6px 12px; font-size: 14px; line-height: 1.3; min-width: 72px;
+}
+.vr-hud__chip strong { display: block; font-size: 22px; line-height: 1.1; font-family: var(--font-display); font-weight: 400; }
+.vr-hud__bar { width: 120px; height: 10px; background: #3a3733; margin-top: 6px; position: relative; }
+.vr-hud__bar > span { position: absolute; inset: 0 auto 0 0; background: var(--vr-magma); }
+.vr-hud__bar--special > span { background: var(--vr-sun); }
+.vr-hud__chip.is-ready { border-color: var(--vr-sun); }
+.vr-hud__pause { pointer-events: auto; margin-left: auto; }
+
+/* Menus and results are their own screens: opaque, shown only while the game is
+   paused or not running, never a see-through layer over the art. */
+.vr-panel {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-items: center;
+  padding: 16px;
+  background: #0e0c0b;
+  overflow-y: auto;
+}
+.vr-panel[hidden] { display: none; }
+.vr-panel__inner {
+  width: min(880px, 100%);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  padding: 24px;
+  display: grid; gap: 16px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.vr-panel h2 { font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.2; margin: 0; }
+.vr-panel h3 { font-size: 18px; margin: 0; }
+.vr-panel p { margin: 0; }
+.vr-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.vr-muted { color: var(--ink-muted); }
+
+/* Picker cards (cars, characters) */
+.vr-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.vr-pick__opt {
+  display: grid; gap: 6px; text-align: left;
+  padding: 12px; min-height: 48px;
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--line); cursor: pointer; font: inherit;
+}
+.vr-pick__opt:hover { border-color: var(--ink-muted); }
+.vr-pick__opt[aria-pressed="true"] { border-color: var(--vr-magma); box-shadow: inset 0 0 0 2px var(--vr-magma); }
+.vr-pick__swatch { height: 36px; border: 1px solid rgba(0,0,0,.3); display: grid; place-items: center; font-weight: 700; font-family: var(--sfx-font); }
+.vr-pick__name { font-weight: 600; }
+.vr-pick__meta { font-size: 13px; color: var(--ink-muted); }
+
+.vr-stats { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 14px; align-items: center; }
+.vr-stats__bar { height: 8px; background: var(--surface-sunk); position: relative; }
+.vr-stats__bar > span { position: absolute; inset: 0 auto 0 0; background: var(--ink); }
+
+.vr-seg { display: inline-flex; border: 1px solid var(--ink); }
+.vr-seg button { font: inherit; min-height: 44px; padding: 8px 16px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+.vr-seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+.vr-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.vr-table th, .vr-table td { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); }
+.vr-table tr.is-you td { font-weight: 700; background: var(--surface-sunk); }
+
+.vr-damage { height: 14px; background: var(--surface-sunk); position: relative; border: 1px solid var(--line); }
+.vr-damage > span { position: absolute; inset: 0 auto 0 0; background: var(--vr-magma); }
+
+/* Touch controls: shown on touch devices only. */
+.vr-touch { flex: none; display: none; justify-content: space-between; padding: 10px 12px; gap: 12px; background: #161616; border-top: 1px solid rgba(244, 240, 232, .12); }
+.vr-touch__group { display: flex; gap: 12px; pointer-events: auto; }
+.vr-touch button {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: #2b2725; color: #F4F0E8;
+  border: 2px solid rgba(244, 240, 232, .45);
+  font: 700 15px var(--font-sans);
+  user-select: none; -webkit-user-select: none; touch-action: none;
+}
+.vr-touch button.is-down { background: rgba(255, 90, 31, .55); }
+@media (hover: none) and (pointer: coarse) { .vr-touch { display: flex; } }
+
+.vr-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.vr-keys { font-size: 14px; color: var(--ink-muted); }
+.vr-keys kbd { font: 600 13px var(--font-sans); border: 1px solid var(--line); padding: 1px 6px; background: var(--surface); color: var(--ink); }
+
+.vr-placeholder-note { font-size: 13px; color: var(--ink-muted); border-left: 3px solid var(--vr-sun); padding-left: 10px; }
+
+@media (max-width: 600px) {
+  .vr-panel__inner { padding: 16px; }
+  .vr-panel h2 { font-size: 24px; }
+  .vr-hud__chip strong { font-size: 18px; }
+  .vr-hud__bar { width: 80px; }
+}
+.vr-stage canvas:focus { outline: none; }
+
+/* 18+ age gate (shared/age-gate.js). Native <dialog>: focus is trapped by showModal(). */
+.vr-age-gate { max-width: min(28rem, calc(100vw - 2 * var(--space-4))); padding: var(--space-6);
+  background: var(--surface-raised); color: var(--ink); border: var(--stroke-hair) solid var(--line);
+  border-radius: var(--radius-m); box-shadow: var(--shadow-2); }
+.vr-age-gate h2 { margin: 0 0 var(--space-3); font-family: var(--font-display); }
+.vr-age-gate p { margin: 0 0 var(--space-6); color: var(--ink-muted); }
+.vr-age-gate .tn-btn + .tn-btn { margin-inline-start: var(--space-3); }
+.vr-age-gate::backdrop { background: rgb(0 0 0 / 0.85); }

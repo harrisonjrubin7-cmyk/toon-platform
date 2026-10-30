@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="noir">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pit Crew · Volcano Racers games</title>
+  <meta name="description" content="Fix the damage your Volcano Racers cars took on the track before the clock runs out.">
+  <link rel="icon" href="../../shared/brand/logos/tune-icon-tile.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../shared/brand/tokens/tokens.css">
+  <link rel="stylesheet" href="../../shared/brand/tokens/components.css">
+  <link rel="stylesheet" href="../../shared/game.css">
+  <link rel="stylesheet" href="./pit-crew.css">
+</head>
+<body class="tn-ip--volcano-racers">
+  <a class="vr-skip tn-btn" href="#stage">Skip to game</a>
+  <header class="vr-topbar">
+    <a class="vr-topbar__back" href="../../">All games</a>
+    <h1 class="vr-topbar__title">Pit Crew</h1>
+    <span class="vr-coins" title="Coins (shared by every game)"><span class="vr-coins__dot" aria-hidden="true"></span><span data-coins>0</span><span class="vr-sr"> coins</span></span>
+  </header>
+
+  <main id="stage" class="vr-stage pc-stage">
+    <canvas id="game" role="img" aria-label="Your car on the garage lift"></canvas>
+    <div class="pc-jobs" id="jobs" role="group" aria-label="Repair jobs on the car"></div>
+
+    <div class="vr-hud" id="hud" hidden>
+      <div class="vr-hud__chip">Time<strong id="hud-time">60</strong></div>
+      <div class="vr-hud__chip">Jobs<strong id="hud-jobs">0/0</strong></div>
+      <div class="vr-hud__chip pc-pip" id="hud-pip"><span class="pc-pip__face" aria-hidden="true"></span><span id="pip-says">Pick a job on the car.</span></div>
+    </div>
+
+    <!-- The tool for the job you picked -->
+    <section class="pc-sheet" id="sheet" aria-labelledby="sheet-title" hidden>
+      <div class="pc-sheet__head">
+        <h2 id="sheet-title">Dent</h2>
+        <button class="tn-btn tn-btn--secondary" type="button" id="btn-sheet-close">Back to the car</button>
+      </div>
+      <p id="sheet-how" class="vr-muted"></p>
+      <div id="sheet-body"></div>
+    </section>
+
+    <section class="vr-panel" id="panel-select" aria-labelledby="select-title">
+      <div class="vr-panel__inner">
+        <p class="vr-eyebrow">Volcano Racers</p>
+        <h2 id="select-title">Which car needs work?</h2>
+        <p class="vr-muted">Damage from Circuit Rush stays on a car until it is fixed here. You have 60 seconds per shift. Each job fixes 10% damage.</p>
+        <div class="vr-pick" id="car-pick" role="group" aria-label="Cars"></div>
+        <p id="select-note" aria-live="polite"></p>
+        <div class="vr-actions">
+          <button class="tn-btn" type="button" id="btn-start" data-autofocus>Start the shift</button>
+          <a class="tn-btn tn-btn--secondary" href="../circuit-rush/">Race in Circuit Rush</a>
+        </div>
+        <p class="vr-placeholder-note">Placeholder art: simple shapes in the approved colours until the real designs are drawn.</p>
+      </div>
+    </section>
+
+    <section class="vr-panel" id="panel-results" aria-labelledby="results-title" hidden>
+      <div class="vr-panel__inner">
+        <p class="vr-eyebrow">Shift over</p>
+        <h2 id="results-title">Nice work</h2>
+        <div id="results-body"></div>
+        <div class="vr-actions" id="results-actions"></div>
+      </div>
+    </section>
+
+    <p id="vr-live" class="vr-sr" aria-live="polite"></p>
+  </main>
+  <script src="../../shared/age-gate.js" defer></script>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
