@@ -1,0 +1,722 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestId": "toon-sandbox-asset-manifest",
+  "generatedAt": "2026-11-01",
+  "environment": {
+    "role": "sandbox-candidate",
+    "isCentralToon": false,
+    "isRelease": false,
+    "productionSnapshotDate": "2026-10-30",
+    "boundaryNote": "Bounded Toon sandbox candidate only. Does not replace central Toon authority, publish a release, or claim finished retail editions or completed animation."
+  },
+  "allowedStages": [
+    "development",
+    "proof",
+    "final"
+  ],
+  "authorityCounts": {
+    "sourceAuthority": "Private Site v47",
+    "authorityRule": "Preserve Private Site v47 selected draft counts exactly. Never overwrite authority counts with sandbox local coverage notes or stale sandbox UI labels.",
+    "books": {
+      "book-0": {
+        "id": "book-0",
+        "title": "Ignition",
+        "world": "Volcano Racers",
+        "saga": "The Ember Heart Saga",
+        "selectedDrafts": 184,
+        "unit": "selected drafts",
+        "canonicalLabel": "Ignition 184 selected drafts",
+        "stage": "development",
+        "localCoverageNotes": {
+          "sandboxIllustratedOpeningChapterPages": 24,
+          "sandboxIllustratedStage": "development",
+          "sandboxWorkspaceCopy": "184-page script draft; 24-page illustrated opening chapter.",
+          "note": "Sandbox 24 illustrated pages are recorded strictly as a local coverage note and do not replace Private Site v47 authority (Ignition 184 selected drafts) or claim final art."
+        }
+      },
+      "book-12": {
+        "id": "book-12",
+        "title": "Begin",
+        "world": "STARFALL",
+        "saga": "STARFALL",
+        "selectedDrafts": 166,
+        "unit": "selected drafts",
+        "canonicalLabel": "Begin 166 selected drafts",
+        "stage": "development",
+        "localCoverageNotes": {
+          "staleSandboxScriptDraftLabelPages": 168,
+          "sandboxProofPages": 10,
+          "sandboxProofPagesStage": "proof",
+          "sandboxWorkspaceCopy": "168-page script draft; 10 illustrated proof pages.",
+          "note": "Sandbox stale Begin 168 label and 10 proof pages in public/workspace.js are recorded strictly as local coverage notes and do not replace Private Site v47 authority (Begin 166 selected drafts) or alter rendered sandbox copy."
+        }
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "icon",
+      "kind": "ui-icon",
+      "title": "Toon Comics and Studios monogram icon",
+      "world": "Studio",
+      "localOrExternal": "local",
+      "uri": "/icon.svg",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/icon.svg"
+      ],
+      "dimensions": {
+        "width": 64,
+        "height": 64,
+        "unit": "px",
+        "reason": null
+      },
+      "missingMetadata": [
+        "apple_touch_icon_png",
+        "maskable_pwa_icons",
+        "brand_guideline_lockup_spec"
+      ],
+      "notes": "Local SVG monogram icon declared via <link rel=\"icon\" href=\"/icon.svg\" /> with viewBox=\"0 0 64 64\"."
+    },
+    {
+      "id": "cover-volcano-ignition",
+      "kind": "external-development-cover",
+      "title": "Volcano Racers: Ignition development cover artwork",
+      "world": "Volcano Racers",
+      "relatedBookId": "book-0",
+      "localOrExternal": "external",
+      "uri": "https://raw.githubusercontent.com/harrisonjrubin7-cmyk/toon-platform/eaaf9264549f3ea0887b427bc1d43c9965ab1932/dist/assets/volcano.jpg",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/discover.js",
+        "public/polish.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Referenced via external raw.githubusercontent.com URL; binary image is not stored locally in this sandbox and no intrinsic width/height attributes are present in HTML or JS."
+      },
+      "missingMetadata": [
+        "intrinsic_pixel_dimensions",
+        "local_binary_asset",
+        "sha256_digest",
+        "cmyk_print_profile",
+        "spine_and_bleed_wrap_dimensions",
+        "final_print_approval"
+      ],
+      "notes": "Explicitly labeled in index.html and public/discover.js as an existing development image, not a final print approval."
+    },
+    {
+      "id": "cover-starfall-begin",
+      "kind": "external-development-cover",
+      "title": "STARFALL: Begin development cover artwork",
+      "world": "STARFALL",
+      "relatedBookId": "book-12",
+      "localOrExternal": "external",
+      "uri": "https://raw.githubusercontent.com/harrisonjrubin7-cmyk/toon-platform/eaaf9264549f3ea0887b427bc1d43c9965ab1932/dist/assets/starfall.jpg",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/discover.js",
+        "public/polish.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Referenced via external raw.githubusercontent.com URL; binary image is not stored locally in this sandbox and no intrinsic width/height attributes are present in HTML or JS."
+      },
+      "missingMetadata": [
+        "intrinsic_pixel_dimensions",
+        "local_binary_asset",
+        "sha256_digest",
+        "cmyk_print_profile",
+        "spine_and_bleed_wrap_dimensions",
+        "final_print_approval"
+      ],
+      "notes": "Explicitly labeled in index.html and public/discover.js as an existing development image, not a final print approval."
+    }
+  ],
+  "leadBooks": [
+    {
+      "id": "book-0",
+      "kind": "catalog-book-lead",
+      "title": "Ignition",
+      "world": "Volcano Racers",
+      "saga": "The Ember Heart Saga",
+      "arcKind": "Main arc",
+      "openingChapterTitle": "The Price of a Seat",
+      "localOrExternal": "external",
+      "stage": "development",
+      "authorityCount": {
+        "source": "Private Site v47",
+        "selectedDrafts": 184,
+        "unit": "selected drafts",
+        "label": "Ignition 184 selected drafts"
+      },
+      "localCoverageNotes": {
+        "sandboxIllustratedPages": 24,
+        "sandboxIllustratedPagesStage": "development",
+        "renderedWorkspaceCopy": "184-page script draft; 24-page illustrated opening chapter.",
+        "coverageNote": "24 illustrated pages are a local sandbox coverage note only; private source document is held outside the sandbox and Private Site v47 authority remains 184 selected drafts."
+      },
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Private manuscript and interior art pages are not bundled in the public sandbox; final trim, bleed, and spine dimensions remain pending print preflight."
+      },
+      "missingMetadata": [
+        "bundled_interior_pages",
+        "print_trim_and_bleed_dimensions",
+        "spine_width_calculation",
+        "isbn_assignment",
+        "vendor_preflight_package",
+        "final_edition_release_approval"
+      ]
+    },
+    {
+      "id": "book-12",
+      "kind": "catalog-book-lead",
+      "title": "Begin",
+      "world": "STARFALL",
+      "saga": "STARFALL",
+      "arcKind": "Main arc",
+      "openingChapterTitle": "Before Eleven",
+      "localOrExternal": "external",
+      "stage": "development",
+      "authorityCount": {
+        "source": "Private Site v47",
+        "selectedDrafts": 166,
+        "unit": "selected drafts",
+        "label": "Begin 166 selected drafts"
+      },
+      "localCoverageNotes": {
+        "staleSandboxLabelScriptPages": 168,
+        "sandboxProofPages": 10,
+        "sandboxProofPagesStage": "proof",
+        "renderedWorkspaceCopy": "168-page script draft; 10 illustrated proof pages.",
+        "coverageNote": "Stale Begin 168 label and 10 proof pages in public/workspace.js are local sandbox coverage notes only; Private Site v47 authority count is preserved at 166 selected drafts without changing rendered catalog copy."
+      },
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Private manuscript and 10 proof interior pages are not bundled in the public sandbox; final trim, bleed, and spine dimensions remain pending print preflight."
+      },
+      "missingMetadata": [
+        "bundled_interior_proof_pages",
+        "reconciled_public_workspace_page_label",
+        "print_trim_and_bleed_dimensions",
+        "spine_width_calculation",
+        "isbn_assignment",
+        "vendor_preflight_package",
+        "final_edition_release_approval"
+      ]
+    }
+  ],
+  "groupedCatalogRecords": [
+    {
+      "id": "group-ember-heart-remaining",
+      "kind": "catalog-arc-group",
+      "title": "The Ember Heart Saga — Remaining Main Arcs (books 1–3)",
+      "world": "Volcano Racers",
+      "saga": "The Ember Heart Saga",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 source issues / 29 source reader issues documented across the saga.",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; no local cover binaries, interior art files, or trim specifications exist for these development arcs."
+      },
+      "missingMetadata": [
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-1",
+          "title": "The Great Ring Rally",
+          "world": "Volcano Racers",
+          "saga": "The Ember Heart Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-2",
+          "title": "Breakdown",
+          "world": "Volcano Racers",
+          "saga": "The Ember Heart Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-3",
+          "title": "Heart of the Mountain",
+          "world": "Volcano Racers",
+          "saga": "The Ember Heart Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-apex-saga",
+      "kind": "catalog-arc-group",
+      "title": "The Apex Saga — Main Arcs (books 4–7)",
+      "world": "Volcano Racers",
+      "saga": "The Apex Saga",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 source issues / 29 source reader issues documented across the saga.",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; no local cover binaries, interior art files, or trim specifications exist for these development arcs."
+      },
+      "missingMetadata": [
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-4",
+          "title": "New Recruits",
+          "world": "Volcano Racers",
+          "saga": "The Apex Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-5",
+          "title": "The Food Chain",
+          "world": "Volcano Racers",
+          "saga": "The Apex Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-6",
+          "title": "Extinction Event",
+          "world": "Volcano Racers",
+          "saga": "The Apex Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-7",
+          "title": "Apex",
+          "world": "Volcano Racers",
+          "saga": "The Apex Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-hive-saga",
+      "kind": "catalog-arc-group",
+      "title": "The Hive Saga — Main Arcs (books 8–11)",
+      "world": "Volcano Racers",
+      "saga": "The Hive Saga",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 planned issue summaries · Story guide and proposed scripts in development.",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; complete Hive reader not located in latest inventory and no visual assets exist in the sandbox."
+      },
+      "missingMetadata": [
+        "complete_source_reader_issues",
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-8",
+          "title": "Perfect Lap",
+          "world": "Volcano Racers",
+          "saga": "The Hive Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-9",
+          "title": "The Feed",
+          "world": "Volcano Racers",
+          "saga": "The Hive Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-10",
+          "title": "Ghost Laps",
+          "world": "Volcano Racers",
+          "saga": "The Hive Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-11",
+          "title": "The Long Way Round",
+          "world": "Volcano Racers",
+          "saga": "The Hive Saga",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-starfall-remaining",
+      "kind": "catalog-arc-group",
+      "title": "STARFALL — Remaining Main Arcs (books 13–16)",
+      "world": "STARFALL",
+      "saga": "STARFALL",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 source issues / 29 linked source reader issues documented across the saga.",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; no local cover binaries, interior art files, or trim specifications exist for these development arcs."
+      },
+      "missingMetadata": [
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-13",
+          "title": "Fugitives",
+          "world": "STARFALL",
+          "saga": "STARFALL",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-14",
+          "title": "Shadow Agencies",
+          "world": "STARFALL",
+          "saga": "STARFALL",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-15",
+          "title": "The Meridian Circle",
+          "world": "STARFALL",
+          "saga": "STARFALL",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-16",
+          "title": "Harvest",
+          "world": "STARFALL",
+          "saga": "STARFALL",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-echoes-saga",
+      "kind": "catalog-arc-group",
+      "title": "Echoes — Main Arcs (books 17–21)",
+      "world": "STARFALL",
+      "saga": "Echoes",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 planned issue slots · 14 linked source reader issues documented (partial sequel saga).",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; partial source issues and graphic-novel arcs have no local image assets or print dimensions in the sandbox."
+      },
+      "missingMetadata": [
+        "remaining_15_source_reader_issues",
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-17",
+          "title": "Afterglow",
+          "world": "STARFALL",
+          "saga": "Echoes",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-18",
+          "title": "Registry",
+          "world": "STARFALL",
+          "saga": "Echoes",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-19",
+          "title": "Mirror",
+          "world": "STARFALL",
+          "saga": "Echoes",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-20",
+          "title": "Keystone",
+          "world": "STARFALL",
+          "saga": "Echoes",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-21",
+          "title": "Signal",
+          "world": "STARFALL",
+          "saga": "Echoes",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-harrows-saga",
+      "kind": "catalog-arc-group",
+      "title": "Harrows — Main Arcs (books 22–26)",
+      "world": "STARFALL",
+      "saga": "Harrows",
+      "arcKind": "Main arc",
+      "sagaInventoryNote": "29 planned issue slots · 13 linked source reader issues documented (partial sequel saga).",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "index.html",
+        "public/app.js",
+        "public/workspace.js",
+        "public/discover.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Catalog metadata records only in sandbox JS; partial source issues and graphic-novel arcs have no local image assets or print dimensions in the sandbox."
+      },
+      "missingMetadata": [
+        "remaining_16_source_reader_issues",
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-22",
+          "title": "Three Stars",
+          "world": "STARFALL",
+          "saga": "Harrows",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-23",
+          "title": "Surrender",
+          "world": "STARFALL",
+          "saga": "Harrows",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-24",
+          "title": "Remnant",
+          "world": "STARFALL",
+          "saga": "Harrows",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-25",
+          "title": "The First",
+          "world": "STARFALL",
+          "saga": "Harrows",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-26",
+          "title": "Give Everything",
+          "world": "STARFALL",
+          "saga": "Harrows",
+          "kind": "Main arc",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    },
+    {
+      "id": "group-proposed-spinoffs",
+      "kind": "catalog-spinoff-group",
+      "title": "Proposed Spin-offs (books 27–30)",
+      "world": "Mixed (Volcano Racers / STARFALL)",
+      "saga": "Proposed spin-off",
+      "arcKind": "Spin-off",
+      "sagaInventoryNote": "4 proposed spin-off volumes defined in public/workspace.js extras.",
+      "localOrExternal": "local",
+      "stage": "development",
+      "evidencePaths": [
+        "public/workspace.js"
+      ],
+      "dimensions": {
+        "width": null,
+        "height": null,
+        "unit": null,
+        "reason": "Proposed spin-off title entries in public/workspace.js only; no cover art, script drafts, or physical trim dimensions exist in this sandbox."
+      },
+      "missingMetadata": [
+        "synopsis_and_dossier_copy",
+        "source_issue_inventory",
+        "individual_cover_assets",
+        "script_draft_page_counts",
+        "illustrated_page_counts",
+        "print_trim_dimensions",
+        "isbn_assignments"
+      ],
+      "records": [
+        {
+          "id": "book-27",
+          "title": "Night Shift",
+          "world": "Volcano Racers",
+          "saga": "Proposed spin-off",
+          "kind": "Spin-off",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-28",
+          "title": "Dead Air",
+          "world": "Volcano Racers",
+          "saga": "Proposed spin-off",
+          "kind": "Spin-off",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-29",
+          "title": "After the Sirens",
+          "world": "STARFALL",
+          "saga": "Proposed spin-off",
+          "kind": "Spin-off",
+          "localOrExternal": "local",
+          "stage": "development"
+        },
+        {
+          "id": "book-30",
+          "title": "The Person in the File",
+          "world": "STARFALL",
+          "saga": "Proposed spin-off",
+          "kind": "Spin-off",
+          "localOrExternal": "local",
+          "stage": "development"
+        }
+      ]
+    }
+  ]
+}
