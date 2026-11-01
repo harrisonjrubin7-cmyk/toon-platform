@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -50,6 +51,57 @@ const EXPECTED_CATALOG_BOOKS = [
 
 const ALLOWED_STAGES = new Set(['development', 'proof', 'final']);
 const ALLOWED_LOCATIONS = new Set(['local', 'external']);
+
+function isOutsideRoot(relativePath) {
+  return (
+    relativePath === '..' ||
+    relativePath.startsWith(`..${path.sep}`) ||
+    path.isAbsolute(relativePath)
+  );
+}
+
+export function validateEvidencePath(rootDir, relPath) {
+  if (typeof relPath !== 'string' || !relPath.trim()) {
+    return 'path must be a non-empty string';
+  }
+  if (path.isAbsolute(relPath) || path.win32.isAbsolute(relPath)) {
+    return 'absolute paths are not allowed';
+  }
+  if (relPath.split(/[\\/]+/).includes('..')) {
+    return 'parent traversal segments are not allowed';
+  }
+
+  let realRoot;
+  try {
+    realRoot = fs.realpathSync(rootDir);
+  } catch {
+    return 'evidence root does not exist';
+  }
+
+  const resolved = path.resolve(realRoot, relPath);
+  if (isOutsideRoot(path.relative(realRoot, resolved))) {
+    return 'path escapes the evidence root';
+  }
+
+  let realTarget;
+  try {
+    realTarget = fs.realpathSync(resolved);
+  } catch {
+    return 'path does not exist';
+  }
+  if (isOutsideRoot(path.relative(realRoot, realTarget))) {
+    return 'path resolves outside the evidence root';
+  }
+
+  try {
+    if (!fs.statSync(realTarget).isFile()) {
+      return 'path must resolve to a regular file';
+    }
+  } catch {
+    return 'path cannot be inspected';
+  }
+  return null;
+}
 
 export function validateManifestObject(manifest, rootDir = ROOT_DIR) {
   const errors = [];
@@ -115,10 +167,10 @@ export function validateManifestObject(manifest, rootDir = ROOT_DIR) {
           );
           continue;
         }
-        const resolved = path.resolve(rootDir, relPath);
-        if (!resolved.startsWith(rootDir) || !fs.existsSync(resolved)) {
+        const evidencePathError = validateEvidencePath(rootDir, relPath);
+        if (evidencePathError) {
           errors.push(
-            `[missing-evidence-path] ${context} ("${entry.id}") references non-existent evidence path "${relPath}".`
+            `[missing-evidence-path] ${context} ("${entry.id}") references invalid evidence path "${relPath}": ${evidencePathError}.`
           );
         }
       }
@@ -449,6 +501,42 @@ function runRejectionSelfTests(validManifest) {
   return 5;
 }
 
+function runEvidencePathBoundarySelfTests() {
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'toon-manifest-path-'));
+  const root = path.join(scratch, 'appdeploy');
+  const sibling = path.join(scratch, 'appdeploy-sibling');
+  fs.mkdirSync(path.join(root, 'public'), { recursive: true });
+  fs.mkdirSync(sibling, { recursive: true });
+  fs.writeFileSync(path.join(root, 'valid.txt'), 'inside');
+  fs.writeFileSync(path.join(sibling, 'outside.txt'), 'outside');
+
+  const expectRejected = (label, candidate) => {
+    if (validateEvidencePath(root, candidate) === null) {
+      throw new Error(`Self-test failed: validator accepted ${label} evidence path.`);
+    }
+  };
+
+  try {
+    expectRejected('sibling-prefix escape', '../appdeploy-sibling/outside.txt');
+    expectRejected('parent traversal', 'public/../../appdeploy-sibling/outside.txt');
+    expectRejected('absolute', path.join(root, 'valid.txt'));
+    if (validateEvidencePath(root, 'valid.txt') !== null) {
+      throw new Error('Self-test failed: validator rejected valid in-root evidence path.');
+    }
+
+    fs.symlinkSync(path.join(sibling, 'outside.txt'), path.join(root, 'outside-link.txt'));
+    expectRejected('out-of-root symlink', 'outside-link.txt');
+    fs.symlinkSync(path.join(root, 'valid.txt'), path.join(root, 'inside-link.txt'));
+    if (validateEvidencePath(root, 'inside-link.txt') !== null) {
+      throw new Error('Self-test failed: validator rejected an in-root symlink to an in-root regular file.');
+    }
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
+  }
+
+  return 6;
+}
+
 function main() {
   if (!fs.existsSync(MANIFEST_PATH)) {
     console.error(`ERROR: Manifest not found at ${MANIFEST_PATH}`);
@@ -478,13 +566,14 @@ function main() {
   }
 
   const selfTestCount = runRejectionSelfTests(manifest);
+  const evidencePathSelfTestCount = runEvidencePathBoundarySelfTests();
   const groupedBookCount = manifest.groupedCatalogRecords.reduce(
     (sum, g) => sum + g.records.length,
     0
   );
 
   console.log(
-    `PASS: public/toon-asset-manifest.json validated (${manifest.assets.length} assets, ${manifest.leadBooks.length} lead books [Ignition=184 selected drafts, Begin=166 selected drafts], ${manifest.groupedCatalogRecords.length} catalog groups covering ${groupedBookCount} remaining books; ${selfTestCount}/5 negative rejection checks verified).`
+    `PASS: public/toon-asset-manifest.json validated (${manifest.assets.length} assets, ${manifest.leadBooks.length} lead books [Ignition=184 selected drafts, Begin=166 selected drafts], ${manifest.groupedCatalogRecords.length} catalog groups covering ${groupedBookCount} remaining books; ${selfTestCount}/5 manifest mutation checks and ${evidencePathSelfTestCount}/6 evidence-path boundary checks verified).`
   );
 }
 
